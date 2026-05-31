@@ -1,0 +1,16 @@
+{
+  "name": "deadmtl-site",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.8.0"
+  },
+  "devDependencies": {
+    "sass": "^1.87.0"
+  }
+}

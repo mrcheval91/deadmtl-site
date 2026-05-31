@@ -1,0 +1,274 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Home" description="DeadMTL — Montreal survival world. Server hub, lore archive, and media platform set after the Knox Event, winter 1993.">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="snow-layer" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__location">Montreal &mdash; Winter 1993</div>
+
+      <span class="logo-display">DEADMTL</span>
+
+      <p class="hero__headline">In the Ruins, We Organize</p>
+
+      <p class="hero__body">
+        DeadMTL is a Montreal survival world set after the Knox Event, when the city
+        failed by sectors instead of all at once. It is a server, a lore archive, a
+        media platform, and a creative forge built around the fractured southwest of
+        a city that refused to die cleanly.
+      </p>
+
+      <div class="hero__cta">
+        <a href="/construction" class="btn btn--primary">Enter the City</a>
+        <a href="/dispatch"     class="btn btn--secondary">Read the Dispatch</a>
+        <a href="/archive"      class="btn btn--ghost">Explore the Archive</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVE ZONE -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow eyebrow--accent">Current Active Zone</div>
+      <div class="zone-split">
+
+        <div class="zone-info">
+          <div class="zone__label">Enclave &mdash; Sector 01</div>
+          <h2 class="zone__name">Saint-Paul-&Eacute;mard</h2>
+
+          <p class="zone__body">
+            The first enclosed entry sector. Not safe, not fully lost. A contained,
+            fractured pocket of the southwest built around the old streets of
+            Ville-&Eacute;mard and C&ocirc;te-Saint-Paul. Zombie pressure exists here,
+            but it is not an ocean yet. That is what makes it the starting point.
+          </p>
+
+          <p class="zone__body">
+            The canal lines form the northern edge. Lasalle presses from the south.
+            The Mercier corridor is still a wound. Saint-Paul-&Eacute;mard is
+            manageable. For now.
+          </p>
+
+          <div class="zone__tag-row">
+            <span class="zone__tag">Contained</span>
+            <span class="zone__tag">Fragmented</span>
+            <span class="zone__tag">Manageable</span>
+            <span class="zone__tag">Canal Edge</span>
+            <span class="zone__tag">Under Pressure</span>
+          </div>
+
+          <a href="/construction" class="btn btn--secondary">Enter Enclave</a>
+        </div>
+
+        <!-- CSS map grid placeholder -->
+        <div class="zone-map" role="img" aria-label="Saint-Paul-Emard zone map placeholder">
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--dark"></div>
+
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--dark"></div>
+
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--border"></div>
+
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--active"></div>
+          <div class="map-cell map-cell--border"></div>
+
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--hot"></div>
+          <div class="map-cell map-cell--hot"></div>
+          <div class="map-cell map-cell--border"></div>
+          <div class="map-cell map-cell--dark"></div>
+
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--hot"></div>
+          <div class="map-cell map-cell--hot"></div>
+          <div class="map-cell map-cell--dark"></div>
+          <div class="map-cell map-cell--dark"></div>
+
+          <span class="map-label">Saint-Paul-&Eacute;mard &mdash; Sector 01</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MVP STATUS NOTE -->
+  <div class="container">
+    <div class="status-banner">
+      <span class="banner__label">Quarantine Status</span>
+      <span class="banner__text">
+        Current active zone: Saint-Paul-&Eacute;mard.
+        Other districts are locked behind quarantine lines. Expansion follows evidence.
+      </span>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">What Is DeadMTL</div>
+      <p class="section-sub">
+        A world, a server, a research archive. Montreal is dead by pieces.
+        We map the pieces.
+      </p>
+
+      <div class="feature-grid">
+
+        <div class="feature-cell">
+          <div class="cell__icon">Zone 01</div>
+          <h3>Saint-Paul-&Eacute;mard Enclave</h3>
+          <p>
+            The first playable sector. Contained, damaged, still partly manageable.
+            Subzones in the southwest between the canal and Lasalle pressure.
+          </p>
+          <a class="cell__link" href="/construction">Enter</a>
+        </div>
+
+        <div class="feature-cell">
+          <div class="cell__icon">Signal</div>
+          <h3>Dispatches</h3>
+          <p>
+            Field reports, lore transmissions, server updates, and event notices.
+            The record of what is happening and what happened before.
+          </p>
+          <a class="cell__link" href="/dispatch">Read</a>
+        </div>
+
+        <div class="feature-cell">
+          <div class="cell__icon">Survey</div>
+          <h3>Map &amp; Region Research</h3>
+          <p>
+            Montreal district maps, zone pressure data, road and canal analysis,
+            and expansion planning for the server world.
+          </p>
+          <a class="cell__link" href="/map">Explore</a>
+        </div>
+
+        <div class="feature-cell">
+          <div class="cell__icon">Server</div>
+          <h3>Server Play</h3>
+          <p>
+            Whitelist access, seasonal wipes, no pay-to-win, no donor advantages.
+            A small, curated player pool in the fractured southwest.
+          </p>
+          <a class="cell__link" href="/construction">Join</a>
+        </div>
+
+        <div class="feature-cell">
+          <div class="cell__icon">Forge</div>
+          <h3>Asset Forge</h3>
+          <p>
+            Custom map cells, original textures, lore artifacts, spawn configs,
+            and mod research for the DeadMTL world-build.
+          </p>
+          <a class="cell__link" href="/archive">Forge</a>
+        </div>
+
+        <div class="feature-cell">
+          <div class="cell__icon">Archive</div>
+          <h3>Signal Logs</h3>
+          <p>
+            The written record. Canon history, survivor testimony, incident reports,
+            and research notes on the Montreal collapse.
+          </p>
+          <a class="cell__link" href="/archive">Archive</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRICT PRESSURE CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Neighboring Pressure Zones</div>
+      <p class="section-sub">
+        What surrounds Saint-Paul-&Eacute;mard. Each district shapes the situation.
+        None of them are idle.
+      </p>
+
+      <div class="district-grid">
+
+        <div class="district-card">
+          <div class="card__name">LaSalle</div>
+          <p class="card__desc">
+            Pont Mercier was a failed evacuation. The barricade collapsed in the
+            first week. The south is the primary pressure source.
+          </p>
+          <span class="card__status card__status--critical">Critical</span>
+        </div>
+
+        <div class="district-card">
+          <div class="card__name">Verdun</div>
+          <p class="card__desc">
+            Closed pockets. Survivor-controlled blocks. Rationing, smuggling,
+            and tense access routes along the river.
+          </p>
+          <span class="card__status card__status--contested">Contested</span>
+        </div>
+
+        <div class="district-card">
+          <div class="card__name">Saint-Henri</div>
+          <p class="card__desc">
+            Industrial loot. Old workshops. Canal crossings that are not
+            all held. Access is possible but contested at every approach.
+          </p>
+          <span class="card__status card__status--contested">Contested</span>
+        </div>
+
+        <div class="district-card">
+          <div class="card__name">Pointe-Saint-Charles</div>
+          <p class="card__desc">
+            Rails and viaducts. Industrial movement. Later route toward
+            central Montreal. Supply corridor, not safe passage.
+          </p>
+          <span class="card__status card__status--tense">Tense</span>
+        </div>
+
+        <div class="district-card">
+          <div class="card__name">Angrignon</div>
+          <p class="card__desc">
+            Green buffer. The park gives the illusion of calm. Open
+            migration zone. Camps form at the tree line. False safety.
+          </p>
+          <span class="card__status card__status--buffer">Buffer</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING LINE -->
+  <section class="section">
+    <div class="container container--narrow">
+      <blockquote style="border-left: 2px solid var(--brass); padding-left: 1.5rem;">
+        <p style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-dim); font-style: italic; line-height: 1.7;">
+          &ldquo;Montreal is dead by pieces. We map the pieces.&rdquo;
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+</Base>

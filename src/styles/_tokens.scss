@@ -1,0 +1,63 @@
+// Cathedral of Decay — Design Tokens
+
+// SCSS variables (compile-time)
+$container: 1140px;
+$container-narrow: 800px;
+$gap: 1.5rem;
+$gap-sm: 0.75rem;
+$gap-xs: 0.35rem;
+$radius: 2px;
+
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+// CSS custom properties (runtime, accessible everywhere via var())
+:root {
+  // Background layers
+  --bg:              #0c0c0f;
+  --bg-surface:      #131317;
+  --bg-raised:       #1b1b21;
+  --bg-overlay:      #22222a;
+
+  // Borders
+  --border:          #2d2b38;
+  --border-subtle:   #1e1d26;
+  --border-accent:   #4a3d5a;
+
+  // Text
+  --text:            #cec9bf;
+  --text-dim:        #877e91;
+  --text-muted:      #4d4658;
+  --text-heading:    #e6ddd0;
+
+  // Accent palette
+  --oxblood:         #7c2020;
+  --oxblood-mid:     #9b3030;
+  --oxblood-light:   #c04040;
+  --brass:           #8a7040;
+  --brass-light:     #b8964e;
+  --brass-glow:      rgba(184, 150, 78, 0.15);
+  --snow:            #c6c2bc;
+  --violet:          #4a3d5a;
+  --violet-light:    #6b5a82;
+  --stone:           #38363f;
+
+  // Functional
+  --focus:           #b8964e;
+  --link:            #b8964e;
+  --link-hover:      #e0b86a;
+
+  // Typography
+  --font-display:    Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+  --font-body:       -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:       'Courier New', Consolas, monospace;
+
+  // Spacing
+  --section-pad: 5rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 3rem;
+  }
+}
