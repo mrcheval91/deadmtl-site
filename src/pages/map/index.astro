@@ -1,13 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
 ---
-
-<Base title="Map" description="DeadMTL Map — Montreal district research and zone pressure data. Coming soon.">
+<Base title="Map" description="DeadMTL Map — Montreal district research and zone pressure data. Season 0 in setup.">
   <div class="placeholder-page">
     <div class="ph__tag">Survey Division</div>
     <h1>Map &amp; Regions</h1>
     <p>District survey data is being compiled.<br />Zone pressure maps pending field confirmation.</p>
-    <a href="/saint-paul-emard/" class="btn btn--secondary">Saint-Paul-&Eacute;mard &mdash; Active Zone</a>
-    <a href="/" class="btn btn--ghost" style="margin-top: 0.5rem;">Return Home</a>
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
+      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Saint-Paul-&Eacute;mard &rsaquo;</a>
+      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
+    </div>
   </div>
 </Base>

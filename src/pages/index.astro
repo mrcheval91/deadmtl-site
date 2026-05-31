@@ -2,313 +2,365 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
+// ─── Data: dispatch feed ──────────────────────────────────────────────────────
 const allDispatches = await getCollection('dispatch');
 const latestDispatches = allDispatches
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 2);
+  .slice(0, 3);
 
 function fmtDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${months[m - 1]} ${d}, ${y}`;
+  const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  return `${months[m - 1]} ${String(d).padStart(2,'0')} ${y}`;
 }
+
+// ─── Data: map nodes (10 cells, 5×2 grid) ────────────────────────────────────
+const mapNodes = [
+  { name: 'Saint-Henri',       zone: 'Canal North',   status: 'locked',  dot: 'locked' },
+  { name: 'CSP Industrial',    zone: 'S-P-E East',    status: 'active',  dot: 'active' },
+  { name: 'Jolicoeur Line',    zone: 'S-P-E Barrier', status: 'hot',     dot: 'hot'    },
+  { name: 'LaSalle Corridor',  zone: 'Pressure Zone', status: 'hot',     dot: 'hot'    },
+  { name: 'Pont Mercier',      zone: 'Sealed',        status: 'locked',  dot: 'locked' },
+  { name: 'Canal Service',     zone: 'Gate E',        status: 'active',  dot: 'active' },
+  { name: 'Ville-Emard Core',  zone: 'S-P-E Main',   status: 'active',  dot: 'active' },
+  { name: 'Monk Residential',  zone: 'S-P-E North',  status: 'active',  dot: 'active' },
+  { name: 'Angrignon Buffer',  zone: 'Fringe',        status: 'hot',     dot: 'hot'    },
+  { name: 'Verdun Edge',       zone: 'South Lock',    status: 'locked',  dot: 'locked' },
+] as const;
+
+// ─── Data: knowledge modules ──────────────────────────────────────────────────
+const knowledgeModules = [
+  {
+    tag: 'Survival',
+    title: 'Field Survival Guide',
+    desc: 'Enclave-level survival protocols for Saint-Paul-Emard. Resources, movement, threat levels.',
+    link: '/knowledge/',
+    locked: false,
+    tagMod: '',
+  },
+  {
+    tag: 'Research',
+    title: 'Archive — Knox Event',
+    desc: 'Documented record of how Montreal fractured. Sector-by-sector collapse timeline.',
+    link: '/knowledge/',
+    locked: false,
+    tagMod: '',
+  },
+  {
+    tag: 'Server',
+    title: 'Server Doctrine',
+    desc: 'Rules, whitelist process, seasonal structure, no-pay-to-win principles.',
+    link: '/rules/',
+    locked: false,
+    tagMod: '--amber',
+  },
+  {
+    tag: 'Technical',
+    title: 'Technical Notes',
+    desc: 'Modlist, config templates, map tooling, PZMapForge documentation.',
+    link: '/assets/',
+    locked: false,
+    tagMod: '--violet',
+  },
+];
+
+// ─── Data: asset forge tools ──────────────────────────────────────────────────
+const assetTools = [
+  {
+    tag: 'Tool',
+    title: 'PZMapForge',
+    desc: 'Deterministic map cell generator and toolchain for Project Zomboid custom map development.',
+    link: 'https://github.com/mrcheval91/PZMapForge',
+    locked: false,
+    tagMod: '--amber',
+  },
+  {
+    tag: 'Map',
+    title: 'pz-sud-ouest-montreal',
+    desc: 'Public custom map mod. Southwest Montreal — Ville-Emard, Cote-Saint-Paul, canal edge.',
+    link: 'https://github.com/mrcheval91/pz-sud-ouest-montreal',
+    locked: false,
+    tagMod: '',
+  },
+  {
+    tag: 'Devlog',
+    title: 'Map Blockouts',
+    desc: 'Cell blockout progress, reference material, and procedural generation notes.',
+    link: '/assets/',
+    locked: true,
+    tagMod: '--muted',
+  },
+  {
+    tag: 'Gallery',
+    title: 'Screenshot Archive',
+    desc: 'In-progress map screenshots, sector visuals, and procedural output captures.',
+    link: '/assets/',
+    locked: true,
+    tagMod: '--muted',
+  },
+];
+
+// ─── Data: static feed notices ────────────────────────────────────────────────
+const staticFeed = [
+  {
+    type: 'notice', typeLabel: 'Server Notice',
+    title: 'Season 0 — Setup Phase',
+    text: 'Server infrastructure pending. Whitelist not open. No connection details published yet.',
+    date: 'Feb 2026',
+    link: '/construction/',
+  },
+  {
+    type: 'operator', typeLabel: 'Operator Note',
+    title: 'Whitelist Closed — Season 0',
+    text: 'Applications will open through Discord when Season 0 launches. No ETA published.',
+    date: 'Feb 2026',
+    link: '/join/',
+  },
+];
 ---
 
-<Base title="Home" description="DeadMTL — Montreal survival world. Server hub, lore archive, and media platform set after the Knox Event, winter 1993–1994.">
+<Base
+  title="Home"
+  description="DeadMTL — Montreal Survival Network. Project Zomboid server, lore archive, dispatch hub, and Saint-Paul-Emard enclave dossier. Season 0 in setup."
+>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="snow-layer" aria-hidden="true"></div>
-    <div class="container hero__inner">
-      <div class="hero__location">Montreal &mdash; Winter 1993&ndash;1994</div>
+<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="term-hero" aria-label="Network hero">
+  <div class="th__inner">
+    <div class="th__eyebrow">MTL NODE // SEASON 0 // SITE SIGNAL ONLINE // SERVER PENDING</div>
 
-      <span class="logo-display">DEADMTL</span>
+    <div class="th__headline">THE CITY IS DEAD.</div>
+    <div class="th__sub">THE NETWORK LIVES.</div>
 
-      <p class="hero__headline">In the Ruins, We Organize</p>
+    <p class="th__body">
+      DeadMTL is a Montreal-based Project Zomboid survival server, media bulletin,
+      map archive, knowledge center, and procedural asset forge.
+      Set after the Knox Event, winter 1993&ndash;1994.
+      The city failed by sectors. We map the sectors.
+    </p>
 
-      <p class="hero__body">
-        DeadMTL is a Montreal survival world set after the Knox Event, when the city
-        failed by sectors instead of all at once. It is a server, a lore archive, a
-        media platform, and a creative forge built around the fractured southwest of
-        a city that refused to die cleanly.
-      </p>
-
-      <div class="hero__cta">
-        <a href="/construction" class="btn btn--primary">Enter the City</a>
-        <a href="/dispatch"     class="btn btn--secondary">Read the Dispatch</a>
-        <a href="/archive"      class="btn btn--ghost">Explore the Archive</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACTIVE ZONE -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow eyebrow--accent">Current Active Zone</div>
-      <div class="zone-split">
-
-        <div class="zone-info">
-          <div class="zone__label">Enclave &mdash; Sector 01</div>
-          <h2 class="zone__name">Saint-Paul-&Eacute;mard</h2>
-
-          <p class="zone__body">
-            The first enclosed entry sector. Not safe, not fully lost. A contained,
-            fractured pocket of the southwest built around the old streets of
-            Ville-&Eacute;mard and C&ocirc;te-Saint-Paul. Zombie pressure exists here,
-            but it is not an ocean yet. That is what makes it the starting point.
-          </p>
-
-          <p class="zone__body">
-            The canal lines form the northern edge. Lasalle presses from the south.
-            The Mercier corridor is still a wound. Saint-Paul-&Eacute;mard is
-            manageable. For now.
-          </p>
-
-          <div class="zone__tag-row">
-            <span class="zone__tag">Contained</span>
-            <span class="zone__tag">Fragmented</span>
-            <span class="zone__tag">Manageable</span>
-            <span class="zone__tag">Canal Edge</span>
-            <span class="zone__tag">Under Pressure</span>
-          </div>
-
-          <a href="/saint-paul-emard/" class="btn btn--secondary">Enter Enclave</a>
-        </div>
-
-        <!-- CSS map grid placeholder -->
-        <div class="zone-map" role="img" aria-label="Saint-Paul-Emard zone map placeholder">
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--dark"></div>
-
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--dark"></div>
-
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--border"></div>
-
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--active"></div>
-          <div class="map-cell map-cell--border"></div>
-
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--hot"></div>
-          <div class="map-cell map-cell--hot"></div>
-          <div class="map-cell map-cell--border"></div>
-          <div class="map-cell map-cell--dark"></div>
-
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--hot"></div>
-          <div class="map-cell map-cell--hot"></div>
-          <div class="map-cell map-cell--dark"></div>
-          <div class="map-cell map-cell--dark"></div>
-
-          <span class="map-label">Saint-Paul-&Eacute;mard &mdash; Sector 01</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- MVP STATUS NOTE -->
-  <div class="container">
-    <div class="status-banner">
-      <span class="banner__label">Quarantine Status</span>
-      <span class="banner__text">
-        Current active zone: Saint-Paul-&Eacute;mard.
-        Other districts are locked behind quarantine lines. Expansion follows evidence.
-      </span>
+    <div class="th__cta">
+      <a href="/join/"      class="term-btn term-btn--teal">Join the Server</a>
+      <a href="/dispatch/"  class="term-btn term-btn--ghost">Read the Dispatch</a>
+      <a href="/map/"       class="term-btn term-btn--ghost">Open the Map</a>
     </div>
   </div>
+</section>
 
-  <!-- FEATURE GRID -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow">What Is DeadMTL</div>
-      <p class="section-sub">
-        A world, a server, a research archive. Montreal is dead by pieces.
-        We map the pieces.
-      </p>
+<!-- ─── TICKER ───────────────────────────────────────────────────────────── -->
+<div class="ticker-strip" aria-live="polite" aria-label="Network status ticker">
+  <span class="ticker__id" aria-hidden="true">&#x25A0;&nbsp;SIGNAL</span>
+  <div class="ticker__track">
+    <span class="ticker__msg" id="ticker-msg" aria-hidden="true">
+      SEASON 0 SETUP &nbsp;&#x25B8;&nbsp; WHITELIST CLOSED &nbsp;&#x25B8;&nbsp; MAP NODE LASALLE ACTIVE &nbsp;&#x25B8;&nbsp; SERVER PENDING &nbsp;&#x25B8;&nbsp; SAINT-PAUL-EMARD ENCLAVE OPEN
+    </span>
+  </div>
+</div>
 
-      <div class="feature-grid">
-
-        <div class="feature-cell">
-          <div class="cell__icon">Zone 01</div>
-          <h3>Saint-Paul-&Eacute;mard Enclave</h3>
-          <p>
-            The first playable sector. Contained, damaged, still partly manageable.
-            Subzones in the southwest between the canal and Lasalle pressure.
-          </p>
-          <a class="cell__link" href="/construction">Enter</a>
-        </div>
-
-        <div class="feature-cell">
-          <div class="cell__icon">Signal</div>
-          <h3>Dispatches</h3>
-          <p>
-            Field reports, lore transmissions, server updates, and event notices.
-            The record of what is happening and what happened before.
-          </p>
-          <a class="cell__link" href="/dispatch">Read</a>
-        </div>
-
-        <div class="feature-cell">
-          <div class="cell__icon">Survey</div>
-          <h3>Map &amp; Region Research</h3>
-          <p>
-            Montreal district maps, zone pressure data, road and canal analysis,
-            and expansion planning for the server world.
-          </p>
-          <a class="cell__link" href="/map">Explore</a>
-        </div>
-
-        <div class="feature-cell">
-          <div class="cell__icon">Server</div>
-          <h3>Server Play</h3>
-          <p>
-            Whitelist access, seasonal wipes, no pay-to-win, no donor advantages.
-            A small, curated player pool in the fractured southwest.
-          </p>
-          <a class="cell__link" href="/construction">Join</a>
-        </div>
-
-        <div class="feature-cell">
-          <div class="cell__icon">Forge</div>
-          <h3>Asset Forge</h3>
-          <p>
-            Custom map cells, original textures, lore artifacts, spawn configs,
-            and mod research for the DeadMTL world-build.
-          </p>
-          <a class="cell__link" href="/archive">Forge</a>
-        </div>
-
-        <div class="feature-cell">
-          <div class="cell__icon">Archive</div>
-          <h3>Signal Logs</h3>
-          <p>
-            The written record. Canon history, survivor testimony, incident reports,
-            and research notes on the Montreal collapse.
-          </p>
-          <a class="cell__link" href="/archive">Archive</a>
-        </div>
-
-      </div>
+<!-- ─── PRACTICAL CARDS ───────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Key information">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Access Points</span>
+      <h2 class="hs__title">Rules / Join / Status</h2>
     </div>
-  </section>
 
-  <!-- DISTRICT PRESSURE CARDS -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow">Neighboring Pressure Zones</div>
-      <p class="section-sub">
-        What surrounds Saint-Paul-&Eacute;mard. Each district shapes the situation.
-        None of them are idle.
-      </p>
+    <div class="practical-grid">
+      <a href="/rules/" class="practical-card" style="text-decoration:none;">
+        <span class="pc__label">[ 01 ]</span>
+        <span class="pc__title">Rules</span>
+        <p class="pc__desc">
+          Code of conduct, no-pay-to-win policy, whitelist behavior,
+          admin authority, and Season 0 provisional guidelines.
+        </p>
+        <span class="term-btn term-btn--ghost" style="align-self:flex-start; margin-top:auto;">Read Rules &rsaquo;</span>
+      </a>
 
-      <div class="district-grid">
+      <a href="/join/" class="practical-card" style="text-decoration:none;">
+        <span class="pc__label pc__label--amber">[ 02 ]</span>
+        <span class="pc__title">Join</span>
+        <p class="pc__desc">
+          Whitelist process, Discord channel, connection details,
+          and what to expect in Season 0. Not open yet.
+        </p>
+        <span class="term-btn term-btn--amber" style="align-self:flex-start; margin-top:auto;">Join Info &rsaquo;</span>
+      </a>
 
-        <div class="district-card">
-          <div class="card__name">LaSalle</div>
-          <p class="card__desc">
-            Pont Mercier was a failed evacuation. The barricade collapsed in the
-            first week. The south is the primary pressure source.
-          </p>
-          <span class="card__status card__status--critical">Critical</span>
-        </div>
-
-        <div class="district-card">
-          <div class="card__name">Verdun</div>
-          <p class="card__desc">
-            Closed pockets. Survivor-controlled blocks. Rationing, smuggling,
-            and tense access routes along the river.
-          </p>
-          <span class="card__status card__status--contested">Contested</span>
-        </div>
-
-        <div class="district-card">
-          <div class="card__name">Saint-Henri</div>
-          <p class="card__desc">
-            Industrial loot. Old workshops. Canal crossings that are not
-            all held. Access is possible but contested at every approach.
-          </p>
-          <span class="card__status card__status--contested">Contested</span>
-        </div>
-
-        <div class="district-card">
-          <div class="card__name">Pointe-Saint-Charles</div>
-          <p class="card__desc">
-            Rails and viaducts. Industrial movement. Later route toward
-            central Montreal. Supply corridor, not safe passage.
-          </p>
-          <span class="card__status card__status--tense">Tense</span>
-        </div>
-
-        <div class="district-card">
-          <div class="card__name">Angrignon</div>
-          <p class="card__desc">
-            Green buffer. The park gives the illusion of calm. Open
-            migration zone. Camps form at the tree line. False safety.
-          </p>
-          <span class="card__status card__status--buffer">Buffer</span>
-        </div>
-
-      </div>
+      <a href="/construction/" class="practical-card" style="text-decoration:none;">
+        <span class="pc__label pc__label--red">[ 03 ]</span>
+        <span class="pc__title">Status</span>
+        <p class="pc__desc">
+          Season 0 setup progress, service status, no fake uptime.
+          Server not yet open. Updated when state changes.
+        </p>
+        <span class="term-btn term-btn--red" style="align-self:flex-start; margin-top:auto;">View Status &rsaquo;</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- LATEST DISPATCH -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow eyebrow--accent">Latest from the Dispatch</div>
-      <p class="section-sub">Most recent transmissions from Saint-Paul-&Eacute;mard.</p>
+<!-- ─── DISPATCH FEED ─────────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Dispatch feed">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Dispatch Channel</span>
+      <h2 class="hs__title">Latest Transmissions</h2>
+      <p class="hs__sub">Field reports and signal logs from Saint-Paul-&Eacute;mard, winter 1993&ndash;1994.</p>
+    </div>
 
-      <div class="dispatch-list">
-        {latestDispatches.map(entry => (
-          <a class="dispatch-card" href={`/dispatch/${entry.data.slug}/`}>
-            <div class="card__body">
-              <div class="card__meta">
-                <span class="meta__date">{fmtDate(entry.data.date)}</span>
-                <span class="meta__zone">{entry.data.zone}</span>
-              </div>
-              <div class="card__title">{entry.data.title}</div>
-              <p class="card__excerpt">{entry.data.excerpt}</p>
+    <div class="term-panel">
+      <div class="term-header">
+        <span class="th__tag">Dispatch Feed</span>
+        <span class="th__rule"></span>
+        <span class="th__info">{latestDispatches.length + staticFeed.length} entries</span>
+      </div>
+
+      <div class="dispatch-feed">
+        <!-- Static system notices -->
+        {staticFeed.map(item => (
+          <a class="feed-item feed-item--link" href={item.link}>
+            <span class={`fi__type fi__type--${item.type}`}>{item.typeLabel}</span>
+            <div class="fi__body">
+              <div class="fi__title">{item.title}</div>
+              <p class="fi__text">{item.text}</p>
             </div>
-            <span class={`card__status card__status--${entry.data.status}`}>
-              {entry.data.status}
-            </span>
+            <span class="fi__date">{item.date}</span>
+          </a>
+        ))}
+
+        <!-- Content collection dispatches -->
+        {latestDispatches.map(entry => (
+          <a class="feed-item feed-item--link" href={`/dispatch/${entry.data.slug}/`}>
+            <span class="fi__type fi__type--dispatch">Field Report</span>
+            <div class="fi__body">
+              <div class="fi__title">{entry.data.title}</div>
+              <p class="fi__text">{entry.data.excerpt}</p>
+            </div>
+            <span class="fi__date">{fmtDate(entry.data.date)}</span>
           </a>
         ))}
       </div>
-
-      <a href="/dispatch/" class="btn btn--ghost">All Dispatches &rarr;</a>
     </div>
-  </section>
 
-  <!-- CLOSING LINE -->
-  <section class="section">
-    <div class="container container--narrow">
-      <blockquote style="border-left: 2px solid var(--brass); padding-left: 1.5rem;">
-        <p style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-dim); font-style: italic; line-height: 1.7;">
-          &ldquo;Montreal is dead by pieces. We map the pieces.&rdquo;
-        </p>
-      </blockquote>
+    <div style="margin-top:1rem;">
+      <a href="/dispatch/" class="term-btn term-btn--ghost">All Dispatches &rsaquo;</a>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- ─── MAP / GRID PANEL ──────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Sector map">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Sector Survey</span>
+      <h2 class="hs__title">Map &mdash; Saint-Paul-&Eacute;mard &amp; Surrounds</h2>
+      <p class="hs__sub">Node status reflects last confirmed field report, winter 1993&ndash;1994. Locked nodes are outside current quarantine lines.</p>
+    </div>
+
+    <div class="net-grid-panel">
+      <div class="term-header">
+        <span class="th__tag">MTL Node // Sector Grid</span>
+        <span class="th__rule"></span>
+        <span class="th__info">S-P-E Active</span>
+      </div>
+
+      <div class="ngp__grid" role="list" aria-label="Sector nodes">
+        {mapNodes.map(node => (
+          <div
+            class={`net-node net-node--${node.status}`}
+            role="listitem"
+            aria-label={`${node.name}: ${node.status}`}
+          >
+            <span class={`node__dot node__dot--${node.dot}`} aria-hidden="true"></span>
+            <span class="node__name">{node.name}</span>
+            <span class={`node__status node__status--${node.status}`}>{node.zone}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+      <a href="/map/" class="term-btn term-btn--ghost">Map &amp; Regions &rsaquo;</a>
+      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KNOWLEDGE CENTER ──────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Knowledge center">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Public Terminal</span>
+      <h2 class="hs__title">Knowledge Center</h2>
+      <p class="hs__sub">Survival guides, lore archive, server doctrine, and technical documentation.</p>
+    </div>
+
+    <div class="module-grid">
+      {knowledgeModules.map(mod => (
+        <a class="module-card" href={mod.link} style="text-decoration:none;">
+          <div class={`mc__tag mc__tag${mod.tagMod}`}>{mod.tag}</div>
+          <div class="mc__title">{mod.title}</div>
+          <p class="mc__desc">{mod.desc}</p>
+          <span class="mc__link">Open</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── ASSET FORGE ───────────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Asset forge">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Procedural Tools</span>
+      <h2 class="hs__title">Asset Forge</h2>
+      <p class="hs__sub">Map tooling, procedural generators, blockouts, screenshots, and devlogs.</p>
+    </div>
+
+    <div class="module-grid">
+      {assetTools.map(tool => (
+        <a
+          class={`module-card${tool.locked ? ' module-card--locked' : ''}`}
+          href={tool.link}
+          target={tool.link.startsWith('http') ? '_blank' : undefined}
+          rel={tool.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+          style="text-decoration:none;"
+        >
+          <div class={`mc__tag mc__tag${tool.tagMod}`}>{tool.tag}</div>
+          <div class="mc__title">{tool.title}</div>
+          <p class="mc__desc">{tool.desc}</p>
+          <span class="mc__link">{tool.link.startsWith('http') ? 'GitHub' : 'Open'}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── SIGNAL WALL ───────────────────────────────────────────────────────── -->
+<section class="home-section" aria-label="Signal wall placeholder">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Signal Wall</span>
+      <h2 class="hs__title">Gallery &mdash; Season 0</h2>
+    </div>
+
+    <div class="signal-wall">
+      <div class="sw__label">
+        GALLERY PENDING &nbsp;&#x25B8;&nbsp; MAP SCREENSHOTS INCOMING &nbsp;&#x25B8;&nbsp; SEASON 0 MEDIA NOT YET CAPTURED
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLOSING LINE ─────────────────────────────────────────────────────── -->
+<section class="home-section" style="padding-block: 3rem;">
+  <div class="container" style="max-width: var(--container-narrow, 840px);">
+    <div style="border-left: 2px solid var(--teal); padding-left: 1.5rem;">
+      <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-dim); line-height: 1.85;">
+        &ldquo;Montreal is dead by pieces. Saint-Paul-&Eacute;mard is the first piece still manageable enough to map.&rdquo;
+      </p>
+    </div>
+  </div>
+</section>
 
 </Base>

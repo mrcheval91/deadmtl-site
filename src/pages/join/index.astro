@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Join" description="DeadMTL — how to join the server. Whitelist process, Discord, Season 0 launch plan.">
+
+<section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
+  <div class="th__inner">
+    <div class="th__eyebrow">Access Request // Season 0</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">How to Join</div>
+    <p class="th__body">
+      Whitelist applications are not open yet. Season 0 is in setup.
+      This page will be updated when the process opens.
+    </p>
+    <div class="th__cta">
+      <a href="/rules/" class="term-btn term-btn--teal">Read Rules First &rsaquo;</a>
+      <a href="/construction/" class="term-btn term-btn--amber">Season 0 Status &rsaquo;</a>
+      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="container" style="max-width: 840px;">
+
+    <div class="term-panel" style="margin-bottom: 1.5rem;">
+      <div class="term-header">
+        <span class="th__tag th__tag--red">[ STATUS ]</span>
+        <span class="th__rule"></span>
+        <span class="th__info">Not Open</span>
+      </div>
+      <div style="padding: 1.25rem 1.5rem;">
+        <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:0.78rem;">
+          {[
+            ['Server Address', 'Not public yet'],
+            ['Port',           '16261 (default PZ)'],
+            ['Whitelist',      'CLOSED'],
+            ['Discord',        'Pending'],
+            ['Applications',   'Not open'],
+          ].map(([field, val]) => (
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding:0.55rem 0.9rem; color:var(--text-muted); width:40%;">{field}</td>
+              <td style="padding:0.55rem 0.9rem; color:var(--cream);">{val}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
+    </div>
+
+    <div class="term-panel" style="margin-bottom: 1rem;">
+      <div class="term-header">
+        <span class="th__tag">Launch Process</span>
+        <span class="th__rule"></span>
+      </div>
+      <div style="padding: 1.25rem 1.5rem;">
+        <ol style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-dim); line-height:1.75; padding-left:1rem; list-style:none; counter-reset:step;">
+          {[
+            'Read the server rules fully.',
+            'Join the DeadMTL Discord (link posted here when ready).',
+            'Submit a whitelist application through the Discord form.',
+            'Once approved, receive the server address and password.',
+            'Connect and participate in the Season 0 test.',
+          ].map((step, i) => (
+            <li style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;">
+              <span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[{String(i+1).padStart(2,'0')}]</span>
+              {step}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+
+    <div class="term-panel">
+      <div class="term-header">
+        <span class="th__tag">Discord</span>
+        <span class="th__rule"></span>
+      </div>
+      <div style="padding: 1.25rem 1.5rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--text-dim); line-height:1.65;">
+        A Discord server will be created and linked here before applications open.
+        There is no invite yet. Do not join any server claiming to be the official
+        DeadMTL Discord — this site is the only source of truth.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</Base>

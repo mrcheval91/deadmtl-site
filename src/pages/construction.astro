@@ -1,39 +1,50 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-
 <Base
   title="Status"
-  description="DeadMTL is under construction. The first enclave is being mapped: Saint-Paul-Emard."
+  description="DeadMTL Season 0 status — server in setup. Not yet open. Map being charted."
 >
-  <div class="construction-page">
-    <div class="const__inner">
-      <div class="const__signal">&#x25A0; Signal Active</div>
 
-      <span class="logo-display" style="font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 1.5rem; display: block;">
-        DEADMTL
-      </span>
+<section class="term-hero" style="min-height: calc(100vh - 5rem); display:flex; align-items:center; padding-block: clamp(3rem,8vw,6rem);">
+  <div class="th__inner" style="width:100%;">
+    <div class="th__eyebrow" style="animation: status-blink 2.5s step-end infinite;">&#x25A0; Season 0 &mdash; Setup Phase</div>
 
-      <p class="const__body">DeadMTL is under construction.</p>
+    <div class="th__headline" style="font-size: clamp(2rem,6vw,4.5rem);">DEADMTL</div>
+    <div class="th__sub">Under Construction</div>
 
-      <p class="const__enclave">
-        First enclave being mapped: Saint-Paul-&Eacute;mard
-      </p>
+    <p class="th__body">
+      First enclave being mapped: Saint-Paul-&Eacute;mard.
+    </p>
 
-      <p class="const__body">
-        The southwest is being charted. Canal lines, pressure zones,
-        broken road access, and the Mercier situation. The server will
-        open when the map is ready.
-      </p>
+    <p class="th__body">
+      The southwest is being charted. Canal lines, pressure zones, broken road access,
+      and the Mercier situation. The server will open when the map is ready.
+      No fake launch dates. No false signals.
+    </p>
 
-      <p class="const__body">
-        No fake launch dates. No false signals. When it is ready, it will be here.
-      </p>
+    <div style="margin: 2rem 0;">
+      <table style="border-collapse:collapse; font-family:var(--font-mono); font-size:0.75rem; max-width:520px;">
+        {[
+          ['Game Server',     'PENDING',    'amber'],
+          ['Whitelist',       'CLOSED',     'red'],
+          ['Map Progress',    'IN PROGRESS','teal'],
+          ['Discord',         'PENDING',    'amber'],
+          ['Site',            'ONLINE',     'teal'],
+        ].map(([item, status, color]) => (
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style={`padding: 0.5rem 1rem 0.5rem 0; color: var(--text-muted); width: 180px;`}>{item}</td>
+            <td style={`padding: 0.5rem 0; color: var(--${color}); letter-spacing: 0.12em;`}>{status}</td>
+          </tr>
+        ))}
+      </table>
+    </div>
 
-      <nav class="const__nav" aria-label="Construction page navigation">
-        <a href="/" class="btn btn--ghost">Return Home</a>
-        <a href="/archive" class="btn btn--secondary">Archive Placeholder</a>
-      </nav>
+    <div class="th__cta">
+      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
+      <a href="/dispatch/" class="term-btn term-btn--teal">Dispatch Channel &rsaquo;</a>
     </div>
   </div>
+</section>
+
 </Base>
