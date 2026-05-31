@@ -37,7 +37,13 @@ Built with Astro, SCSS (Cathedral of Decay design system), and plain JS.
         _tokens.scss            Design tokens (CSS custom properties + SCSS variables)
         _reset.scss             CSS reset
         _layout.scss            Container, grid, section layout
-        _components.scss        All reusable components + zone page patterns
+        _components.scss        All reusable components + zone, dispatch patterns
+      content/
+        config.ts               Astro Content Collection definitions
+        dispatch/               Dispatch markdown entries
+          signal-monk.md
+          canal-cache.md
+          lasalle-pressure-night.md
     public/
       favicon.svg               Text-based favicon
       scripts/
@@ -47,13 +53,22 @@ Built with Astro, SCSS (Cathedral of Decay design system), and plain JS.
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home |
+| `/` | Home (with latest dispatch section) |
 | `/saint-paul-emard/` | Zone dossier — first active sector |
-| `/construction/` | Season 0 status / construction |
-| `/dispatch/` | Placeholder |
+| `/dispatch/` | Dispatch index — all transmissions |
+| `/dispatch/signal-monk/` | Entry: Signal Monk |
+| `/dispatch/canal-cache/` | Entry: The Canal Cache |
+| `/dispatch/lasalle-pressure-night/` | Entry: The LaSalle Pressure Night |
+| `/construction/` | Season 0 status |
 | `/archive/` | Placeholder |
 | `/map/` | Placeholder |
 | `/404` | Custom 404 |
+
+## Content Collections
+
+Dispatch entries live in `src/content/dispatch/` as Markdown files.
+Schema fields: `title`, `slug`, `date` (ISO), `zone`, `signal`, `status`, `excerpt`.
+Add new entries by creating a new `.md` file with required frontmatter.
 
 ## Design System
 

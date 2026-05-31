@@ -1,5 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allDispatches = await getCollection('dispatch');
+const latestDispatches = allDispatches
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 2);
+
+function fmtDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[m - 1]} ${d}, ${y}`;
+}
 ---
 
 <Base title="Home" description="DeadMTL — Montreal survival world. Server hub, lore archive, and media platform set after the Knox Event, winter 1993–1994.">
@@ -257,6 +269,34 @@ import Base from '../layouts/Base.astro';
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- LATEST DISPATCH -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow eyebrow--accent">Latest from the Dispatch</div>
+      <p class="section-sub">Most recent transmissions from Saint-Paul-&Eacute;mard.</p>
+
+      <div class="dispatch-list">
+        {latestDispatches.map(entry => (
+          <a class="dispatch-card" href={`/dispatch/${entry.data.slug}/`}>
+            <div class="card__body">
+              <div class="card__meta">
+                <span class="meta__date">{fmtDate(entry.data.date)}</span>
+                <span class="meta__zone">{entry.data.zone}</span>
+              </div>
+              <div class="card__title">{entry.data.title}</div>
+              <p class="card__excerpt">{entry.data.excerpt}</p>
+            </div>
+            <span class={`card__status card__status--${entry.data.status}`}>
+              {entry.data.status}
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <a href="/dispatch/" class="btn btn--ghost">All Dispatches &rarr;</a>
     </div>
   </section>
 

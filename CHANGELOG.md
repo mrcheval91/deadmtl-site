@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.0] - 2026-05-31
+
+### Added
+- Astro Content Collection: `src/content/config.ts` with `dispatch` collection
+  (glob loader, Astro v5 Content Layer API).
+- Three dispatch entries in `src/content/dispatch/`:
+  - `signal-monk.md` — Jan 10, 1994. Monk Residential. Looping signal, unverified.
+  - `canal-cache.md` — Jan 18, 1994. Canal Edge. Supply mark, unconfirmed.
+  - `lasalle-pressure-night.md` — Feb 2, 1994. Angrignon Fringe. Pressure surge, confirmed.
+- `src/pages/dispatch/index.astro` — full dispatch list (replaces placeholder).
+  Sorted most-recent-first. Shows title, date, zone, excerpt, status badge.
+- `src/pages/dispatch/[slug].astro` — individual dispatch entry page.
+  Signal metadata header, rendered markdown body, back/zone navigation.
+- Homepage: latest 2 dispatches section above closing quote. `getCollection` import.
+- README: updated routes table, content collections section, structure listing.
+
+### Changed
+- `src/pages/saint-paul-emard/index.astro` — dispatch hook cards are now links
+  to `/dispatch/signal-monk/`, `/dispatch/canal-cache/`, `/dispatch/lasalle-pressure-night/`.
+  Section sub-text updated to reflect entries are live.
+- `src/styles/_components.scss` — added dispatch-list, dispatch-card, dispatch-meta,
+  signal-header, dispatch-entry, entry-nav component styles.
+
 ## [0.2.0] - 2026-05-31
 
 ### Added

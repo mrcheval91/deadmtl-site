@@ -1,12 +1,76 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+
+const all = await getCollection('dispatch');
+const dispatches = all.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+function fmtDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ];
+  return `${months[m - 1]} ${d}, ${y}`;
+}
 ---
 
-<Base title="Dispatch" description="DeadMTL Dispatches — field reports and signal logs. Coming soon.">
-  <div class="placeholder-page">
-    <div class="ph__tag">Signal Channel</div>
-    <h1>Dispatch</h1>
-    <p>Field reports and signal logs are being assembled.<br />No transmissions yet.</p>
-    <a href="/" class="btn btn--ghost">Return Home</a>
-  </div>
+<Base
+  title="Dispatch"
+  description="DeadMTL Dispatch — field reports and signal logs from Saint-Paul-Emard, winter 1993–1994."
+>
+
+  <section class="hero" style="padding-block: clamp(2.5rem, 6vw, 5rem);">
+    <div class="container hero__inner">
+      <div class="hero__location">Signal Channel &mdash; Active</div>
+      <h1 class="logo-display" style="font-size: clamp(1.8rem, 5vw, 3.5rem);">
+        Dispatch
+      </h1>
+      <p class="hero__body" style="margin-bottom: 0;">
+        Field reports, signal captures, and incident logs from the Saint-Paul-&Eacute;mard
+        enclave. Winter 1993&ndash;1994. Listed most recent first.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow eyebrow--accent">
+        {dispatches.length} transmission{dispatches.length !== 1 ? 's' : ''} on record
+      </div>
+
+      <div class="dispatch-list">
+        {dispatches.map(entry => (
+          <a class="dispatch-card" href={`/dispatch/${entry.data.slug}/`}>
+            <div class="card__body">
+              <div class="card__meta">
+                <span class="meta__date">{fmtDate(entry.data.date)}</span>
+                <span class="meta__zone">{entry.data.zone}</span>
+              </div>
+              <div class="card__title">{entry.data.title}</div>
+              <p class="card__excerpt">{entry.data.excerpt}</p>
+              <p class="card__excerpt" style="margin-top: 0.4rem; font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.06em;">
+                {entry.data.signal}
+              </p>
+            </div>
+            <span class={`card__status card__status--${entry.data.status}`}>
+              {entry.data.status}
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="status-banner">
+        <span class="banner__label">Archive Status</span>
+        <span class="banner__text">
+          All transmissions originate from the Saint-Paul-&Eacute;mard sector.
+          Other district signals are not yet on record.
+          <a href="/saint-paul-emard/" style="color: var(--brass-light); margin-left: 0.5rem;">Zone Dossier &rarr;</a>
+        </span>
+      </div>
+    </div>
+  </section>
+
 </Base>
