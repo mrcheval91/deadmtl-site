@@ -672,3 +672,272 @@
     margin-bottom: 2rem;
   }
 }
+
+// ─── ZONE PAGE — DOSSIER STATS ───────────────────────────────────────────────
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  margin: 1.5rem 0 2.5rem;
+
+  @media (max-width: $bp-lg) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: $bp-md) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.dossier-stat {
+  background: var(--bg-surface);
+  padding: 1.25rem 1.25rem 1rem;
+
+  .stat__label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat__value {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-heading);
+  }
+
+  &--active .stat__value { color: var(--brass-light); }
+  &--warn   .stat__value { color: var(--oxblood-light); }
+}
+
+// ─── ZONE PAGE — BOUNDARIES ──────────────────────────────────────────────────
+
+.boundary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap-sm;
+  margin: 1.5rem 0 2.5rem;
+
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+
+.boundary-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  .boundary__dir {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood-mid);
+    white-space: nowrap;
+    padding-top: 0.1rem;
+    min-width: 3.5rem;
+  }
+
+  .boundary__desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+}
+
+// ─── ZONE PAGE — SUBZONE CARD ────────────────────────────────────────────────
+
+.subzone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap-sm;
+  margin: 1.5rem 0 2.5rem;
+
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+
+.subzone-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-top: 2px solid var(--border);
+  padding: 1.5rem;
+
+  &--high   { border-top-color: var(--oxblood); }
+  &--medium { border-top-color: var(--brass); }
+  &--mobile { border-top-color: var(--violet-light); }
+  &--unstable { border-top-color: var(--oxblood-mid); }
+
+  .sub__name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+  }
+
+  .sub__desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+  }
+
+  .sub__threat {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.18em 0.55em;
+    border: 1px solid;
+    display: inline-block;
+    color: var(--text-muted);
+    border-color: var(--border);
+  }
+}
+
+// ─── ZONE PAGE — ACCESS GATES ────────────────────────────────────────────────
+
+.gate-list {
+  margin: 1.5rem 0 2.5rem;
+  border: 1px solid var(--border-subtle);
+}
+
+.gate-item {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+
+  &:last-child { border-bottom: none; }
+
+  &:nth-child(even) { background: var(--bg); }
+
+  .gate__id {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    color: var(--brass);
+    text-transform: uppercase;
+  }
+
+  .gate__name {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .gate__status {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.18em 0.55em;
+    border: 1px solid;
+    white-space: nowrap;
+
+    &--locked   { color: var(--oxblood-light); border-color: var(--oxblood); }
+    &--unstable { color: var(--brass-light);   border-color: var(--brass); }
+    &--watched  { color: var(--text-dim);       border-color: var(--stone); }
+    &--blocked  { color: var(--oxblood-mid);   border-color: var(--border); }
+    &--limited  { color: var(--text-muted);    border-color: var(--border); }
+  }
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 4rem 1fr;
+    .gate__status { display: none; }
+  }
+}
+
+// ─── ZONE PAGE — DISPATCH HOOKS ──────────────────────────────────────────────
+
+.hook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap-sm;
+  margin: 1.5rem 0 2.5rem;
+
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+
+.hook-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--oxblood);
+  padding: 1.5rem;
+  position: relative;
+
+  .hook__signal {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood-mid);
+    margin-bottom: 0.75rem;
+  }
+
+  .hook__title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-heading);
+    margin-bottom: 0.6rem;
+  }
+
+  .hook__desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .hook__tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.15em 0.5em;
+  }
+}
+
+// ─── ZONE PAGE — GAMEPLAY ROLE ───────────────────────────────────────────────
+
+.gameplay-list {
+  margin: 1rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  li {
+    background: var(--bg-surface);
+    border-left: 2px solid var(--border);
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::before {
+      content: '\25B8';
+      color: var(--brass);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+  }
+}

@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.0] - 2026-05-31
+
+### Added
+- `src/pages/saint-paul-emard/index.astro` — first active zone dossier page.
+  Sections: hero, sector status dossier, boundaries, 4 subzones, 5 neighbor
+  pressure cards, 5 access gates, gameplay role, 3 dispatch hook teasers, closing quote.
+- New SCSS patterns in `_components.scss`:
+  dossier-grid, dossier-stat, boundary-grid, boundary-item, subzone-grid,
+  subzone-card, gate-list, gate-item, hook-grid, hook-card, gameplay-list.
+
+### Changed
+- Nav: added "S-P-E" link to `/saint-paul-emard/` in Base.astro (nav and footer).
+- Homepage: "Enter Enclave" button now links to `/saint-paul-emard/` instead of `/construction`.
+- Map placeholder: added link to `/saint-paul-emard/` active zone.
+- Copy: corrected "winter 1993" to "winter 1993–1994" in Base.astro (×2) and index.astro (×2).
+- README: updated routes table and structure listing for Slice 02.
+
+### Removed
+- `src/scripts/main.js` — duplicate of `public/scripts/main.js`. Unused by build.
+
 ## [0.1.0] - 2026-05-31
 
 ### Added

@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = 'DeadMTL — Montreal survival world, lore archive, and server hub. Set after the Knox Event, winter 1993.',
+  description = 'DeadMTL — Montreal survival world, lore archive, and server hub. Set after the Knox Event, winter 1993–1994.',
   bodyClass = '',
 } = Astro.props;
 
@@ -50,6 +50,7 @@ function isActive(path: string): boolean {
 
     <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="/" class={isActive('/') ? 'active' : ''}>Home</a></li>
+      <li><a href="/saint-paul-emard/" class={isActive('/saint-paul-emard') ? 'active' : ''}>S-P-E</a></li>
       <li><a href="/dispatch" class={isActive('/dispatch') ? 'active' : ''}>Dispatch</a></li>
       <li><a href="/archive" class={isActive('/archive') ? 'active' : ''}>Archive</a></li>
       <li><a href="/map" class={isActive('/map') ? 'active' : ''}>Map</a></li>
@@ -65,12 +66,13 @@ function isActive(path: string): boolean {
     <div>
       <a class="footer-brand" href="/">DEADMTL</a>
       <p class="footer-line">
-        Montreal survival world. Set after the Knox Event, winter 1993.<br />
+        Montreal survival world. Set after the Knox Event, winter 1993&ndash;1994.<br />
         DeadMTL is an independent community project, not affiliated with The Indie Stone.
       </p>
     </div>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="/">Home</a>
+      <a href="/saint-paul-emard/">S-P-E</a>
       <a href="/dispatch">Dispatch</a>
       <a href="/archive">Archive</a>
       <a href="/map">Map</a>

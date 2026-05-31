@@ -1,7 +1,7 @@
 # deadmtl-site
 
 Static site for DeadMTL — Montreal survival world, server hub, lore archive,
-and media platform set after the Knox Event, winter 1993.
+and media platform set after the Knox Event, winter 1993–1994.
 
 Built with Astro, SCSS (Cathedral of Decay design system), and plain JS.
 
@@ -23,26 +23,37 @@ Built with Astro, SCSS (Cathedral of Decay design system), and plain JS.
 
     src/
       layouts/
-        Base.astro         Base HTML layout with nav and footer
+        Base.astro              Base HTML layout with nav and footer
       pages/
-        index.astro        Home page
-        construction.astro Server status / construction page
-        404.astro          Custom 404
-        dispatch/          Dispatch placeholder
-        archive/           Archive placeholder
-        map/               Map placeholder
+        index.astro             Home page
+        construction.astro      Server status / construction page
+        404.astro               Custom 404
+        saint-paul-emard/       First active zone dossier (Slice 02)
+        dispatch/               Dispatch placeholder
+        archive/                Archive placeholder
+        map/                    Map placeholder
       styles/
-        global.scss        SCSS entry point
-        _tokens.scss       Design tokens (CSS custom properties + SCSS variables)
-        _reset.scss        CSS reset
-        _layout.scss       Container, grid, section layout
-        _components.scss   All reusable components
-      scripts/
-        main.js            Source reference (deployed copy lives in public/)
+        global.scss             SCSS entry point
+        _tokens.scss            Design tokens (CSS custom properties + SCSS variables)
+        _reset.scss             CSS reset
+        _layout.scss            Container, grid, section layout
+        _components.scss        All reusable components + zone page patterns
     public/
-      favicon.svg          Text-based favicon
+      favicon.svg               Text-based favicon
       scripts/
-        main.js            Served as static asset
+        main.js                 Served as static asset (mobile nav, snow effect)
+
+## Routes
+
+| Route | Purpose |
+|-------|---------|
+| `/` | Home |
+| `/saint-paul-emard/` | Zone dossier — first active sector |
+| `/construction/` | Season 0 status / construction |
+| `/dispatch/` | Placeholder |
+| `/archive/` | Placeholder |
+| `/map/` | Placeholder |
+| `/404` | Custom 404 |
 
 ## Design System
 

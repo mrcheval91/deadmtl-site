@@ -1,0 +1,374 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Saint-Paul-Emard"
+  description="Saint-Paul-Emard — the first active DeadMTL sector. Fractured enclave, canal edge, winter 1993–1994. Not safe. Not fully lost."
+>
+
+<!-- ─── PAGE HERO ─────────────────────────────────────────────────────────── -->
+<section class="hero" style="padding-block: clamp(3rem, 8vw, 6rem);">
+  <div class="container hero__inner">
+    <div class="hero__location">
+      DeadMTL &mdash; Sector 01 &mdash; Winter 1993&ndash;1994
+    </div>
+
+    <h1 class="logo-display" style="font-size: clamp(2.2rem, 7vw, 5rem);">
+      Saint-Paul-&Eacute;mard
+    </h1>
+
+    <p class="hero__headline" style="font-size: clamp(1rem, 2.5vw, 1.5rem); opacity: 0.8;">
+      The first enclosed sector of DeadMTL.
+    </p>
+
+    <p class="hero__body">
+      Montreal is dead by pieces. Saint-Paul-&Eacute;mard is the first piece still
+      manageable enough to map. It combines Ville-&Eacute;mard and
+      C&ocirc;te-Saint-Paul into a single DeadMTL sector identity. It is not safe.
+      It is not fully lost. It is the entry point.
+    </p>
+
+    <div class="hero__cta">
+      <a href="/" class="btn btn--ghost">Back to Home</a>
+      <a href="/construction" class="btn btn--secondary">Season 0 Status</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTOR STATUS ─────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow eyebrow--accent">Sector Dossier</div>
+    <h2 class="section-title">Status Overview</h2>
+    <p class="section-sub">
+      Filed under active MVP zone. All data reflects current season conditions.
+    </p>
+
+    <div class="dossier-grid">
+      <div class="dossier-stat dossier-stat--active">
+        <div class="stat__label">Status</div>
+        <div class="stat__value">Active MVP Zone</div>
+      </div>
+      <div class="dossier-stat">
+        <div class="stat__label">Season</div>
+        <div class="stat__value">Winter 1993&ndash;1994</div>
+      </div>
+      <div class="dossier-stat dossier-stat--warn">
+        <div class="stat__label">Threat Level</div>
+        <div class="stat__value">Fragmented</div>
+      </div>
+      <div class="dossier-stat">
+        <div class="stat__label">Access</div>
+        <div class="stat__value">Quarantine Lines</div>
+      </div>
+      <div class="dossier-stat">
+        <div class="stat__label">Role</div>
+        <div class="stat__value">Entry Enclave</div>
+      </div>
+    </div>
+
+    <div class="status-banner">
+      <span class="banner__label">Quarantine</span>
+      <span class="banner__text">
+        Saint-Paul-&Eacute;mard is the only open sector. All neighboring districts
+        remain behind quarantine lines. Expansion follows evidence on the ground.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOUNDARIES ───────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Perimeter</div>
+    <h2 class="section-title">Sector Boundaries</h2>
+    <p class="section-sub">
+      The playable square. What holds the enclave together and what presses against it.
+    </p>
+
+    <div class="boundary-grid">
+      <div class="boundary-item">
+        <span class="boundary__dir">North</span>
+        <span class="boundary__desc">
+          Canal de Lachine and the Saint-Patrick pressure corridor.
+          Industrial banks, cold water, limited crossings.
+          Saint-Henri visible on the far side.
+        </span>
+      </div>
+      <div class="boundary-item">
+        <span class="boundary__dir">West</span>
+        <span class="boundary__desc">
+          Angrignon approach and the LaSalle line.
+          Open ground feeds movement in from the south.
+          The Mercier corridor bleeds pressure here continuously.
+        </span>
+      </div>
+      <div class="boundary-item">
+        <span class="boundary__dir">South</span>
+        <span class="boundary__desc">
+          Canal de l&rsquo;Aqueduc and the Verdun edge.
+          Closed pockets. Civilian debris. Survivor-held blocks
+          that do not welcome unknown arrivals.
+        </span>
+      </div>
+      <div class="boundary-item">
+        <span class="boundary__dir">East</span>
+        <span class="boundary__desc">
+          C&ocirc;te-Saint-Paul industrial corridors and autoroute structures.
+          Rail lines, viaducts, high walls, dead-end approaches.
+          Later route toward Pointe-Saint-Charles and central Montreal.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTERNAL SUBZONES ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Internal Structure</div>
+    <h2 class="section-title">Subzones</h2>
+    <p class="section-sub">
+      Saint-Paul-&Eacute;mard is not one thing. Four distinct subzones with
+      different threat profiles and different reasons to enter.
+    </p>
+
+    <div class="subzone-grid">
+
+      <div class="subzone-card subzone-card--medium">
+        <div class="sub__name">Monk Residential</div>
+        <p class="sub__desc">
+          Duplexes, ruelles, corner shops, boarded windows, buried caches.
+          The streets are navigable. Most buildings are accessible.
+          Some residents stayed. Some of them are still moving.
+          First loot. First decisions. Recoverable if approached carefully.
+        </p>
+        <span class="sub__threat">Threat: Medium &mdash; Recoverable</span>
+      </div>
+
+      <div class="subzone-card subzone-card--unstable">
+        <div class="sub__name">Jolicoeur Barrier</div>
+        <p class="sub__desc">
+          A failed civilian triage point. Buses repositioned as barricades.
+          Improvised blockades that stopped nothing but blocked everything.
+          Exits compromised. Navigation requires patience.
+          The cluster of dead near the old bus lines did not disperse.
+        </p>
+        <span class="sub__threat">Threat: Unstable &mdash; Active Cluster</span>
+      </div>
+
+      <div class="subzone-card subzone-card--high">
+        <div class="sub__name">Canal Edge</div>
+        <p class="sub__desc">
+          Cold industrial strip along the waterline.
+          Workshops, garages, shipping containers, fog off the canal.
+          Useful loot. High risk. The movement here comes from the north bank
+          and does not follow predictable patterns.
+        </p>
+        <span class="sub__threat">Threat: High &mdash; Industrial Corridor</span>
+      </div>
+
+      <div class="subzone-card subzone-card--mobile">
+        <div class="sub__name">Angrignon Fringe</div>
+        <p class="sub__desc">
+          Open green buffer at the western edge. Abandoned camps.
+          Good sightlines that cut both ways. Migration flow from LaSalle
+          brings pressure that is mobile, not stationary.
+          The open ground feels safer than it is.
+        </p>
+        <span class="sub__threat">Threat: Mobile &mdash; Unpredictable</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEIGHBOR PRESSURE ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">External Situation</div>
+    <h2 class="section-title">Neighboring Pressure Zones</h2>
+    <p class="section-sub">
+      Districts that define the situation inside Saint-Paul-&Eacute;mard
+      without being accessible yet. They shape what enters, what does not,
+      and what is coming.
+    </p>
+
+    <div class="district-grid">
+
+      <div class="district-card">
+        <div class="card__name">LaSalle</div>
+        <p class="card__desc">
+          Mercier pressure. The bridge barricade failed in week one.
+          Major horde source. Not an early zone.
+        </p>
+        <span class="card__status card__status--critical">Critical</span>
+      </div>
+
+      <div class="district-card">
+        <div class="card__name">Verdun</div>
+        <p class="card__desc">
+          Closed pockets, survivor rationing, contested access.
+          Smuggling routes active. Entry requires negotiation.
+        </p>
+        <span class="card__status card__status--contested">Contested</span>
+      </div>
+
+      <div class="district-card">
+        <div class="card__name">Saint-Henri</div>
+        <p class="card__desc">
+          Canal crossings, workshops, industrial loot.
+          The north bank is contested. Every crossing point costs something.
+        </p>
+        <span class="card__status card__status--contested">Contested</span>
+      </div>
+
+      <div class="district-card">
+        <div class="card__name">Pointe-Saint-Charles</div>
+        <p class="card__desc">
+          Rails and viaducts. Autoroute corridors.
+          Later route toward central Montreal. Not yet reachable.
+        </p>
+        <span class="card__status card__status--tense">Tense</span>
+      </div>
+
+      <div class="district-card">
+        <div class="card__name">Angrignon</div>
+        <p class="card__desc">
+          False calm. The park is open land, abandoned camps,
+          moving dead. No anchored threat. Constant drift.
+        </p>
+        <span class="card__status card__status--buffer">Buffer</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── ACCESS GATES ─────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Perimeter Control</div>
+    <h2 class="section-title">Access Gates</h2>
+    <p class="section-sub">
+      Designated crossing points. All currently restricted. Status reflects
+      last confirmed field report, winter 1993&ndash;1994.
+    </p>
+
+    <div class="gate-list">
+      <div class="gate-item">
+        <span class="gate__id">Gate A</span>
+        <span class="gate__name">Monk North Crossing</span>
+        <span class="gate__status gate__status--locked">Locked</span>
+      </div>
+      <div class="gate-item">
+        <span class="gate__id">Gate B</span>
+        <span class="gate__name">Angrignon West Line</span>
+        <span class="gate__status gate__status--unstable">Unstable</span>
+      </div>
+      <div class="gate-item">
+        <span class="gate__id">Gate C</span>
+        <span class="gate__name">Aqueduct South Cut</span>
+        <span class="gate__status gate__status--watched">Watched</span>
+      </div>
+      <div class="gate-item">
+        <span class="gate__id">Gate D</span>
+        <span class="gate__name">Industrial East Corridor</span>
+        <span class="gate__status gate__status--blocked">Blocked</span>
+      </div>
+      <div class="gate-item">
+        <span class="gate__id">Gate E</span>
+        <span class="gate__name">Canal Service Route</span>
+        <span class="gate__status gate__status--limited">Limited</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GAMEPLAY ROLE ─────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container container--narrow">
+    <div class="eyebrow">Server Design</div>
+    <h2 class="section-title">Gameplay Role</h2>
+    <p class="section-sub">
+      What Saint-Paul-&Eacute;mard does in the server world. Not a tutorial.
+      A district that happens to be survivable enough to start in.
+    </p>
+
+    <ul class="gameplay-list">
+      <li>Starting district for all Season 0 players. Entry point into the server world.</li>
+      <li>Early scavenging across Monk Residential and Canal Edge subzones.</li>
+      <li>First contact with the Jolicoeur Barrier situation and its locked exits.</li>
+      <li>First Dispatch events originate here before expanding outward.</li>
+      <li>Faction rumors surface through player interactions and dispatch posts.</li>
+      <li>Map expansion hooks: Saint-Henri canal crossings, Verdun smuggling, LaSalle pressure.</li>
+      <li>Tutorial progression without tutorial framing. Learn by surviving, not by prompts.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── DISPATCH HOOKS ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Incoming Signal</div>
+    <h2 class="section-title">Dispatch Hooks</h2>
+    <p class="section-sub">
+      First event seeds for Saint-Paul-&Eacute;mard. Not live yet.
+      These will become active Dispatch posts when Season 0 opens.
+    </p>
+
+    <div class="hook-grid">
+
+      <div class="hook-card">
+        <div class="hook__signal">&#x25A0; Signal Inbound</div>
+        <div class="hook__title">Signal Monk</div>
+        <p class="hook__desc">
+          Something is broadcasting from deep inside the Monk Residential block.
+          Short-range, irregular. Could be a survivor. Could be a looped recording.
+          Could be bait. The signal stops at dawn.
+        </p>
+        <span class="hook__tag">Monk Residential</span>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook__signal">&#x25A0; Cache Report</div>
+        <div class="hook__title">The Canal Cache</div>
+        <p class="hook__desc">
+          A marked location along the Canal Edge subzone. Someone left
+          supplies in a workshop near the waterline before the fog closed in.
+          The mark is still visible. Whether the cache is still there is not confirmed.
+        </p>
+        <span class="hook__tag">Canal Edge</span>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook__signal">&#x25A0; Pressure Event</div>
+        <div class="hook__title">The LaSalle Pressure Night</div>
+        <p class="hook__desc">
+          Every few weeks the movement from LaSalle spikes overnight.
+          The Angrignon Fringe absorbs it until it does not.
+          The last pressure night reached the Jolicoeur line.
+          The next one will be worse.
+        </p>
+        <span class="hook__tag">Angrignon Fringe</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLOSING ──────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container container--narrow">
+    <blockquote style="border-left: 2px solid var(--oxblood); padding-left: 1.5rem;">
+      <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-dim); font-style: italic; line-height: 1.75;">
+        &ldquo;The enclave holds because the canal holds. If the canal line breaks,
+        Saint-Paul-&Eacute;mard is not a sector anymore. It is a corridor
+        between two worse places.&rdquo;
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+</Base>
