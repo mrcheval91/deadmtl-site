@@ -1,152 +1,67 @@
 ---
 import Base from '../../layouts/Base.astro';
 
-// ─── Sector data ──────────────────────────────────────────────────────────────
 const sectors = [
-  {
-    name: 'Saint-Paul-&Eacute;mard',
-    status: 'active',
-    role: 'Enclave d&rsquo;Entr&eacute;e',
-    danger: 'moyen',
-    dangerMod: '--medium',
-    desc: 'Premier secteur actif. Contenu, fragment&eacute;, encore g&eacute;rable. Le point de d&eacute;part.',
-    link: '/saint-paul-emard/',
-  },
-  {
-    name: 'Ville-&Eacute;mard Core',
-    status: 'active',
-    role: 'N&oelig;ud R&eacute;sidentiel',
-    danger: 'moyen',
-    dangerMod: '--medium',
-    desc: 'Duplex, d&eacute;panneurs, ruelles, caches pr&eacute;coces. Le c&oelig;ur de la premi&egrave;re enclave.',
-    link: '/saint-paul-emard/',
-  },
-  {
-    name: 'C&ocirc;te-Saint-Paul',
-    status: 'active',
-    role: 'Frange Industrielle',
-    danger: '&eacute;lev&eacute;',
-    dangerMod: '--high',
-    desc: 'Couloirs industriels &agrave; l&rsquo;est de l&rsquo;enclave. Ateliers, garages, ruines de transit, approche contest&eacute;e.',
-    link: '/saint-paul-emard/',
-  },
-  {
-    name: 'N&oelig;ud LaSalle',
-    status: 'pressure',
-    role: 'Source de Pression',
-    danger: 'critique',
-    dangerMod: '--critical',
-    desc: 'Source principale de hordes. Origine de l&rsquo;&eacute;chec de la barricade Pont Mercier. Pas une zone jouable en Saison 0.',
-    link: null,
-  },
-  {
-    name: 'Rive du Canal',
-    status: 'active',
-    role: 'Route Industrielle',
-    danger: '&eacute;lev&eacute;',
-    dangerMod: '--high',
-    desc: 'Bande industrielle froide. Brouillard, ateliers, conteneurs. Butin utile, risque de mouvement &eacute;lev&eacute;.',
-    link: '/saint-paul-emard/',
-  },
-  {
-    name: 'Zone Tampon Angrignon',
-    status: 'planned',
-    role: 'Zone Tampon Verte',
-    danger: 'moyen',
-    dangerMod: '--medium',
-    desc: 'Terrain parc ouvert, campements abandonn&eacute;s, migration depuis LaSalle. Fausse accalmie. Zone d&rsquo;expansion future.',
-    link: null,
-  },
-  {
-    name: 'Lisière Verdun',
-    status: 'locked',
-    role: 'Secteur Ferm&eacute;',
-    danger: 'moyen',
-    dangerMod: '--medium',
-    desc: 'Poches de survivants, rationnement, routes d&rsquo;acc&egrave;s tendues. Hors du p&eacute;rim&egrave;tre de construction actuel.',
-    link: null,
-  },
-  {
-    name: 'Approche Saint-Henri',
-    status: 'planned',
-    role: 'Expansion Future',
-    danger: '&eacute;lev&eacute;',
-    dangerMod: '--high',
-    desc: 'Rive nord du canal. Ateliers industriels, passages contest&eacute;s. Route d&rsquo;expansion planifi&eacute;e.',
-    link: null,
-  },
-  {
-    name: 'M&eacute;tro / Tunnel',
-    status: 'placeholder',
-    role: 'Couche Souterraine',
-    danger: 'inconnu',
-    dangerMod: '--unknown',
-    desc: 'Couche de survie souterraine future. Stations, salles de service, tunnels bloqu&eacute;s. Concept seulement.',
-    link: null,
-  },
-  {
-    name: 'Pont Mercier',
-    status: 'pressure',
-    role: 'Origine de l&rsquo;Effondrement',
-    danger: 'critique',
-    dangerMod: '--critical',
-    desc: 'Barricade d&rsquo;&eacute;vacuation &eacute;chou&eacute;e. Source principale de flux de hordes depuis le sud. P&eacute;rim&egrave;tre scell&eacute;.',
-    link: null,
-  },
+  { name: 'Saint-Paul-Émard',   status: 'active',       role: 'Entry Enclave',    danger: 'medium',   dangerMod: '--medium',   desc: 'First active sector. Contained, fragmented, and still manageable. The starting point.',                                              link: '/saint-paul-emard/' },
+  { name: 'Ville-Émard Core',   status: 'active',       role: 'Residential Node', danger: 'medium',   dangerMod: '--medium',   desc: 'Duplexes, corner shops, ruelles, early caches. The heart of the first enclave.',                                                  link: '/saint-paul-emard/' },
+  { name: 'Côte-Saint-Paul',    status: 'active',       role: 'Industrial Fringe',danger: 'high',     dangerMod: '--high',     desc: 'Industrial corridors east of the enclave. Workshops, garages, transit ruins, contested approach.',                                  link: '/saint-paul-emard/' },
+  { name: 'LaSalle Node',       status: 'pressure',     role: 'Pressure Source',  danger: 'critical', dangerMod: '--critical', desc: 'Major horde source. Pont Mercier barricade failure origin. Not a playable zone in Season 0.',                                      link: null },
+  { name: 'Canal Edge',         status: 'active',       role: 'Industrial Route', danger: 'high',     dangerMod: '--high',     desc: 'Cold waterline strip. Fog, workshops, containers. Useful loot, elevated movement risk.',                                            link: '/saint-paul-emard/' },
+  { name: 'Angrignon Buffer',   status: 'planned',      role: 'Green Buffer',     danger: 'medium',   dangerMod: '--medium',   desc: 'Open park land, abandoned camps, migration from LaSalle. False calm. Future expansion zone.',                                       link: null },
+  { name: 'Verdun Edge',        status: 'locked',       role: 'Closed Sector',    danger: 'medium',   dangerMod: '--medium',   desc: 'Survivor pockets, rationing, tense access routes. Outside current build scope.',                                                   link: null },
+  { name: 'Saint-Henri Approach',status:'planned',      role: 'Future Expansion', danger: 'high',     dangerMod: '--high',     desc: 'Canal north bank. Industrial workshops, contested crossings. Planned expansion route.',                                             link: null },
+  { name: 'Metro / Tunnel',     status: 'placeholder',  role: 'Underground Layer',danger: 'unknown',  dangerMod: '--unknown',  desc: 'Future underground survival layer. Stations, service rooms, blocked tunnels. Concept only.',                                       link: null },
+  { name: 'Pont Mercier',       status: 'pressure',     role: 'Collapse Origin',  danger: 'critical', dangerMod: '--critical', desc: 'Failed evacuation barricade. Primary horde flow source from the south. Sealed perimeter.',                                        link: null },
 ] as const;
 
-// ─── Legend items ─────────────────────────────────────────────────────────────
 const legend = [
-  { mod: '--active',      label: 'Actif &mdash; priorit&eacute; de construction actuelle' },
-  { mod: '--planned',     label: 'Planifi&eacute; &mdash; p&eacute;rim&egrave;tre futur' },
-  { mod: '--locked',      label: 'Verrouill&eacute; &mdash; hors p&eacute;rim&egrave;tre actuel' },
-  { mod: '--pressure',    label: 'Pression &mdash; menace / source de hordes' },
-  { mod: '--placeholder', label: 'Concept &mdash; planification seulement' },
+  { mod: '--active',      label: 'Active — current build focus' },
+  { mod: '--planned',     label: 'Planned — future scope' },
+  { mod: '--locked',      label: 'Locked — outside current build' },
+  { mod: '--pressure',    label: 'Pressure — threat / horde source' },
+  { mod: '--placeholder', label: 'Placeholder — concept only' },
 ] as const;
 ---
 
 <Base
-  title="Carte"
-  description="DeadMTL carte sectorielle — sud-ouest Montréal, Saint-Paul-Émard, pression LaSalle, canal, zones futures."
+  title="Map"
+  description="DeadMTL sector map — southwest Montréal build scope. Saint-Paul-Émard, Ville-Émard, LaSalle pressure, canal edges."
 >
 
-<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
 <div class="page-bbs-bar" aria-hidden="true">
-  <span class="pbb__seg pbb__seg--active">Division Topographique</span>
-  <span class="pbb__seg">Scan Sectoriel</span>
-  <span class="pbb__seg pbb__seg--sys">MTL Sud-Ouest</span>
+  <span class="pbb__seg pbb__seg--active">Survey Division</span>
+  <span class="pbb__seg">Sector Scan</span>
+  <span class="pbb__seg pbb__seg--sys">MTL South-West</span>
   <span class="pbb__spacer"></span>
-  <span class="pbb__ref">SAISON 0 // HIVER 93/94 // 10 SECTEURS</span>
+  <span class="pbb__ref">SEASON 0 // WINTER 93/94 // 10 SECTORS</span>
 </div>
 
-<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner hero-split">
 
     <div>
-      <div class="th__eyebrow">DIVISION TOPOGRAPHIQUE // GRILLE MTL // SAISON 0</div>
-      <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Carte &amp; R&eacute;gions</div>
+      <div class="th__eyebrow">SURVEY DIVISION // MTL GRID // SEASON 0</div>
+      <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Map &amp; Regions</div>
       <p class="th__body">
-        DeadMTL commence par le sud-ouest: Saint-Paul-&Eacute;mard, Ville-&Eacute;mard,
-        C&ocirc;te-Saint-Paul, pression LaSalle, rives du canal, et futurs emplacements m&eacute;tro/tunnel.
+        DeadMTL starts with the southwest: Saint-Paul-Émard, Ville-Émard,
+        Côte-Saint-Paul, LaSalle pressure, canal edges, and future metro/tunnel placeholders.
       </p>
       <p style="font-family:var(--font-mono); font-size:0.7rem; color:var(--amber); letter-spacing:0.1em; margin-bottom:2rem; line-height:1.6;">
-        Carte en construction. Noms de secteurs = &eacute;tiquettes de planification.<br />
-        Pas une promesse de contenu jouable.
+        Map under construction. Sector names are planning labels.<br />
+        Not a promise of playable completion.
       </p>
       <div class="th__cta">
-        <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Dossier S-P-E &rsaquo;</a>
-        <a href="/knowledge/"        class="term-btn term-btn--ghost">Archives &rsaquo;</a>
-        <a href="/"                  class="term-btn term-btn--ghost">&larr; Accueil</a>
+        <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
+        <a href="/knowledge/"        class="term-btn term-btn--ghost">Knowledge &rsaquo;</a>
+        <a href="/"                  class="term-btn term-btn--ghost">&larr; Home</a>
       </div>
     </div>
 
-    <!-- ASCII locator for southwest cluster -->
     <div aria-hidden="true" style="display:flex; flex-direction:column; gap:0.75rem;">
       <div>
-        <div style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.5rem;">GRILLE SUD-OUEST — MTL</div>
+        <div style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.5rem;">SECTOR GRID — MTL SOUTH-WEST</div>
         <div class="ascii-grid" style="font-size:0.55rem;">
-          <div class="ag__header">SECTEURS ACTIFS &mdash; SAISON 0</div>
+          <div class="ag__header">ACTIVE SECTORS — SEASON 0</div>
           <div class="ag__row" style="grid-template-columns:repeat(5,1fr);">
             <div class="ag__cell ag__cell--locked"><span class="ag__name">STH</span><span class="ag__tag ag__tag--locked">LOCK</span></div>
             <div class="ag__cell ag__cell--active"><span class="ag__name">CSP</span><span class="ag__tag ag__tag--active">ACTF</span></div>
@@ -167,38 +82,35 @@ const legend = [
       <div class="zone-bar-list">
         <div class="zone-bar"><span class="zb__label">LASALLE</span><div class="zb__track"><div class="zb__fill zb__fill--crit" style="width:78%"></div></div><span class="zb__pct zb__pct--crit">78%</span></div>
         <div class="zone-bar"><span class="zb__label">JOLICOEUR</span><div class="zb__track"><div class="zb__fill zb__fill--hot" style="width:52%"></div></div><span class="zb__pct zb__pct--hot">52%</span></div>
-        <div class="zone-bar"><span class="zb__label">P.MERCIER</span><div class="zb__track"><div class="zb__fill zb__fill--sealed" style="width:100%"></div></div><span class="zb__pct zb__pct--sealed">SCELLÉ</span></div>
+        <div class="zone-bar"><span class="zb__label">P.MERCIER</span><div class="zb__track"><div class="zb__fill zb__fill--sealed" style="width:100%"></div></div><span class="zb__pct zb__pct--sealed">SEALED</span></div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ─── SECTOR GRID ───────────────────────────────────────────────────────── -->
 <section class="home-section">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Grille MTL // Secteurs Sud-Ouest</span>
-      <h2 class="hs__title">Relev&eacute; Sectoriel</h2>
-      <p class="hs__sub">10 secteurs de planification. Zones actives Saison 0 en vert signal. Tous les autres sont planifi&eacute;s, verrouill&eacute;s ou sous pression.</p>
+      <span class="hs__label">MTL Grid // Southwest Sectors</span>
+      <h2 class="hs__title">Sector Survey</h2>
+      <p class="hs__sub">10 planning sectors. Season 0 active zones shown in teal. All others are planned, locked, or under pressure.</p>
     </div>
 
-    <!-- Legend -->
     <div class="sector-legend">
       {legend.map(item => (
         <span class="sl__item">
           <span class={`sl__dot sl__dot${item.mod}`}></span>
-          <span set:html={item.label} />
+          {item.label}
         </span>
       ))}
     </div>
 
-    <!-- Grid -->
     <div class="net-grid-panel" style="margin-top:0.75rem;">
       <div class="term-header">
-        <span class="th__tag">Grille Sectorielle // MTL Sud-Ouest</span>
+        <span class="th__tag">Sector Grid // Southwest Montréal</span>
         <span class="th__rule"></span>
-        <span class="th__info">P&eacute;rim&egrave;tre Saison 0</span>
+        <span class="th__info">Season 0 scope</span>
       </div>
       <div class="ngp__grid" role="list">
         {sectors.map(s => {
@@ -207,72 +119,69 @@ const legend = [
           return s.link ? (
             <a class={nodeClass} href={s.link} role="listitem" style="text-decoration:none;">
               <span class={dotClass} aria-hidden="true"></span>
-              <span class="node__name" set:html={s.name} />
-              <span class={`node__status node__status--${s.status === 'pressure' ? 'hot' : s.status}`} set:html={s.role} />
-              <span class={`danger-badge danger-badge${s.dangerMod}`} set:html={s.danger} />
+              <span class="node__name">{s.name}</span>
+              <span class={`node__status node__status--${s.status === 'pressure' ? 'hot' : s.status}`}>{s.role}</span>
+              <span class={`danger-badge danger-badge${s.dangerMod}`}>{s.danger}</span>
             </a>
           ) : (
             <div class={nodeClass} role="listitem">
               <span class={dotClass} aria-hidden="true"></span>
-              <span class="node__name" set:html={s.name} />
-              <span class={`node__status node__status--${s.status === 'pressure' ? 'hot' : s.status}`} set:html={s.role} />
-              <span class={`danger-badge danger-badge${s.dangerMod}`} set:html={s.danger} />
+              <span class="node__name">{s.name}</span>
+              <span class={`node__status node__status--${s.status === 'pressure' ? 'hot' : s.status}`}>{s.role}</span>
+              <span class={`danger-badge danger-badge${s.dangerMod}`}>{s.danger}</span>
             </div>
           );
         })}
       </div>
     </div>
 
-    <!-- Sector detail cards for clickable active nodes -->
     <div class="module-grid" style="margin-top:1.5rem;">
       {sectors.filter(s => s.status === 'active').map(s => (
         <a class="module-card" href={s.link!} style="text-decoration:none;">
-          <div class="mc__tag">Actif</div>
-          <div class="mc__title" set:html={s.name} />
-          <p class="mc__desc" set:html={s.desc} />
-          <span class={`danger-badge danger-badge${s.dangerMod}`} style="margin-top:0.5rem;">{s.danger}</span>
+          <div class="mc__tag">Active</div>
+          <div class="mc__title">{s.name}</div>
+          <p class="mc__desc">{s.desc}</p>
+          <span class={`danger-badge danger-badge${s.dangerMod}`} style="margin-top:0.5rem;">{s.danger} danger</span>
         </a>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ─── THE DEAD LINE (metro panel) ─────────────────────────────────────────── -->
 <section class="home-section">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">Couche Souterraine</span>
+      <span class="hs__label">Underground Layer</span>
       <h2 class="hs__title">The Dead Line</h2>
     </div>
 
     <div class="term-panel term-panel--teal">
       <div class="term-header">
-        <span class="th__tag">M&eacute;tro // Espaces Tunnel</span>
+        <span class="th__tag">Metro // Tunnel Spaces</span>
         <span class="th__rule"></span>
-        <span class="th__info">Concept</span>
+        <span class="th__info">Placeholder</span>
       </div>
       <div style="padding:1.25rem 1.5rem;">
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75; margin-bottom:0.9rem;">
-          Les espaces m&eacute;tro et tunnel sont une future couche de survie souterraine. Premi&egrave;re cible d&rsquo;impl&eacute;mentation&nbsp;: stations, entr&eacute;es, salles de service, tunnels bloqu&eacute;s, couloirs d&rsquo;&eacute;v&eacute;nements.
+          Metro and tunnel spaces are a future underground survival layer. First implementation target is stations, entrances, service rooms, blocked tunnels, and event corridors.
         </p>
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75; margin-bottom:0.9rem;">
-          Ce n&rsquo;est pas une simulation de transit mobile. C&rsquo;est un ensemble d&rsquo;espaces souterrains connect&eacute;s &agrave; la carte sectorielle de surface. The Dead Line d&eacute;signe le r&eacute;seau m&eacute;tro qui a cess&eacute; de fonctionner avant que la plupart des gens ne r&eacute;alisent que la ville &eacute;tait en train de mourir.
+          This is not a moving transit simulation. It is a set of underground spaces that connect to the surface sector map. The Dead Line refers to the metro network that stopped running before most people noticed the city was failing.
         </p>
         <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--amber); letter-spacing:0.08em;">
-          Le contenu m&eacute;tro n&rsquo;est pas dans le p&eacute;rim&egrave;tre de la Saison 0. Ceci est une note de planification.
+          Metro content is not in Season 0 scope. This is a planning note.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SECTOR DESCRIPTIONS ───────────────────────────────────────────────── -->
 <section class="home-section">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Notes de Terrain</span>
-      <h2 class="hs__title">Tous les Secteurs</h2>
-      <p class="hs__sub">Notes de planification pour les 10 secteurs. Statut refl&egrave;te le p&eacute;rim&egrave;tre de construction Saison 0 uniquement.</p>
+      <span class="hs__label">Field Notes</span>
+      <h2 class="hs__title">All Sectors</h2>
+      <p class="hs__sub">Planning notes for all 10 sectors. Status reflects Season 0 build scope only.</p>
     </div>
 
     <div class="dispatch-feed">
@@ -282,23 +191,22 @@ const legend = [
             {s.status}
           </span>
           <div class="fi__body">
-            <div class="fi__title" set:html={s.name} />
-            <p class="fi__text"><span set:html={s.role} /> &mdash; <span set:html={s.desc} /></p>
+            <div class="fi__title">{s.name}</div>
+            <p class="fi__text">{s.role} &mdash; {s.desc}</p>
           </div>
-          <span class={`danger-badge danger-badge${s.dangerMod}`} set:html={s.danger} />
+          <span class={`danger-badge danger-badge${s.dangerMod}`}>{s.danger}</span>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ─── CTA ───────────────────────────────────────────────────────────────── -->
 <section class="home-section" style="padding-block:2.5rem;">
   <div class="container">
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
       <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
-      <a href="/knowledge/"        class="term-btn term-btn--ghost">Connaissances &rsaquo;</a>
-      <a href="/dispatch/"         class="term-btn term-btn--ghost">Dispatches &rsaquo;</a>
+      <a href="/knowledge/"        class="term-btn term-btn--ghost">Knowledge &rsaquo;</a>
+      <a href="/dispatch/"         class="term-btn term-btn--ghost">Dispatch &rsaquo;</a>
     </div>
   </div>
 </section>

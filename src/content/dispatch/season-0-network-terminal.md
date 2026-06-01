@@ -1,29 +1,29 @@
 ---
-title: "Terminal Réseau Saison 0 En Ligne"
+title: "Season 0 Network Terminal Online"
 slug: "season-0-network-terminal"
 date: "2026-05-31"
-zone: "Réseau"
-signal: "Note Opérateur — Mise à Jour Site"
+zone: "Network"
+signal: "Operator Note — Site Update"
 status: "confirmed"
 type: "operator-note"
-excerpt: "Le Terminal Réseau DeadMTL est maintenant en ligne. Serveur toujours en attente. Liste blanche toujours fermée. Centre de Connaissances et Carte en assemblage."
+excerpt: "The DeadMTL Network Terminal is now online. Server remains pending. Whitelist remains closed. Knowledge Center and Map are being assembled."
 ---
 
-Le Terminal Réseau DeadMTL est en ligne.
+The DeadMTL Network Terminal is online.
 
-Ceci est une note opérateur hors-monde sur l'état actuel du projet. Ce n'est pas une transmission in-world.
+This is an out-of-world operator note about the project's current state. It is not an in-world transmission.
 
-**Ce qui est en ligne :**
-Le site statique sur deadmtl.com est actif. La page d'accueil, le canal des transmissions, le dossier Saint-Paul-Émard, les règles, la procédure de rejoindre, et la navigation sont tous fonctionnels.
+**What is online:**
+The static website at deadmtl.com is live. The homepage, dispatch channel, Saint-Paul-Émard dossier, rules, join process, and navigation are all functional.
 
-**Ce qui n'est pas en ligne :**
-Le serveur de jeu ne fonctionne pas. Il n'y a pas d'adresse de connexion. Pas de mot de passe serveur. Les candidatures liste blanche ne sont pas ouvertes. Pas d'invitation Discord encore.
+**What is not online:**
+The game server is not running. There is no connection address. There is no server password. Whitelist applications are not open. There is no Discord invite yet.
 
-**Centre de Connaissances et Carte :**
-Les deux pages sont maintenant actives avec du contenu réel. Le Centre de Connaissances documente la structure d'archive, les types de contenu, et la doctrine disponible. La page Carte liste les statuts sectoriels pour le périmètre de construction du sud-ouest montréalais.
+**Knowledge Center and Map:**
+Both pages are now live with real content. The Knowledge Center documents the archive structure, content types, and available doctrine. The Map page lists sector statuses for the southwest Montréal build scope.
 
-**Pas de calendrier :**
-Il n'y a pas de date de lancement publique pour la Saison 0. Quand le serveur sera prêt, la page de statut et le canal des transmissions porteront cette annonce. D'ici là, le réseau se construit.
+**No timeline:**
+There is no public launch date for Season 0. When the server is ready, the status page and dispatch channel will carry that announcement. Until then, the network is building.
 
-**Pas de faux signaux :**
-Tout sur ce site reflète l'état réel du projet. Serveur en attente signifie en attente. Liste blanche fermée signifie fermée. Pas de date de lancement signifie pas de date.
+**No fake signals:**
+Everything on this site reflects the actual project state. Server pending means pending. Whitelist closed means closed. No launch date means no launch date.

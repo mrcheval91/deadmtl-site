@@ -3,61 +3,50 @@ import Base from '../../layouts/Base.astro';
 ---
 
 <Base
-  title="Saint-Paul-Emard"
-  description="Saint-Paul-Emard — Secteur 01, enclave active DeadMTL. Hiver 1993–1994. Pas sécurisé. Pas perdu."
+  title="Saint-Paul-Émard"
+  description="Saint-Paul-Émard — first active DeadMTL sector. Fractured enclave, canal edge, winter 1993–1994. Not safe. Not fully lost."
 >
 
-<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
 <div class="page-bbs-bar" aria-hidden="true">
-  <span class="pbb__seg pbb__seg--active">Dossier Sectoriel</span>
-  <span class="pbb__seg">Saint-Paul-&Eacute;mard</span>
-  <span class="pbb__seg">Secteur 01</span>
-  <span class="pbb__seg pbb__seg--sys">Actif — Zone MVP</span>
+  <span class="pbb__seg pbb__seg--active">Sector Dossier</span>
+  <span class="pbb__seg">Saint-Paul-Émard</span>
+  <span class="pbb__seg pbb__seg--sys">Sector 01 — Active</span>
   <span class="pbb__spacer"></span>
-  <span class="pbb__ref">MTL-SUD-OUEST // HIVER 93/94</span>
+  <span class="pbb__ref">MTL SOUTH-WEST // WINTER 93/94</span>
 </div>
 
-<!-- ─── BBS BLOCK ─────────────────────────────────────────────────────────── -->
 <div class="bbs-block" aria-hidden="true">
-  <div class="bbs__line bbs__line--header">DOSSIER: SAINT-PAUL-&Eacute;MARD &nbsp;&bull;&nbsp; SECTEUR 01 &nbsp;&bull;&nbsp; ENCLAVE ACTIVE &nbsp;&bull;&nbsp; LASALLE PRESSURE NORD</div>
-  <div class="bbs__line bbs__line--system">CLASSIFICATION: MVP ZONE &nbsp;&bull;&nbsp; ACC&Egrave;S: LECTURE SEULEMENT &nbsp;&bull;&nbsp; HIVER 1993&ndash;1994</div>
-  <div class="bbs__line bbs__line--warn">AVERT: PAS S&Eacute;CURIS&Eacute; &nbsp;&bull;&nbsp; PAS PERDU &nbsp;&bull;&nbsp; POINT D&rsquo;ENTR&Eacute;E &nbsp;&bull;&nbsp; LISTE BLANCHE FERM&Eacute;E</div>
+  <div class="bbs__line bbs__line--header">DOSSIER: SAINT-PAUL-ÉMARD &nbsp;&bull;&nbsp; SECTOR 01 &nbsp;&bull;&nbsp; ACTIVE ENCLAVE &nbsp;&bull;&nbsp; LASALLE PRESSURE NORTH</div>
+  <div class="bbs__line bbs__line--system">CLASSIFICATION: MVP ZONE &nbsp;&bull;&nbsp; ACCESS: READ-ONLY &nbsp;&bull;&nbsp; WINTER 1993&ndash;1994</div>
+  <div class="bbs__line bbs__line--warn">WARNING: NOT SAFE &nbsp;&bull;&nbsp; NOT FULLY LOST &nbsp;&bull;&nbsp; ENTRY POINT &nbsp;&bull;&nbsp; WHITELIST CLOSED</div>
 </div>
 
-<!-- ─── PAGE HERO ─────────────────────────────────────────────────────────── -->
 <section class="term-hero" style="padding-block: clamp(2.5rem, 7vw, 5rem);">
   <div class="th__inner hero-split">
 
-    <!-- Left: identity -->
     <div>
-      <div class="th__eyebrow">SECTEUR 01 // ENCLAVE ACTIVE // HIVER 1993&ndash;1994</div>
-
-      <div class="th__headline" style="font-size: clamp(2rem, 6vw, 4rem);">
-        Saint-Paul-&Eacute;mard
-      </div>
+      <div class="th__eyebrow">SECTOR 01 // ACTIVE ENCLAVE // WINTER 1993&ndash;1994</div>
+      <div class="th__headline" style="font-size: clamp(2rem, 6vw, 4rem);">Saint-Paul-Émard</div>
       <div class="th__sub" style="font-size: clamp(0.9rem, 2vw, 1.3rem);">
-        Premier secteur enclos de DeadMTL.
+        First enclosed sector of DeadMTL.
       </div>
-
       <p class="th__body">
-        Montr&eacute;al est morte par morceaux. Saint-Paul-&Eacute;mard est le premier
-        morceau encore g&eacute;rable. Il unit Ville-&Eacute;mard et
-        C&ocirc;te-Saint-Paul en une seule identit&eacute; de secteur DeadMTL.
-        Pas s&eacute;curis&eacute;. Pas perdu. C&rsquo;est le point d&rsquo;entr&eacute;e.
+        Montréal is dead by pieces. Saint-Paul-Émard is the first piece still
+        manageable enough to map. It combines Ville-Émard and
+        Côte-Saint-Paul into a single DeadMTL sector identity.
+        Not safe. Not fully lost. The entry point.
       </p>
-
       <div class="th__cta">
-        <a href="/"              class="term-btn term-btn--ghost">&larr; Accueil</a>
-        <a href="/dispatch/"     class="term-btn term-btn--teal">Transmissions &rsaquo;</a>
-        <a href="/map/"          class="term-btn term-btn--ghost">Carte R&eacute;gionale &rsaquo;</a>
-        <a href="/construction/" class="term-btn term-btn--ghost">Statut Saison 0 &rsaquo;</a>
+        <a href="/"          class="term-btn term-btn--ghost">&larr; Home</a>
+        <a href="/dispatch/" class="term-btn term-btn--teal">Dispatch &rsaquo;</a>
+        <a href="/map/"      class="term-btn term-btn--ghost">Regional Map &rsaquo;</a>
+        <a href="/construction/" class="term-btn term-btn--ghost">Season 0 Status &rsaquo;</a>
       </div>
     </div>
 
-    <!-- Right: ASCII locator -->
     <div aria-hidden="true" style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
       <div>
-        <div style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.5rem;">LOCALISATION SECTORIELLE</div>
+        <div style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.5rem;">SECTOR LOCATION</div>
         <div class="ascii-locator">
           <div class="al__grid">
             <div class="al__cell">STH</div>
@@ -70,22 +59,22 @@ import Base from '../../layouts/Base.astro';
             <div class="al__cell al--active">VEM</div>
             <div class="al__cell al--hot">ANG</div>
           </div>
-          <span class="al__caption">S-P-E &bull; 45°27&rsquo;N 73°35&rsquo;O</span>
+          <span class="al__caption">S-P-E &bull; 45°27'N 73°35'W</span>
         </div>
       </div>
 
-      <div style="display:flex; flex-direction:column; gap:0.3rem;">
+      <div class="zone-bar-list">
         {[
-          { label: 'Lasalle',   pct: 78,  mod: 'crit' },
-          { label: 'Jolicoeur', pct: 52,  mod: 'hot' },
-          { label: 'P.Mercier', pct: 100, mod: 'sealed' },
+          { label: 'LaSalle',    pct: 78,  mod: 'crit' },
+          { label: 'Jolicoeur',  pct: 52,  mod: 'hot'  },
+          { label: 'P.Mercier',  pct: 100, mod: 'sealed'},
         ].map(z => (
           <div class="zone-bar">
             <span class="zb__label">{z.label}</span>
             <div class="zb__track">
               <div class={`zb__fill zb__fill--${z.mod}`} style={`width:${z.pct}%`}></div>
             </div>
-            <span class={`zb__pct zb__pct--${z.mod}`}>{z.pct === 100 ? 'SELL' : z.pct + '%'}</span>
+            <span class={`zb__pct zb__pct--${z.mod}`}>{z.pct === 100 ? 'SEALED' : z.pct + '%'}</span>
           </div>
         ))}
       </div>
@@ -97,40 +86,23 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── SECTOR STATUS ─────────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow eyebrow--accent">Dossier Sectoriel</div>
-    <h2 class="section-title">Vue d&rsquo;Ensemble</h2>
-    <p class="section-sub">
-      Class&eacute; zone MVP active. Toutes les donn&eacute;es refl&egrave;tent les conditions de la saison en cours.
-    </p>
+    <div class="eyebrow eyebrow--accent">Sector Dossier</div>
+    <h2 class="section-title">Status Overview</h2>
+    <p class="section-sub">Filed under active MVP zone. All data reflects current season conditions.</p>
 
     <div class="dossier-grid">
-      <div class="dossier-stat dossier-stat--active">
-        <div class="stat__label">Statut</div>
-        <div class="stat__value">Zone MVP Active</div>
-      </div>
-      <div class="dossier-stat">
-        <div class="stat__label">Saison</div>
-        <div class="stat__value">Hiver 1993&ndash;1994</div>
-      </div>
-      <div class="dossier-stat dossier-stat--warn">
-        <div class="stat__label">Niveau de Menace</div>
-        <div class="stat__value">Fragment&eacute;</div>
-      </div>
-      <div class="dossier-stat">
-        <div class="stat__label">Acc&egrave;s</div>
-        <div class="stat__value">Lignes de Quarantaine</div>
-      </div>
-      <div class="dossier-stat">
-        <div class="stat__label">R&ocirc;le</div>
-        <div class="stat__value">Enclave d&rsquo;Entr&eacute;e</div>
-      </div>
+      <div class="dossier-stat dossier-stat--active"><div class="stat__label">Status</div><div class="stat__value">Active MVP Zone</div></div>
+      <div class="dossier-stat"><div class="stat__label">Season</div><div class="stat__value">Winter 1993&ndash;1994</div></div>
+      <div class="dossier-stat dossier-stat--warn"><div class="stat__label">Threat Level</div><div class="stat__value">Fragmented</div></div>
+      <div class="dossier-stat"><div class="stat__label">Access</div><div class="stat__value">Quarantine Lines</div></div>
+      <div class="dossier-stat"><div class="stat__label">Role</div><div class="stat__value">Entry Enclave</div></div>
     </div>
 
     <div class="status-banner">
-      <span class="banner__label">Quarantaine</span>
+      <span class="banner__label">Quarantine</span>
       <span class="banner__text">
-        Saint-Paul-&Eacute;mard est le seul secteur ouvert. Tous les districts voisins
-        restent derri&egrave;re les lignes de quarantaine. L&rsquo;expansion suit les preuves sur le terrain.
+        Saint-Paul-Émard is the only open sector. All neighboring districts remain behind quarantine lines.
+        Expansion follows evidence on the ground.
       </span>
     </div>
   </div>
@@ -139,44 +111,26 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── BOUNDARIES ───────────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">P&eacute;rim&egrave;tre</div>
-    <h2 class="section-title">Limites Sectorielles</h2>
-    <p class="section-sub">
-      Le carr&eacute; jouable. Ce qui tient l&rsquo;enclave ensemble et ce qui presse contre elle.
-    </p>
+    <div class="eyebrow">Perimeter</div>
+    <h2 class="section-title">Sector Boundaries</h2>
+    <p class="section-sub">The playable square. What holds the enclave together and what presses against it.</p>
 
     <div class="boundary-grid">
       <div class="boundary-item">
-        <span class="boundary__dir">Nord</span>
-        <span class="boundary__desc">
-          Canal de Lachine et le couloir de pression Saint-Patrick.
-          Rives industrielles, eau froide, passages limit&eacute;s.
-          Saint-Henri visible de l&rsquo;autre c&ocirc;t&eacute;.
-        </span>
+        <span class="boundary__dir">North</span>
+        <span class="boundary__desc">Canal de Lachine and the Saint-Patrick pressure corridor. Industrial banks, cold water, limited crossings. Saint-Henri visible on the far side.</span>
       </div>
       <div class="boundary-item">
-        <span class="boundary__dir">Ouest</span>
-        <span class="boundary__desc">
-          Approche d&rsquo;Angrignon et la ligne LaSalle.
-          Terrain ouvert alimente le mouvement depuis le sud.
-          Le couloir Mercier saigne de la pression en continu.
-        </span>
+        <span class="boundary__dir">West</span>
+        <span class="boundary__desc">Angrignon approach and the LaSalle line. Open ground feeds movement in from the south. The Mercier corridor bleeds pressure here continuously.</span>
       </div>
       <div class="boundary-item">
-        <span class="boundary__dir">Sud</span>
-        <span class="boundary__desc">
-          Canal de l&rsquo;Aqueduc et la lisière de Verdun.
-          Poches ferm&eacute;es. D&eacute;bris civils. Blocs tenus par des survivants
-          qui n&rsquo;accueillent pas les inconnus.
-        </span>
+        <span class="boundary__dir">South</span>
+        <span class="boundary__desc">Canal de l'Aqueduc and the Verdun edge. Closed pockets. Civilian debris. Survivor-held blocks that do not welcome unknown arrivals.</span>
       </div>
       <div class="boundary-item">
-        <span class="boundary__dir">Est</span>
-        <span class="boundary__desc">
-          Couloirs industriels de C&ocirc;te-Saint-Paul et structures d&rsquo;autoroute.
-          Voies ferr&eacute;es, viaducs, hauts murs, impasses.
-          Route future vers Pointe-Saint-Charles et le centre de Montr&eacute;al.
-        </span>
+        <span class="boundary__dir">East</span>
+        <span class="boundary__desc">Côte-Saint-Paul industrial corridors and autoroute structures. Rail lines, viaducts, high walls, dead-end approaches. Later route toward Pointe-Saint-Charles.</span>
       </div>
     </div>
   </div>
@@ -185,59 +139,31 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── INTERNAL SUBZONES ────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Structure Interne</div>
-    <h2 class="section-title">Sous-zones</h2>
-    <p class="section-sub">
-      Saint-Paul-&Eacute;mard n&rsquo;est pas une seule chose. Quatre sous-zones distinctes avec
-      des profils de menace diff&eacute;rents et des raisons diff&eacute;rentes d&rsquo;y entrer.
-    </p>
+    <div class="eyebrow">Internal Structure</div>
+    <h2 class="section-title">Subzones</h2>
+    <p class="section-sub">Saint-Paul-Émard is not one thing. Four distinct subzones with different threat profiles.</p>
 
     <div class="subzone-grid">
-
       <div class="subzone-card subzone-card--medium">
-        <div class="sub__name">Monk R&eacute;sidentiel</div>
-        <p class="sub__desc">
-          Duplex, ruelles, d&eacute;panneurs, fen&ecirc;tres barricad&eacute;es, caches enterr&eacute;es.
-          Les rues sont navigables. La plupart des b&acirc;timents sont accessibles.
-          Certains r&eacute;sidents sont rest&eacute;s. Certains bougent encore.
-          Premier butin. Premi&egrave;res d&eacute;cisions. R&eacute;cup&eacute;rable si approch&eacute; avec soin.
-        </p>
-        <span class="sub__threat">Menace: Moyenne &mdash; R&eacute;cup&eacute;rable</span>
+        <div class="sub__name">Monk Residential</div>
+        <p class="sub__desc">Duplexes, ruelles, corner shops, boarded windows, buried caches. Streets are navigable. Recoverable if approached carefully.</p>
+        <span class="sub__threat">Threat: Medium — Recoverable</span>
       </div>
-
       <div class="subzone-card subzone-card--unstable">
-        <div class="sub__name">Barri&egrave;re Jolicoeur</div>
-        <p class="sub__desc">
-          Un point de triage civil &eacute;chou&eacute;. Bus repositionn&eacute;s comme barricades.
-          Blocus improvis&eacute;s qui n&rsquo;ont rien arr&ecirc;t&eacute; mais tout bloqu&eacute;.
-          Sorties compromises. La navigation exige de la patience.
-          Le groupe pr&egrave;s des anciennes lignes de bus ne s&rsquo;est pas dispers&eacute;.
-        </p>
-        <span class="sub__threat">Menace: Instable &mdash; Cluster Actif</span>
+        <div class="sub__name">Jolicoeur Barrier</div>
+        <p class="sub__desc">Failed civilian triage. Buses as barricades. Improvised blockades that stopped nothing but blocked everything. Exits compromised.</p>
+        <span class="sub__threat">Threat: Unstable — Active Cluster</span>
       </div>
-
       <div class="subzone-card subzone-card--high">
-        <div class="sub__name">Rive du Canal</div>
-        <p class="sub__desc">
-          Bande industrielle froide le long de la ligne d&rsquo;eau.
-          Ateliers, garages, conteneurs, brouillard depuis le canal.
-          Butin utile. Risque &eacute;lev&eacute;. Le mouvement vient de la rive nord
-          et ne suit pas de sch&eacute;mas pr&eacute;visibles.
-        </p>
-        <span class="sub__threat">Menace: &Eacute;lev&eacute;e &mdash; Couloir Industriel</span>
+        <div class="sub__name">Canal Edge</div>
+        <p class="sub__desc">Cold industrial strip along the waterline. Workshops, garages, fog off the canal. Useful loot. High risk. Unpredictable movement.</p>
+        <span class="sub__threat">Threat: High — Industrial Corridor</span>
       </div>
-
       <div class="subzone-card subzone-card--mobile">
-        <div class="sub__name">Frange Angrignon</div>
-        <p class="sub__desc">
-          Zone tampon verte &agrave; l&rsquo;extr&eacute;mit&eacute; ouest. Campements abandonn&eacute;s.
-          Bonnes lignes de vue dans les deux sens. Le flux migratoire depuis LaSalle
-          apporte une pression mobile, non stationnaire.
-          Le terrain ouvert para&icirc;t plus s&ucirc;r qu&rsquo;il ne l&rsquo;est.
-        </p>
-        <span class="sub__threat">Menace: Mobile &mdash; Impr&eacute;visible</span>
+        <div class="sub__name">Angrignon Fringe</div>
+        <p class="sub__desc">Open green buffer. Abandoned camps. Good sightlines, both ways. Migration flow from LaSalle brings mobile pressure.</p>
+        <span class="sub__threat">Threat: Mobile — Unpredictable</span>
       </div>
-
     </div>
   </div>
 </section>
@@ -245,61 +171,36 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── NEIGHBOR PRESSURE ────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Situation Ext&eacute;rieure</div>
-    <h2 class="section-title">Zones de Pression Voisines</h2>
-    <p class="section-sub">
-      Districts qui d&eacute;finissent la situation &agrave; l&rsquo;int&eacute;rieur de Saint-Paul-&Eacute;mard
-      sans &ecirc;tre accessibles encore. Ils fa&ccedil;onnent ce qui entre, ce qui n&rsquo;entre pas,
-      et ce qui s&rsquo;en vient.
-    </p>
+    <div class="eyebrow">External Situation</div>
+    <h2 class="section-title">Neighboring Pressure Zones</h2>
+    <p class="section-sub">Districts that define the situation inside Saint-Paul-Émard without being accessible yet.</p>
 
     <div class="district-grid">
-
       <div class="district-card">
         <div class="card__name">LaSalle</div>
-        <p class="card__desc">
-          Pression Mercier. La barricade du pont a c&eacute;d&eacute; la premi&egrave;re semaine.
-          Source principale de hordes. Pas une zone d&rsquo;entr&eacute;e.
-        </p>
-        <span class="card__status card__status--critical">Critique</span>
+        <p class="card__desc">Mercier pressure. Bridge barricade failed in week one. Major horde source. Not an early zone.</p>
+        <span class="card__status card__status--critical">Critical</span>
       </div>
-
       <div class="district-card">
         <div class="card__name">Verdun</div>
-        <p class="card__desc">
-          Poches ferm&eacute;es, rationnement survivants, acc&egrave;s contest&eacute;.
-          Routes de contrebande actives. L&rsquo;entr&eacute;e exige des n&eacute;gociations.
-        </p>
-        <span class="card__status card__status--contested">Contest&eacute;</span>
+        <p class="card__desc">Closed pockets, survivor rationing, contested access. Smuggling routes active. Entry requires negotiation.</p>
+        <span class="card__status card__status--contested">Contested</span>
       </div>
-
       <div class="district-card">
         <div class="card__name">Saint-Henri</div>
-        <p class="card__desc">
-          Passages de canal, ateliers, butin industriel.
-          La rive nord est contest&eacute;e. Chaque point de passage a un co&ucirc;t.
-        </p>
-        <span class="card__status card__status--contested">Contest&eacute;</span>
+        <p class="card__desc">Canal crossings, workshops, industrial loot. The north bank is contested. Every crossing costs something.</p>
+        <span class="card__status card__status--contested">Contested</span>
       </div>
-
       <div class="district-card">
         <div class="card__name">Pointe-Saint-Charles</div>
-        <p class="card__desc">
-          Rails et viaducs. Couloirs d&rsquo;autoroute.
-          Route future vers le centre de Montr&eacute;al. Pas encore accessible.
-        </p>
-        <span class="card__status card__status--tense">Tendu</span>
+        <p class="card__desc">Rails and viaducts. Autoroute corridors. Later route toward central Montréal. Not yet reachable.</p>
+        <span class="card__status card__status--tense">Tense</span>
       </div>
-
       <div class="district-card">
         <div class="card__name">Angrignon</div>
-        <p class="card__desc">
-          Fausse accalmie. Le parc est terrain ouvert, campements abandonn&eacute;s,
-          morts en mouvement. Pas de menace ancr&eacute;e. D&eacute;rive constante.
-        </p>
-        <span class="card__status card__status--buffer">Tampon</span>
+        <p class="card__desc">False calm. Open land, abandoned camps, moving dead. No anchored threat. Constant drift.</p>
+        <span class="card__status card__status--buffer">Buffer</span>
       </div>
-
     </div>
   </div>
 </section>
@@ -307,39 +208,16 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── ACCESS GATES ─────────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Contr&ocirc;le P&eacute;rim&egrave;tre</div>
-    <h2 class="section-title">Points d&rsquo;Acc&egrave;s</h2>
-    <p class="section-sub">
-      Points de passage d&eacute;sign&eacute;s. Tous actuellement restreints. Statut selon
-      dernier rapport de terrain confirm&eacute;, hiver 1993&ndash;1994.
-    </p>
+    <div class="eyebrow">Perimeter Control</div>
+    <h2 class="section-title">Access Gates</h2>
+    <p class="section-sub">Designated crossing points. All currently restricted. Status reflects last confirmed field report, winter 1993&ndash;1994.</p>
 
     <div class="gate-list">
-      <div class="gate-item">
-        <span class="gate__id">Porte A</span>
-        <span class="gate__name">Passage Nord Monk</span>
-        <span class="gate__status gate__status--locked">Verrouill&eacute;</span>
-      </div>
-      <div class="gate-item">
-        <span class="gate__id">Porte B</span>
-        <span class="gate__name">Ligne Ouest Angrignon</span>
-        <span class="gate__status gate__status--unstable">Instable</span>
-      </div>
-      <div class="gate-item">
-        <span class="gate__id">Porte C</span>
-        <span class="gate__name">Coupe Sud Aqueduc</span>
-        <span class="gate__status gate__status--watched">Surveill&eacute;</span>
-      </div>
-      <div class="gate-item">
-        <span class="gate__id">Porte D</span>
-        <span class="gate__name">Couloir Industriel Est</span>
-        <span class="gate__status gate__status--blocked">Bloqu&eacute;</span>
-      </div>
-      <div class="gate-item">
-        <span class="gate__id">Porte E</span>
-        <span class="gate__name">Route de Service Canal</span>
-        <span class="gate__status gate__status--limited">Limit&eacute;</span>
-      </div>
+      <div class="gate-item"><span class="gate__id">Gate A</span><span class="gate__name">Monk North Crossing</span><span class="gate__status gate__status--locked">Locked</span></div>
+      <div class="gate-item"><span class="gate__id">Gate B</span><span class="gate__name">Angrignon West Line</span><span class="gate__status gate__status--unstable">Unstable</span></div>
+      <div class="gate-item"><span class="gate__id">Gate C</span><span class="gate__name">Aqueduct South Cut</span><span class="gate__status gate__status--watched">Watched</span></div>
+      <div class="gate-item"><span class="gate__id">Gate D</span><span class="gate__name">Industrial East Corridor</span><span class="gate__status gate__status--blocked">Blocked</span></div>
+      <div class="gate-item"><span class="gate__id">Gate E</span><span class="gate__name">Canal Service Route</span><span class="gate__status gate__status--limited">Limited</span></div>
     </div>
   </div>
 </section>
@@ -347,21 +225,18 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── GAMEPLAY ROLE ─────────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container container--narrow">
-    <div class="eyebrow">Design Serveur</div>
-    <h2 class="section-title">R&ocirc;le de Gameplay</h2>
-    <p class="section-sub">
-      Ce que Saint-Paul-&Eacute;mard fait dans le monde du serveur. Pas un tutoriel.
-      Un district qui se trouve &ecirc;tre assez survivable pour commencer.
-    </p>
+    <div class="eyebrow">Server Design</div>
+    <h2 class="section-title">Gameplay Role</h2>
+    <p class="section-sub">What Saint-Paul-Émard does in the server world. Not a tutorial. A district that happens to be survivable enough to start in.</p>
 
     <ul class="gameplay-list">
-      <li>District de d&eacute;part pour tous les joueurs Saison 0. Point d&rsquo;entr&eacute;e dans le monde du serveur.</li>
-      <li>Pillage pr&eacute;coce dans les sous-zones Monk R&eacute;sidentiel et Rive du Canal.</li>
-      <li>Premier contact avec la situation de la Barri&egrave;re Jolicoeur et ses sorties verrouill&eacute;es.</li>
-      <li>Les premiers &eacute;v&eacute;nements de transmission partent d&rsquo;ici avant de s&rsquo;&eacute;tendre.</li>
-      <li>Les rumeurs de factions &eacute;mergent via les interactions joueurs et les posts de transmission.</li>
-      <li>Crochets d&rsquo;expansion carte : passages de canal Saint-Henri, contrebande Verdun, pression LaSalle.</li>
-      <li>Progression sans cadrage tutoriel. Apprendre en survivant, pas par des invites.</li>
+      <li>Starting district for all Season 0 players. Entry point into the server world.</li>
+      <li>Early scavenging across Monk Residential and Canal Edge subzones.</li>
+      <li>First contact with the Jolicoeur Barrier situation and its locked exits.</li>
+      <li>First Dispatch events originate here before expanding outward.</li>
+      <li>Faction rumors surface through player interactions and dispatch posts.</li>
+      <li>Map expansion hooks: Saint-Henri canal crossings, Verdun smuggling, LaSalle pressure.</li>
+      <li>Tutorial progression without tutorial framing. Learn by surviving, not by prompts.</li>
     </ul>
   </div>
 </section>
@@ -369,48 +244,29 @@ import Base from '../../layouts/Base.astro';
 <!-- ─── DISPATCH HOOKS ────────────────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Signal Entrant</div>
-    <h2 class="section-title">Transmissions Li&eacute;es</h2>
-    <p class="section-sub">
-      Premi&egrave;res entr&eacute;es de transmission depuis Saint-Paul-&Eacute;mard.
-      Lire la transmission compl&egrave;te pour chaque &eacute;v&eacute;nement.
-    </p>
+    <div class="eyebrow">Incoming Signal</div>
+    <h2 class="section-title">Linked Transmissions</h2>
+    <p class="section-sub">First dispatch entries filed from Saint-Paul-Émard. Read the full transmission for each event.</p>
 
     <div class="hook-grid">
-
       <a class="hook-card" href="/dispatch/signal-monk/" style="text-decoration: none; color: inherit; display: block;">
-        <div class="hook__signal">&#x25A0; Signal Entrant</div>
+        <div class="hook__signal">&#x25A0; Signal Inbound</div>
         <div class="hook__title">Signal Monk</div>
-        <p class="hook__desc">
-          Quelque chose &eacute;met depuis le c&oelig;ur du bloc Monk R&eacute;sidentiel.
-          Port&eacute;e courte, irr&eacute;guli&egrave;re. Pourrait &ecirc;tre un survivant. Un enregistrement en boucle.
-          Ou un appoint. Le signal s&rsquo;arr&ecirc;te &agrave; l&rsquo;aube.
-        </p>
-        <span class="hook__tag">Monk R&eacute;sidentiel &rarr;</span>
+        <p class="hook__desc">Something is broadcasting from deep inside the Monk Residential block. Short-range, irregular. Could be a survivor. Could be a looped recording. Could be bait.</p>
+        <span class="hook__tag">Monk Residential &rarr;</span>
       </a>
-
       <a class="hook-card" href="/dispatch/canal-cache/" style="text-decoration: none; color: inherit; display: block;">
-        <div class="hook__signal">&#x25A0; Rapport de Cache</div>
-        <div class="hook__title">La Cache du Canal</div>
-        <p class="hook__desc">
-          Un emplacement marqu&eacute; dans la sous-zone Rive du Canal. Quelqu&rsquo;un a laiss&eacute;
-          des fournitures dans un atelier pr&egrave;s de la ligne d&rsquo;eau avant que le brouillard ferme.
-          La marque est encore visible. Si la cache est toujours l&agrave;, non confirm&eacute;.
-        </p>
-        <span class="hook__tag">Rive du Canal &rarr;</span>
+        <div class="hook__signal">&#x25A0; Cache Report</div>
+        <div class="hook__title">The Canal Cache</div>
+        <p class="hook__desc">A marked location along the Canal Edge subzone. Supplies left in a workshop near the waterline. The mark is visible. Whether the cache is still there is not confirmed.</p>
+        <span class="hook__tag">Canal Edge &rarr;</span>
       </a>
-
       <a class="hook-card" href="/dispatch/lasalle-pressure-night/" style="text-decoration: none; color: inherit; display: block;">
-        <div class="hook__signal">&#x25A0; &Eacute;v&eacute;nement de Pression</div>
-        <div class="hook__title">La Nuit de Pression LaSalle</div>
-        <p class="hook__desc">
-          Le mouvement depuis LaSalle a pic&eacute; dans la nuit du 1er f&eacute;vrier.
-          La Frange Angrignon a absorb&eacute; la premi&egrave;re vague.
-          La ligne Jolicoeur a signal&eacute; un contact. Saint-Paul-&Eacute;mard a tenu.
-        </p>
-        <span class="hook__tag">Frange Angrignon &rarr;</span>
+        <div class="hook__signal">&#x25A0; Pressure Event</div>
+        <div class="hook__title">The LaSalle Pressure Night</div>
+        <p class="hook__desc">Movement from LaSalle peaked overnight on February 1st. The Angrignon Fringe absorbed the initial surge. The Jolicoeur line reported contact. Saint-Paul-Émard held.</p>
+        <span class="hook__tag">Angrignon Fringe &rarr;</span>
       </a>
-
     </div>
   </div>
 </section>
@@ -420,9 +276,8 @@ import Base from '../../layouts/Base.astro';
   <div class="container container--narrow">
     <blockquote style="border-left: 2px solid var(--oxblood); padding-left: 1.5rem;">
       <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-dim); font-style: italic; line-height: 1.75;">
-        &ldquo;L&rsquo;enclave tient parce que le canal tient. Si la ligne du canal c&egrave;de,
-        Saint-Paul-&Eacute;mard n&rsquo;est plus un secteur. C&rsquo;est un couloir
-        entre deux endroits pires.&rdquo;
+        &ldquo;The enclave holds because the canal holds. If the canal line breaks,
+        Saint-Paul-Émard is not a sector anymore. It is a corridor between two worse places.&rdquo;
       </p>
     </blockquote>
   </div>

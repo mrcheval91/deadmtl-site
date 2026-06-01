@@ -9,54 +9,49 @@ const dispatches = all.sort((a, b) =>
 
 function fmtDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
-  const months = [
-    'Jan', 'F&eacute;v', 'Mar', 'Avr', 'Mai', 'Jun',
-    'Jul', 'Ao&ucirc;', 'Sep', 'Oct', 'Nov', 'D&eacute;c',
-  ];
-  return `${String(d).padStart(2,'0')} ${months[m - 1]} ${y}`;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[m - 1]} ${String(d).padStart(2,'0')} ${y}`;
 }
 
-// Type display metadata — labels in French
 const typeDisplay: Record<string, { label: string; mod: string }> = {
-  'server-notice':    { label: 'Avis Syst&egrave;me',      mod: 'notice' },
-  'operator-note':    { label: 'Note Op&eacute;rateur',    mod: 'operator' },
-  'network-dispatch': { label: 'D&eacute;p&ecirc;che R&eacute;seau', mod: 'dispatch' },
-  'field-report':     { label: 'Rapport de Terrain', mod: 'field' },
-  'research-file':    { label: 'Fichier Recherche',  mod: 'system' },
+  'server-notice':    { label: 'Server Notice',    mod: 'notice' },
+  'operator-note':    { label: 'Operator Note',    mod: 'operator' },
+  'network-dispatch': { label: 'Network Dispatch', mod: 'dispatch' },
+  'field-report':     { label: 'Field Report',     mod: 'field' },
+  'research-file':    { label: 'Research File',    mod: 'system' },
 };
 ---
 
 <Base
-  title="Transmissions"
-  description="DeadMTL Transmissions &mdash; rapports de terrain, journaux de signal, notes op&eacute;rateur. Saison 0 en cours."
+  title="Dispatch"
+  description="DeadMTL Dispatch — field reports, signal logs, operator notes. Season 0 in setup."
 >
 
-<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
 <div class="page-bbs-bar" aria-hidden="true">
-  <span class="pbb__seg pbb__seg--active">R&eacute;seau Signal</span>
-  <span class="pbb__seg">Signal Archiv&eacute;</span>
-  <span class="pbb__seg pbb__seg--sys">R&eacute;seau Survivant</span>
+  <span class="pbb__seg pbb__seg--active">Signal Network</span>
+  <span class="pbb__seg">Archive Active</span>
+  <span class="pbb__seg pbb__seg--sys">Survival Net</span>
   <span class="pbb__spacer"></span>
-  <span class="pbb__ref">MTL SUD-OUEST // HIVER 93/94</span>
+  <span class="pbb__ref">MTL SOUTH-WEST // WINTER 93/94</span>
 </div>
 
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
-    <div class="th__eyebrow">R&Eacute;SEAU SIGNAL // N&OElig;UD MTL // SAISON 0</div>
-    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Transmissions</div>
+    <div class="th__eyebrow">SIGNAL NETWORK // MTL NODE // SEASON 0</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Dispatch</div>
     <p class="th__body" style="margin-bottom: 0;">
-      Rapports de terrain, captures de signal, notes op&eacute;rateur, journaux d&rsquo;incident.
-      Transmissions in-world dat&eacute;es de l&rsquo;hiver 1993&ndash;1994.
-      Notes op&eacute;rateur en temps r&eacute;el, marqu&eacute;es hors-monde.
+      Field reports, signal captures, operator notes, and incident logs.
+      In-world transmissions are dated to winter 1993&ndash;1994.
+      Operator notes use real dates and are marked out-of-world.
     </p>
     <div style="display:flex; align-items:center; gap:0.75rem; margin-top:1rem;">
-      <div class="signal-quality" aria-label="Signal actif">
+      <div class="signal-quality" aria-label="Signal active">
         <span class="sq__bar sq__bar--on"></span>
         <span class="sq__bar sq__bar--on"></span>
         <span class="sq__bar sq__bar--on"></span>
         <span class="sq__bar sq__bar--on"></span>
       </div>
-      <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; color:var(--teal); text-transform:uppercase;">{dispatches.length} transmissions archiv&eacute;es</span>
+      <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; color:var(--teal); text-transform:uppercase;">{dispatches.length} transmissions on record</span>
     </div>
   </div>
 </section>
@@ -64,39 +59,37 @@ const typeDisplay: Record<string, { label: string; mod: string }> = {
 <section class="home-section">
   <div class="container">
 
-    <!-- Taxonomy panel -->
     <div class="hs__head">
-      <span class="hs__label">Classification des Signaux</span>
-      <h2 class="hs__title">Types de Contenu</h2>
-      <p class="hs__sub">Les transmissions sont class&eacute;es par type. Notes op&eacute;rateur et avis syst&egrave;me sont des mises &agrave; jour r&eacute;elles du projet. Tous les autres types sont in-world ou mixtes.</p>
+      <span class="hs__label">Signal Classification</span>
+      <h2 class="hs__title">Content Types</h2>
+      <p class="hs__sub">Transmissions are classified by type. Operator notes and server notices are real project updates. All other types are in-world or mixed.</p>
     </div>
 
     <div class="taxonomy-grid" style="margin-bottom:2.5rem;">
       {Object.entries(typeDisplay).map(([key, val]) => (
         <div class="tax-cell">
           <div class={`tc__type tc__type--${val.mod}`}>{key}</div>
-          <div class="tc__label" set:html={val.label} />
+          <div class="tc__label">{val.label}</div>
           <div class="tc__world">
             {key === 'operator-note' || key === 'server-notice'
-              ? 'Hors-monde'
+              ? 'Out-of-world'
               : key === 'research-file'
-              ? 'Mixte'
-              : 'In-monde'}
+              ? 'Mixed'
+              : 'In-world'}
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Dispatch list -->
     <div class="hs__head">
-      <span class="hs__label">Archives</span>
-      <h2 class="hs__title">Toutes les Transmissions</h2>
-      <p class="hs__sub">{dispatches.length} entr&eacute;e{dispatches.length !== 1 ? 's' : ''} archiv&eacute;e{dispatches.length !== 1 ? 's' : ''}. Les plus r&eacute;centes en premier.</p>
+      <span class="hs__label">Archive</span>
+      <h2 class="hs__title">All Transmissions</h2>
+      <p class="hs__sub">{dispatches.length} entr{dispatches.length !== 1 ? 'ies' : 'y'} on record. Most recent first.</p>
     </div>
 
     <div class="term-panel">
       <div class="term-header">
-        <span class="th__tag">Signal Archiv&eacute;</span>
+        <span class="th__tag">Signal Archive</span>
         <span class="th__rule"></span>
         <span class="th__info">{dispatches.length} transmissions</span>
       </div>
@@ -106,10 +99,10 @@ const typeDisplay: Record<string, { label: string; mod: string }> = {
           const tDisp = typeDisplay[entry.data.type ?? 'field-report'] ?? typeDisplay['field-report'];
           return (
             <a class="feed-item feed-item--link" href={`/dispatch/${entry.data.slug}/`}>
-              <span class={`fi__type fi__type--${tDisp.mod}`} set:html={tDisp.label} />
+              <span class={`fi__type fi__type--${tDisp.mod}`}>{tDisp.label}</span>
               <div class="fi__body">
                 <div class="fi__meta" style="display:flex; gap:0.75rem; margin-bottom:0.3rem;">
-                  <span style="font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;" set:html={fmtDate(entry.data.date)} />
+                  <span style="font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">{fmtDate(entry.data.date)}</span>
                   <span style="font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); padding:0 0.4em; border:1px solid var(--border); letter-spacing:0.1em; text-transform:uppercase;">{entry.data.zone}</span>
                 </div>
                 <div class="fi__title">{entry.data.title}</div>
@@ -126,20 +119,20 @@ const typeDisplay: Record<string, { label: string; mod: string }> = {
 
     <div style="margin-top:1.25rem;">
       <div class="status-banner">
-        <span class="banner__label">Statut Archives</span>
+        <span class="banner__label">Archive Status</span>
         <span class="banner__text">
-          Les rapports de terrain proviennent du secteur Saint-Paul-&Eacute;mard.
-          Les notes op&eacute;rateur sont des mises &agrave; jour r&eacute;elles du projet.
-          <a href="/saint-paul-emard/" style="color:var(--teal); margin-left:0.5rem;">Dossier Zone &rarr;</a>
-          <a href="/knowledge/" style="color:var(--teal); margin-left:0.75rem;">Connaissances &rarr;</a>
+          Field reports originate from the Saint-Paul-Émard sector.
+          Operator notes are real project updates.
+          <a href="/saint-paul-emard/" style="color:var(--teal); margin-left:0.5rem;">Zone Dossier &rarr;</a>
+          <a href="/knowledge/" style="color:var(--teal); margin-left:0.75rem;">Knowledge &rarr;</a>
         </span>
       </div>
     </div>
 
     <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
-      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Dossier S-P-E &rsaquo;</a>
-      <a href="/knowledge/"        class="term-btn term-btn--ghost">Connaissances &rsaquo;</a>
-      <a href="/"                  class="term-btn term-btn--ghost">&larr; Accueil</a>
+      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
+      <a href="/knowledge/"        class="term-btn term-btn--ghost">Knowledge &rsaquo;</a>
+      <a href="/"                  class="term-btn term-btn--ghost">&larr; Home</a>
     </div>
   </div>
 </section>

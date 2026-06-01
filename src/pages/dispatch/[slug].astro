@@ -46,8 +46,8 @@ function fmtDate(iso: string): string {
 
 <!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
 <div class="page-bbs-bar" aria-hidden="true">
-  <span class="pbb__seg">R&eacute;seau Signal</span>
-  <span class="pbb__seg pbb__seg--active">Réseau Survivant</span>
+  <span class="pbb__seg">Signal Network</span>
+  <span class="pbb__seg pbb__seg--active">Survival Net</span>
   <span class="pbb__seg">Zone: {entry.data.zone}</span>
   <span class="pbb__seg pbb__seg--sys">{tDisp.label}</span>
   <span class="pbb__spacer"></span>
@@ -59,7 +59,7 @@ function fmtDate(iso: string): string {
   <div class="container">
 
     <div style="margin-bottom:1rem;">
-      <a href="/dispatch/" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); text-decoration:none;">&larr; Transmissions</a>
+      <a href="/dispatch/" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); text-decoration:none;">&larr; Dispatch</a>
     </div>
 
     <h1 style="font-family:var(--font-mono); font-size:clamp(1.2rem,3vw,1.8rem); font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--bone); margin-bottom:1.5rem;">
@@ -75,7 +75,7 @@ function fmtDate(iso: string): string {
           ))}
         </div>
         <span style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.1em; color:var(--text-muted);">
-          {entry.data.status === 'confirmed' ? 'Signal fort' : entry.data.status === 'unverified' ? 'Non vérifié' : 'Signal faible'}
+          {entry.data.status === 'confirmed' ? 'Strong signal' : entry.data.status === 'unverified' ? 'Unverified' : 'Weak signal'}
         </span>
         <span class="txh__id">{txid}</span>
       </div>
@@ -94,7 +94,7 @@ function fmtDate(iso: string): string {
           <div class="txh__value" style="font-size:0.72rem; color:var(--text-dim);">{entry.data.signal}</div>
         </div>
         <div class="txh__cell">
-          <div class="txh__label">Statut</div>
+          <div class="txh__label">Status</div>
           <span class={`txh__status txh__status--${entry.data.status}`}>{entry.data.status}</span>
         </div>
       </div>
@@ -107,9 +107,9 @@ function fmtDate(iso: string): string {
 
     <!-- Bottom navigation -->
     <nav class="entry-nav" aria-label="Navigation">
-      <a href="/dispatch/"         class="term-btn term-btn--ghost">&larr; Transmissions</a>
-      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Dossier S-P-E &rsaquo;</a>
-      <a href="/knowledge/"        class="term-btn term-btn--ghost">Archives &rsaquo;</a>
+      <a href="/dispatch/"         class="term-btn term-btn--ghost">&larr; Dispatch</a>
+      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
+      <a href="/knowledge/"        class="term-btn term-btn--ghost">Knowledge &rsaquo;</a>
     </nav>
 
   </div>

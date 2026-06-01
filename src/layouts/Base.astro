@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = 'DeadMTL &mdash; R&eacute;seau de survie montr&eacute;alais. Serveur, archives, bulletins, carte. Saison 0 en configuration.',
+  description = 'DeadMTL — Montréal survival network. Server, lore archive, dispatch, map. Season 0 in setup.',
   bodyClass = '',
 } = Astro.props;
 
@@ -21,21 +21,21 @@ function isActive(path: string): boolean {
 }
 
 const navLinks = [
-  { href: '/',              label: 'Accueil' },
-  { href: '/rules/',        label: 'R&egrave;gles' },
-  { href: '/join/',         label: 'Rejoindre' },
-  { href: '/construction/', label: 'Statut' },
-  { href: '/dispatch/',     label: 'Transmissions' },
+  { href: '/',              label: 'Home' },
+  { href: '/rules/',        label: 'Rules' },
+  { href: '/join/',         label: 'Join' },
+  { href: '/construction/', label: 'Status' },
+  { href: '/dispatch/',     label: 'Dispatch' },
   { href: '/saint-paul-emard/', label: 'S-P-E' },
-  { href: '/map/',          label: 'Carte' },
-  { href: '/knowledge/',    label: 'Connaissances' },
-  { href: '/assets/',       label: 'Ressources' },
-  { href: '/community/',    label: 'Communaut&eacute;' },
+  { href: '/map/',          label: 'Map' },
+  { href: '/knowledge/',    label: 'Knowledge' },
+  { href: '/assets/',       label: 'Assets' },
+  { href: '/community/',    label: 'Community' },
 ];
 ---
 
 <!doctype html>
-<html lang="fr-CA">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,18 +50,18 @@ const navLinks = [
 
   <!-- Top identity row -->
   <div class="nb__top">
-    <a class="nb__brand" href="/" aria-label="DeadMTL accueil">DEADMTL</a>
+    <a class="nb__brand" href="/" aria-label="DeadMTL home">DEADMTL</a>
     <span class="nb__sep" aria-hidden="true">//</span>
-    <span class="nb__subtitle">R&eacute;seau Survivant &bull; Montr&eacute;al</span>
+    <span class="nb__subtitle">Survival Network &bull; Montréal</span>
     <span class="nb__spacer" aria-hidden="true"></span>
-    <span class="nb__status" aria-label="Saison 0 en configuration">Saison 0 &mdash; En Configuration</span>
+    <span class="nb__status" aria-label="Season 0 in setup">Season 0 &mdash; Setup</span>
     <span id="site-clock" class="term-clock" aria-live="off" aria-hidden="true"></span>
 
     <button
       class="nb__toggle"
       aria-expanded="false"
       aria-controls="nb-menu"
-      aria-label="Basculer la navigation"
+      aria-label="Toggle navigation"
     >
       <span></span>
       <span></span>
@@ -70,9 +70,9 @@ const navLinks = [
   </div>
 
   <!-- Nav link row -->
-  <nav id="nb-menu" class="nb__links" aria-label="Navigation principale">
+  <nav id="nb-menu" class="nb__links" aria-label="Main navigation">
     {navLinks.map(({ href, label }) => (
-      <a href={href} class={isActive(href) ? 'active' : ''} set:html={label} />
+      <a href={href} class={isActive(href) ? 'active' : ''}>{label}</a>
     ))}
   </nav>
 
@@ -84,22 +84,22 @@ const navLinks = [
   <div class="container tf__inner">
     <div>
       <a class="tf__brand" href="/">DEADMTL</a>
-      <p class="tf__tagline">Survivre. S&rsquo;adapter. Se connecter.</p>
+      <p class="tf__tagline">Survive. Adapt. Connect.</p>
       <p class="tf__note">
-        R&eacute;seau de survie montr&eacute;alais &mdash; Saison 0 en configuration. Serveur pas encore ouvert.<br />
-        Projet communautaire ind&eacute;pendant. Non affili&eacute; &agrave; The Indie Stone.<br />
-        Pas de pay-to-win. Pas d&rsquo;avantage donateur. Pas de fausses affirmations.
+        Montréal survival network &mdash; Season 0 in setup. Server not yet open.<br />
+        Independent community project. Not affiliated with The Indie Stone.<br />
+        No pay-to-win. No donor perks. No fake claims.
       </p>
     </div>
-    <nav class="tf__links" aria-label="Navigation pied de page">
-      <a href="/rules/">R&egrave;gles</a>
-      <a href="/join/">Rejoindre</a>
-      <a href="/construction/">Statut</a>
-      <a href="/dispatch/">Transmissions</a>
-      <a href="/saint-paul-emard/">Dossier S-P-E</a>
-      <a href="/map/">Carte</a>
-      <a href="/knowledge/">Connaissances</a>
-      <a href="/assets/">Ressources</a>
+    <nav class="tf__links" aria-label="Footer navigation">
+      <a href="/rules/">Rules</a>
+      <a href="/join/">Join</a>
+      <a href="/construction/">Status</a>
+      <a href="/dispatch/">Dispatch</a>
+      <a href="/saint-paul-emard/">S-P-E Dossier</a>
+      <a href="/map/">Map</a>
+      <a href="/knowledge/">Knowledge</a>
+      <a href="/assets/">Assets</a>
     </nav>
   </div>
 </footer>

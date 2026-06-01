@@ -1,5 +1,5 @@
 // DeadMTL Network Terminal — main.js
-// BBS pirate municipal. Terminal contaminé. Réseau survivant.
+// Montréal survival network. Pirate municipal BBS. Contaminated terminal.
 // Progressive enhancement only. No external dependencies.
 
 (function () {
@@ -43,7 +43,7 @@
     });
   }
 
-  // ─── Terminal clock (24h military) ───────────────────────────────────────
+  // ─── Terminal clock (24h) ─────────────────────────────────────────────────
   var clockEl = document.getElementById('site-clock');
   if (clockEl) {
     function updateClock() {
@@ -57,18 +57,18 @@
     setInterval(updateClock, 1000);
   }
 
-  // ─── Ticker rotation — bilingual, Montreal-grounded ──────────────────────
+  // ─── Ticker rotation ─────────────────────────────────────────────────────
   var tickerEl = document.getElementById('ticker-msg');
   if (tickerEl) {
     var messages = [
-      'SAISON 0 EN COURS ▸ LISTE BLANCHE FERMÉE ▸ SERVEUR EN ATTENTE ▸ SIGNAL SITE ACTIF',
-      'SAINT-PAUL-ÉMARD ▸ SECTEUR 01 ▸ CANAL ACTIF ▸ PORTE B INSTABLE ▸ LASALLE EN PRESSION',
-      'BBS MUNICIPAL PIRATE ▸ RÉSEAU SURVIVANT ▸ TERMINAL CONTAMINÉ ▸ ARCHIVES DE QUARTIER',
-      'AUCUN PAY-TO-WIN ▸ AUCUN AVANTAGE DONATEUR ▸ ACCÈS ÉGAL ▸ RÈGLES POUR TOUS',
-      'MONTRÉAL HIVER 1993-94 ▸ L’ÉVÉNEMENT KNOX ▸ LA VILLE A ÉCHOUÉ PAR SECTEURS',
-      'SIGNAL LOCAL SEULEMENT ▸ SECTEUR SOUS OBSERVATION ▸ ACCÈS: RESTREINT',
-      'PROJET INDÉPENDANT ▸ NON AFFILIÉ À THE INDIE STONE ▸ COMMUNITY PROJECT',
-      'PONT MERCIER FERMÉ ▸ JOLICOEUR INSTABLE ▸ VERDUN VERROUILLÉ ▸ SAINT-HENRI CANAL NORD',
+      'SEASON 0 SETUP ▸ WHITELIST CLOSED ▸ MAP NODE LASALLE ACTIVE ▸ SERVER PENDING',
+      'SAINT-PAUL-ÉMARD ENCLAVE ▸ SECTOR 01 ▸ CANAL EDGE ACTIVE ▸ GATE B UNSTABLE',
+      'DISPATCH CHANNEL ONLINE ▸ 5 TRANSMISSIONS ON RECORD ▸ BBS NODE ACTIVE',
+      'NO PAY-TO-WIN ▸ NO DONOR PERKS ▸ EQUAL FOOTING OR NO SERVER ▸ RULES APPLY TO ALL',
+      'MONTRÉAL SURVIVAL NETWORK ▸ INDEPENDENT PROJECT ▸ NOT AFFILIATED WITH THE INDIE STONE',
+      'SIGNAL LOCAL ONLY ▸ SECTOR UNDER OBSERVATION ▸ ACCESS: RESTRICTED',
+      'PIRATE MUNICIPAL BBS ▸ CONTAMINATED TERMINAL ▸ SURVIVAL ARCHIVE ACTIVE',
+      'PONT MERCIER SEALED ▸ JOLICOEUR UNSTABLE ▸ VERDUN LOCKED ▸ SAINT-HENRI CANAL NORTH',
     ];
     var idx = 0;
     var INTERVAL = 5500;

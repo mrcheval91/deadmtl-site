@@ -2,48 +2,47 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base
-  title="Statut"
-  description="DeadMTL Saison 0 &mdash; serveur en configuration. Pas encore ouvert. Carte en cours de trac&eacute;."
+  title="Status"
+  description="DeadMTL Season 0 status — server in setup. Not yet open. Map being charted."
 >
 
 <section class="term-hero" style="min-height: calc(100vh - 5rem); display:flex; align-items:center; padding-block: clamp(3rem,8vw,6rem);">
   <div class="th__inner" style="width:100%;">
-    <div class="th__eyebrow" style="animation: status-blink 2.5s step-end infinite;">&#x25A0; Saison 0 &mdash; Phase de Configuration</div>
+    <div class="th__eyebrow" style="animation: status-blink 2.5s step-end infinite;">&#x25A0; Season 0 &mdash; Setup Phase</div>
 
     <div class="th__headline" style="font-size: clamp(2rem,6vw,4.5rem);">DEADMTL</div>
-    <div class="th__sub">En Construction</div>
+    <div class="th__sub">Under Construction</div>
 
     <p class="th__body">
-      Premi&egrave;re enclave en cours de cartographie&nbsp;: Saint-Paul-&Eacute;mard.
+      First enclave being mapped: Saint-Paul-Émard.
     </p>
 
     <p class="th__body">
-      Le sud-ouest est en cours de trac&eacute;. Lignes de canal, zones de pression,
-      acc&egrave;s routiers bris&eacute;s, la situation Mercier.
-      Le serveur ouvrira quand la carte sera pr&ecirc;te.
-      Pas de fausses dates. Pas de faux signaux.
+      The southwest is being charted. Canal lines, pressure zones, broken road access,
+      and the Mercier situation. The server will open when the map is ready.
+      No fake launch dates. No false signals.
     </p>
 
     <div style="margin: 2rem 0;">
       <table style="border-collapse:collapse; font-family:var(--font-mono); font-size:0.75rem; max-width:520px;">
         {[
-          ['Serveur de jeu',    'EN ATTENTE',  'amber'],
-          ['Liste blanche',     'FERM&Eacute;E',       'red'],
-          ['Avancement carte',  'EN COURS',    'teal'],
-          ['Discord',           'EN ATTENTE',  'amber'],
-          ['Site',              'EN LIGNE',    'teal'],
+          ['Game Server',    'PENDING',     'amber'],
+          ['Whitelist',      'CLOSED',      'red'],
+          ['Map Progress',   'IN PROGRESS', 'teal'],
+          ['Discord',        'PENDING',     'amber'],
+          ['Site',           'ONLINE',      'teal'],
         ].map(([item, status, color]) => (
           <tr style="border-bottom: 1px solid var(--border);">
             <td style={`padding: 0.5rem 1rem 0.5rem 0; color: var(--text-muted); width: 180px;`}>{item}</td>
-            <td set:html={status} style={`padding: 0.5rem 0; color: var(--${color}); letter-spacing: 0.12em;`} />
+            <td style={`padding: 0.5rem 0; color: var(--${color}); letter-spacing: 0.12em;`}>{status}</td>
           </tr>
         ))}
       </table>
     </div>
 
     <div class="th__cta">
-      <a href="/" class="term-btn term-btn--ghost">&larr; Accueil</a>
-      <a href="/dispatch/" class="term-btn term-btn--teal">Canal Transmissions &rsaquo;</a>
+      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
+      <a href="/dispatch/" class="term-btn term-btn--teal">Dispatch Channel &rsaquo;</a>
     </div>
   </div>
 </section>

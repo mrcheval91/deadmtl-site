@@ -1,20 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
 ---
-<Base title="Rejoindre" description="DeadMTL &mdash; comment rejoindre le serveur. Proc&eacute;dure liste blanche, Discord, plan de lancement Saison 0.">
+<Base title="Join" description="DeadMTL — how to join the server. Whitelist process, Discord, Season 0 launch plan.">
 
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
-    <div class="th__eyebrow">Demande d&rsquo;Acc&egrave;s // Saison 0</div>
-    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Comment Rejoindre</div>
+    <div class="th__eyebrow">Access Request // Season 0</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">How to Join</div>
     <p class="th__body">
-      Les candidatures liste blanche ne sont pas encore ouvertes. La Saison 0 est en configuration.
-      Cette page sera mise &agrave; jour quand le processus ouvrira.
+      Whitelist applications are not open yet. Season 0 is in setup.
+      This page will be updated when the process opens.
     </p>
     <div class="th__cta">
-      <a href="/rules/" class="term-btn term-btn--teal">Lire les R&egrave;gles d&rsquo;abord &rsaquo;</a>
-      <a href="/construction/" class="term-btn term-btn--amber">Statut Saison 0 &rsaquo;</a>
-      <a href="/" class="term-btn term-btn--ghost">&larr; Accueil</a>
+      <a href="/rules/" class="term-btn term-btn--teal">Read Rules First &rsaquo;</a>
+      <a href="/construction/" class="term-btn term-btn--amber">Season 0 Status &rsaquo;</a>
+      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
     </div>
   </div>
 </section>
@@ -24,48 +24,40 @@ import Base from '../../layouts/Base.astro';
 
     <div class="term-panel" style="margin-bottom: 1.5rem;">
       <div class="term-header">
-        <span class="th__tag th__tag--red">[ STATUT ]</span>
+        <span class="th__tag th__tag--red">[ STATUS ]</span>
         <span class="th__rule"></span>
-        <span class="th__info">Ferm&eacute;</span>
+        <span class="th__info">Not Open</span>
       </div>
       <div style="padding: 1.25rem 1.5rem;">
         <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:0.78rem;">
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:0.55rem 0.9rem; color:var(--text-muted); width:40%;">Adresse serveur</td>
-            <td style="padding:0.55rem 0.9rem; color:var(--cream);">Pas encore publique</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:0.55rem 0.9rem; color:var(--text-muted);">Port</td>
-            <td style="padding:0.55rem 0.9rem; color:var(--cream);">16261 (PZ par d&eacute;faut)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:0.55rem 0.9rem; color:var(--text-muted);">Liste blanche</td>
-            <td style="padding:0.55rem 0.9rem; color:var(--cream);">FERM&Eacute;E</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:0.55rem 0.9rem; color:var(--text-muted);">Discord</td>
-            <td style="padding:0.55rem 0.9rem; color:var(--cream);">En attente</td>
-          </tr>
-          <tr>
-            <td style="padding:0.55rem 0.9rem; color:var(--text-muted);">Candidatures</td>
-            <td style="padding:0.55rem 0.9rem; color:var(--cream);">Pas ouvertes</td>
-          </tr>
+          {[
+            ['Server Address', 'Not public yet'],
+            ['Port',           '16261 (default PZ)'],
+            ['Whitelist',      'CLOSED'],
+            ['Discord',        'Pending'],
+            ['Applications',   'Not open'],
+          ].map(([field, val]) => (
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding:0.55rem 0.9rem; color:var(--text-muted); width:40%;">{field}</td>
+              <td style="padding:0.55rem 0.9rem; color:var(--cream);">{val}</td>
+            </tr>
+          ))}
         </table>
       </div>
     </div>
 
     <div class="term-panel" style="margin-bottom: 1rem;">
       <div class="term-header">
-        <span class="th__tag">Proc&eacute;dure de Lancement</span>
+        <span class="th__tag">Launch Process</span>
         <span class="th__rule"></span>
       </div>
       <div style="padding: 1.25rem 1.5rem;">
         <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-dim); line-height:1.75;">
-          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[01]</span>Lire int&eacute;gralement les r&egrave;gles du serveur.</div>
-          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[02]</span>Rejoindre le Discord DeadMTL (lien publi&eacute; ici quand disponible).</div>
-          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[03]</span>Soumettre une candidature liste blanche via le formulaire Discord.</div>
-          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[04]</span>Une fois approuv&eacute;, recevoir l&rsquo;adresse et le mot de passe du serveur.</div>
-          <div style="padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[05]</span>Se connecter et participer au test de la Saison 0.</div>
+          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[01]</span>Read the server rules fully.</div>
+          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[02]</span>Join the DeadMTL Discord (link posted here when ready).</div>
+          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[03]</span>Submit a whitelist application through the Discord form.</div>
+          <div style="margin-bottom:0.6rem; padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[04]</span>Once approved, receive the server address and password.</div>
+          <div style="padding-left:2.5rem; position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-size:0.65rem;">[05]</span>Connect and participate in the Season 0 test.</div>
         </div>
       </div>
     </div>
@@ -76,9 +68,9 @@ import Base from '../../layouts/Base.astro';
         <span class="th__rule"></span>
       </div>
       <div style="padding: 1.25rem 1.5rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--text-dim); line-height:1.65;">
-        Un serveur Discord sera cr&eacute;&eacute; et li&eacute; ici avant l&rsquo;ouverture des candidatures.
-        Pas d&rsquo;invitation pour l&rsquo;instant. Ne pas rejoindre de serveur pr&eacute;tendant &ecirc;tre
-        le Discord officiel DeadMTL &mdash; ce site est la seule source de v&eacute;rit&eacute;.
+        A Discord server will be created and linked here before applications open.
+        There is no invite yet. Do not join any server claiming to be the official
+        DeadMTL Discord — this site is the only source of truth.
       </div>
     </div>
 

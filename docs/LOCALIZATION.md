@@ -1,116 +1,86 @@
 # DeadMTL — Localization Doctrine
 
-## Root locale: FR-CA
+## Canonical decision
 
-The DeadMTL site is French FR-CA by default.
-All UI text, labels, headings, CTAs, metadata, navigation, and descriptions must be in French.
-No mixed-language UI is permitted on any single page.
+**Root / source language: English.**
 
-## Future /en/ locale
+The public website at deadmtl.com is English by default.
+French localization is future work and must be a separate route (/fr/) or proper i18n layer.
+No franglais root UI is permitted.
 
-An English version may be added under `/en/` in a future slice.
-When added, it must be a complete, non-mixed English locale.
-Do not add half-translated English pages without full consistency.
-Document the /en/ route existence here when it is created.
+## html lang
 
-## Rule: no mixed-language UI
+Root site: `<html lang="en">`
+Future French: `<html lang="fr-CA">` on /fr/ pages only.
 
-One page = one language for UI copy.
-A page in French must have French labels, headings, buttons, metadata, and navigation.
-A page in English must have English labels, headings, buttons, metadata, and navigation.
+## Allowed exceptions in the English root
 
-## Proper noun exceptions
+### Proper nouns and Montreal place names (French spelling preserved)
 
-The following terms may appear as-is in any locale:
-- DeadMTL (brand name)
-- LaSalle, Saint-Paul-Emard, Ville-Emard, Cote-Saint-Paul, Verdun, Angrignon, Saint-Henri (Montreal place names)
-- Pointe-Saint-Charles, Pont Mercier, Canal de Lachine (geographic proper nouns)
-- Project Zomboid, The Indie Stone (third-party proper nouns)
-- PZMapForge, pz-sud-ouest-montreal (repo/product names)
-- Discord (platform name)
-- GitHub (platform name)
-- S-P-E (established abbreviation used as nav label)
-- The Dead Line (in-world proper noun for metro layer)
-- BBS (technical acronym used as brand aesthetic term)
-- "Knox Event" (in-world proper noun from Project Zomboid lore)
+- **DeadMTL** — brand name
+- **Montréal** — city name (use the accent)
+- **Saint-Paul-Émard** — neighbourhood name
+- **Ville-Émard** — neighbourhood name
+- **Côte-Saint-Paul** — neighbourhood name
+- **LaSalle** — borough name
+- **Verdun** — borough name
+- **Jolicoeur / Jolicoeur Barrier** — street/zone name
+- **Pont Mercier** — bridge name
+- **Canal de Lachine** — canal name
+- **Angrignon** — park/borough name
+- **Pointe-Saint-Charles** — neighbourhood name
+- **Saint-Henri** — neighbourhood name
+- **Project Zomboid**, **The Indie Stone** — third-party proper nouns
+- **PZMapForge**, **pz-sud-ouest-montreal** — repo/product names
+- **Discord**, **GitHub** — platform names
+- **The Dead Line** — in-world proper noun for metro layer
 
-## In-world voice exceptions
+### Diegetic terminal / BBS codes
+
+Short terminal codes are atmospheric and may be English or neutral:
+- `BBS`, `PKT:OK`, `RECV:OK`, `XMIT:OK`, `SYNC`, `RETRY`
+- `CRIT`, `LOCK`, `ACTF`, `HOT`, `SELL` — sector status codes
+
+These are aesthetic codes, not UI copy. They do not constitute mixed-language UI.
+
+### In-world diegetic content
 
 Dispatch markdown entries (src/content/dispatch/*.md) are in-world fiction.
-They may be written in English, French, or a mix that serves the narrative voice.
-They must be visually/contextually marked as diegetic content (in-world transmissions).
-In-world quotes marked with blockquote or diegetic context markers may use any language.
+Field reports are set in 1993–1994 Montréal. Their voice is English.
+Operator notes are out-of-world project updates in English.
 
-Current dispatch entries are in English (survivor-voice field reports from 1993-1994 Montreal).
-This is an intentional narrative choice, not a localization error.
+## No franglais UI rule
 
-## HTML entity convention
+The following are NOT acceptable in the English root:
+- French nav labels mixed with English
+- French buttons alongside English page content
+- French meta descriptions on English pages
+- French section headings inside English-copy pages
+- Mixed labels in data arrays rendered to the page
 
-Use HTML entities for accented characters in .astro files:
-- é → &eacute;  /  É → &Eacute;
-- è → &egrave;
-- ê → &ecirc;
-- à → &agrave;
-- â → &acirc;
-- î → &icirc;
-- ô → &ocirc;
-- ù → &ugrave;
-- û → &ucirc;
-- ü → &uuml;
-- ç → &ccedil;
-- œ → &oelig;
-- æ → &aelig;
-- ' (apostrophe) → &rsquo;
-- « → &laquo;  /  » → &raquo;
+## HTML entities in source
 
-Do not mix direct accented characters with HTML entities in the same file.
-Do not use ASCII approximations (e for é, etc.) in rendered text.
+**Do not put HTML entities inside JavaScript/TypeScript data strings.**
 
-## Tone guidelines (FR-CA)
+Wrong:
+```typescript
+{ title: 'Montr&eacute;al' }  // renders as literal &eacute;
+```
 
-- Concis et atmosphérique
-- Style radio-survie / terminal
-- Saveur québécoise/montréalaise
-- Pas de jargon corporatif
-- Pas de traductions forcées si le terme anglais est établi (ex: "dispatch" comme nom de canal, "BBS")
-- Éviter les anglicismes non nécessaires
-- Les abréviations techniques peuvent rester en anglais (ex: BBS, PKT, TX, RX)
+Right:
+```typescript
+{ title: 'Montréal' }  // use real UTF-8 characters in data
+```
 
-## Example translations
+HTML entities like `&mdash;`, `&rsquo;`, `&rarr;` are fine in `.astro` template markup.
+Do not use `set:html` as a workaround for entity-encoded strings in data.
 
-| English | French FR-CA |
-|---------|-------------|
-| Knowledge Center | Centre de Connaissances |
-| Join | Rejoindre |
-| Rules | Règles |
-| Dispatch | Transmissions (nav label) / Canal Dispatch (brand name) |
-| Community | Communauté |
-| Assets | Ressources |
-| Map/Grid | Carte / Grille |
-| Server pending | Serveur en attente |
-| Whitelist closed | Liste blanche fermée |
-| Read more | Lire la suite |
-| Signal online | Signal actif |
-| Status | Statut |
-| Archive | Archives |
-| Home | Accueil |
-| Season 0 | Saison 0 |
-| Construction / Under construction | En construction |
+## Future French localization (/fr/)
 
-## How to add new copy
-
-1. Write all UI copy in French FR-CA.
-2. Use HTML entities for accented characters.
-3. Do not introduce English UI strings without documenting them as proper nouns.
-4. If adding a new page, set the `lang` attribute remains `fr-CA` (inherited from Base.astro).
-5. For in-world content (dispatch entries, lore quotes), use the appropriate diegetic markers.
-6. Update this document if a new exception is added.
-
-## Adding /en/ in the future
-
-When adding English locale:
-1. Create an `src/pages/en/` directory or use a routing adapter.
-2. Do not mix `/en/` content with `/` FR-CA pages.
-3. Ensure all metadata (title, description, og:locale) uses correct locale tags.
-4. Update Base.astro to accept a `lang` prop or create a separate Base.en.astro layout.
-5. Document the routing structure here.
+When French is added:
+1. Create `src/pages/fr/` mirroring the current route structure.
+2. Do not mix French content into root `/` pages.
+3. Update `Base.astro` to accept a `lang` prop.
+4. French pages use `<html lang="fr-CA">`.
+5. Add a language switcher (`EN | FR`) to the nav.
+6. Update this document with the routing structure when /fr/ is created.

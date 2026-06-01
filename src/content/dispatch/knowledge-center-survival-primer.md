@@ -1,29 +1,29 @@
 ---
-title: "Le Centre de Connaissances Ouvre son Premier Guide de Survie"
+title: "Knowledge Center Opens First Survival Primer"
 slug: "knowledge-center-survival-primer"
 date: "2026-06-01"
-zone: "Réseau"
-signal: "Note Opérateur — Mise à Jour Contenu"
+zone: "Network"
+signal: "Operator Note — Content Update"
 status: "confirmed"
 type: "operator-note"
-excerpt: "Le premier article du Centre de Connaissances est disponible : le Guide de Survie Saison 0. Serveur toujours en attente. Liste blanche toujours fermée."
+excerpt: "The first Knowledge Center article is now available: the Season 0 Survival Primer. Server remains pending. Whitelist remains closed."
 ---
 
-Le premier article du Centre de Connaissances est en ligne : le Guide de Survie Saison 0.
+The Knowledge Center's first article is live: the Season 0 Survival Primer.
 
-Ceci est une note opérateur hors-monde sur l'état du contenu du projet. Ce n'est pas une transmission in-world.
+This is an out-of-world operator note about the project's content state. It is not an in-world transmission.
 
-**Ce qui est nouveau :**
-Le Guide de Survie Saison 0 est disponible à `/knowledge/season-0-survival-primer/`. Il couvre ce qu'est la Saison 0, comment la survie DeadMTL est conçue, la doctrine de la première enclave pour Saint-Paul-Émard, les principes du joueur, et les limites actuelles du projet.
+**What is new:**
+The Season 0 Survival Primer is available at `/knowledge/season-0-survival-primer/`. It covers what Season 0 is, how DeadMTL survival is designed to feel, first enclave doctrine for Saint-Paul-Émard, player principles, and current project limits.
 
-C'est du matériel de préparation pour quand le serveur ouvrira. Ce ne sont pas des instructions de connexion.
+It is preparation material for when the server opens. It is not connection instructions.
 
-**Ce qui reste inchangé :**
-Le serveur de jeu ne fonctionne pas. Il n'y a pas d'adresse de connexion. La liste blanche est fermée. Les candidatures ne sont pas ouvertes. Aucune date de lancement n'a été fixée.
+**What remains unchanged:**
+The game server is not running. There is no connection address. The whitelist is closed. Applications are not open. No launch date has been set.
 
-**Contenu cartographique :**
-La section carte et le Centre de Connaissances sont en développement actif. Les noms de secteurs et les modules de connaissances reflètent l'état de planification, pas le contenu final livré.
+**Map content:**
+The map section and Knowledge Center are under active development. Sector names and knowledge modules reflect planning state, not final delivered content.
 
-**Pas de raccourcis :**
-Tout sur ce site est publié parce que c'est vrai au moment de la publication.
-Si quelque chose change, le canal des transmissions portera cette mise à jour.
+**No shortcuts:**
+Everything on this site is published because it is true at the time of publishing.
+If something changes, the dispatch channel will carry that update.
