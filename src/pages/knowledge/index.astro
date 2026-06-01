@@ -4,50 +4,50 @@ import Base from '../../layouts/Base.astro';
 // ─── Knowledge modules ────────────────────────────────────────────────────────
 const modules = [
   {
-    type: 'Survival',
-    title: 'Survival Guides',
-    desc: 'Enclave-level protocols for Saint-Paul-Emard. Resources, movement, threat assessment, caching, and enclave boundary rules.',
-    status: 'available',
+    type: 'Survie',
+    title: 'Guides de Survie',
+    desc: 'Protocoles niveau enclave pour Saint-Paul-&Eacute;mard. Ressources, d&eacute;placement, &eacute;valuation des menaces, caches, et r&egrave;gles de fronti&egrave;re.',
+    status: 'disponible',
     statusMod: '--available',
     link: '/knowledge/season-0-survival-primer/',
   },
   {
     type: 'Doctrine',
-    title: 'Server Doctrine',
-    desc: 'Rules, whitelist process, seasonal structure, and no-pay-to-win principles. The operating law for DeadMTL as a server project.',
-    status: 'available',
+    title: 'Doctrine Serveur',
+    desc: 'R&egrave;gles, proc&eacute;dure liste blanche, structure saisonni&egrave;re, et principes sans pay-to-win. La loi d&rsquo;exploitation de DeadMTL.',
+    status: 'disponible',
     statusMod: '--available',
     link: '/rules/',
   },
   {
-    type: 'Survey',
-    title: 'Map Research',
-    desc: 'Sector survey data, zone pressure analysis, build scope, and expansion planning for the southwest Montreal map.',
-    status: 'active',
+    type: 'Relev&eacute;',
+    title: 'Recherche Cartographique',
+    desc: 'Donn&eacute;es de relev&eacute; sectoriel, analyse de pression de zone, p&eacute;rim&egrave;tre de construction, et planification d&rsquo;expansion pour la carte du sud-ouest montr&eacute;alais.',
+    status: 'actif',
     statusMod: '--active',
     link: '/map/',
   },
   {
-    type: 'Technical',
-    title: 'Technical Notes',
-    desc: 'Modlist documentation, config templates, PZMapForge toolchain, and server infrastructure references.',
-    status: 'draft',
+    type: 'Technique',
+    title: 'Notes Techniques',
+    desc: 'Documentation liste de mods, gabarits de config, cha&icirc;ne d&rsquo;outils PZMapForge, et r&eacute;f&eacute;rences infrastructure serveur.',
+    status: 'brouillon',
     statusMod: '--draft',
     link: '/assets/',
   },
   {
-    type: 'Archive',
-    title: 'Field Reports',
-    desc: 'Survivor accounts, signal captures, and incident logs from active sectors. The dispatch archive is the primary field record.',
-    status: 'active',
+    type: 'Archives',
+    title: 'Rapports de Terrain',
+    desc: 'T&eacute;moignages de survivants, captures de signal, et journaux d&rsquo;incident des secteurs actifs. Les transmissions sont le dossier de terrain primaire.',
+    status: 'actif',
     statusMod: '--active',
     link: '/dispatch/',
   },
   {
-    type: 'Archive',
-    title: 'Archive Files',
-    desc: 'Canonical lore, collapse timeline, and sector history. The written record of how Montreal fractured and what it became.',
-    status: 'assembling',
+    type: 'Archives',
+    title: 'Fichiers Archives',
+    desc: 'Lore canonique, chronologie de l&rsquo;effondrement, et histoire des secteurs. Le dossier &eacute;crit de comment Montr&eacute;al a fractur&eacute;.',
+    status: 'assemblage',
     statusMod: '--assembling',
     link: '#archive-files',
   },
@@ -134,7 +134,7 @@ const contentTypes = [
     </div>
     <a class="term-panel" href="/knowledge/season-0-survival-primer/" style="text-decoration:none; display:block; transition:background 0.15s;">
       <div class="term-header">
-        <span class="th__tag">Survival Guide</span>
+        <span class="th__tag">Guide de Survie</span>
         <span class="th__rule"></span>
         <span class="th__info th__tag--amber" style="color:var(--teal);">Available</span>
       </div>
@@ -201,10 +201,10 @@ const contentTypes = [
     <div class="module-grid">
       {modules.map(mod => (
         <a class="module-card" href={mod.link} style="text-decoration:none;">
-          <div class="mc__tag">{mod.type}</div>
-          <div class="mc__title">{mod.title}</div>
-          <p class="mc__desc">{mod.desc}</p>
-          <span class={`module-status module-status${mod.statusMod}`}>{mod.status}</span>
+          <div class="mc__tag" set:html={mod.type} />
+          <div class="mc__title" set:html={mod.title} />
+          <p class="mc__desc" set:html={mod.desc} />
+          <span class={`module-status module-status${mod.statusMod}`} set:html={mod.status} />
         </a>
       ))}
     </div>
@@ -241,9 +241,9 @@ const contentTypes = [
 <section class="home-section">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Signal Classification</span>
-      <h2 class="hs__title">Dispatch Content Types</h2>
-      <p class="hs__sub">Understanding what kind of signal a transmission is. Operator notes and server notices are real project updates. Network dispatches and field reports are in-world fiction.</p>
+      <span class="hs__label">Classification des Signaux</span>
+      <h2 class="hs__title">Types de Contenu</h2>
+      <p class="hs__sub">Comprendre quel type de signal est une transmission. Notes op&eacute;rateur et avis syst&egrave;me sont des mises &agrave; jour r&eacute;elles. D&eacute;p&ecirc;ches r&eacute;seau et rapports de terrain sont de la fiction in-world.</p>
     </div>
 
     <div class="taxonomy-grid">
@@ -264,7 +264,7 @@ const contentTypes = [
   <div class="container container--narrow">
     <div class="hs__head">
       <span class="hs__label">Archive</span>
-      <h2 class="hs__title">Archive Files</h2>
+      <h2 class="hs__title">Fichiers Archives</h2>
     </div>
 
     <div class="signal-wall" style="min-height:8rem;">
