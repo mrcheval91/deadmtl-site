@@ -1333,8 +1333,232 @@
 }
 
 // ─── ENHANCED TICKER ─────────────────────────────────────────────────────────
-// Override ticker to be slightly more prominent
 
 .ticker-strip {
-  background: #1A0608; // deep blood tint
+  background: #1A0608;
+}
+
+// ─── PAGE BBS BAR ─────────────────────────────────────────────────────────────
+// Single-line identification bar shown on every inner page below the nav
+
+.page-bbs-bar {
+  background: var(--void);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+
+  .pbb__seg {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 0 0.75rem;
+    border-right: 1px solid var(--border);
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:first-child { padding-left: 0; }
+
+    &--active { color: var(--teal); }
+    &--warn   { color: var(--red); }
+    &--sys    { color: var(--amber); }
+  }
+
+  .pbb__spacer { flex: 1; }
+
+  .pbb__ref {
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--border);
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// ─── SIGNAL QUALITY BARS ─────────────────────────────────────────────────────
+
+.signal-quality {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+
+  .sq__bar {
+    width: 3px;
+    background: var(--border);
+
+    &:nth-child(1) { height: 25%; }
+    &:nth-child(2) { height: 50%; }
+    &:nth-child(3) { height: 75%; }
+    &:nth-child(4) { height: 100%; }
+
+    &--on   { background: var(--teal); }
+    &--warn { background: var(--amber); }
+    &--crit { background: var(--red); }
+    &--off  { background: var(--border); }
+  }
+}
+
+// ─── TRANSMISSION HEADER ─────────────────────────────────────────────────────
+// Full dossier header for dispatch entry pages
+
+.transmission-header {
+  background: var(--void);
+  border: 1px solid var(--border-bright);
+  border-left: 3px solid var(--teal-dark);
+  margin-bottom: 2rem;
+
+  .txh__top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.25);
+    flex-wrap: wrap;
+  }
+
+  .txh__type {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.2em 0.55em;
+    border: 1px solid;
+
+    &--field    { color: var(--red);         border-color: var(--blood); }
+    &--operator { color: var(--violet-light); border-color: var(--violet); }
+    &--notice   { color: var(--amber);        border-color: #4A3A18; }
+    &--dispatch { color: var(--teal);         border-color: var(--teal-dark); }
+    &--system   { color: var(--text-muted);   border-color: var(--border); }
+  }
+
+  .txh__id {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .txh__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .txh__cell {
+    padding: 0.8rem 1.25rem;
+    border-right: 1px solid var(--border-subtle);
+
+    &:last-child { border-right: none; }
+  }
+
+  .txh__label {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .txh__value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--cream);
+  }
+
+  .txh__status {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.18em 0.5em;
+    border: 1px solid;
+    display: inline-block;
+
+    &--unverified  { color: var(--amber);       border-color: #4A3A18; }
+    &--unconfirmed { color: var(--text-dim);     border-color: var(--border); }
+    &--confirmed   { color: var(--teal);         border-color: var(--teal-dark); }
+  }
+}
+
+// ─── ASCII LOCATOR ────────────────────────────────────────────────────────────
+// Small inline ASCII neighbourhood map for zone pages
+
+.ascii-locator {
+  font-family: var(--font-mono);
+  display: inline-block;
+
+  .al__grid {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 2rem);
+    grid-template-rows: repeat(3, 1.5rem);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .al__cell {
+    background: var(--terminal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.44rem;
+    letter-spacing: 0;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+
+    &--active { background: rgba(32, 214, 199, 0.08); color: var(--teal-mid); }
+    &--hot    { background: rgba(217, 40, 58, 0.08);  color: var(--red); }
+    &--loc    { background: rgba(32, 214, 199, 0.18); color: var(--teal);
+                font-weight: 700; box-shadow: inset 0 0 0 1px var(--teal-dark); }
+    &--void   { background: var(--void); }
+  }
+
+  .al__caption {
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    text-align: center;
+  }
+}
+
+// ─── CRT SECTION WRAPPER ─────────────────────────────────────────────────────
+
+.crt-section {
+  position: relative;
+  overflow: hidden;
+
+  > * { position: relative; z-index: 1; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent, transparent 1px,
+      rgba(0, 0, 0, 0.05) 1px, rgba(0, 0, 0, 0.05) 2px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
 }

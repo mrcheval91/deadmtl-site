@@ -13,16 +13,30 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
+// Transmission ID derived from slug
+const txid = 'TX-' + entry.data.slug.replace(/-/g, '').toUpperCase().slice(0, 8);
+
+// Signal quality level (1–4 bars) from status
+const sigBars: Record<string, number> = {
+  confirmed: 4, unverified: 1, unconfirmed: 2,
+};
+const bars = sigBars[entry.data.status] ?? 3;
+
+// Type display metadata
+const typeDisplay: Record<string, { label: string; mod: string }> = {
+  'server-notice':    { label: 'Avis Système',        mod: 'notice' },
+  'operator-note':    { label: 'Note Opérateur',      mod: 'operator' },
+  'network-dispatch': { label: 'Dépêche Réseau',      mod: 'dispatch' },
+  'field-report':     { label: 'Rapport de Terrain',  mod: 'field' },
+  'research-file':    { label: 'Fichier Recherche',   mod: 'system' },
+};
+const tDisp = typeDisplay[entry.data.type ?? 'field-report'] ?? typeDisplay['field-report'];
+
 function fmtDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-  ];
-  return `${months[m - 1]} ${d}, ${y}`;
+  const months = ['JAN','FÉV','MAR','AVR','MAI','JUN','JUL','AOÛ','SEP','OCT','NOV','DÉC'];
+  return `${String(d).padStart(2,'0')} ${months[m-1]} ${y}`;
 }
-
-const statusClass = `status--${entry.data.status}`;
 ---
 
 <Base
@@ -30,58 +44,75 @@ const statusClass = `status--${entry.data.status}`;
   description={entry.data.excerpt}
 >
 
-  <section class="section" style="padding-bottom: 0;">
-    <div class="container">
-      <div class="eyebrow">
-        <a href="/dispatch/" style="color: var(--text-muted); text-decoration: none;">&larr; Dispatch</a>
-      </div>
-      <h1
-        class="section-title"
-        style="font-size: clamp(1.3rem, 3.5vw, 2rem); margin-top: 0.75rem; margin-bottom: 1.5rem;"
-      >
-        {entry.data.title}
-      </h1>
+<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
+<div class="page-bbs-bar" aria-hidden="true">
+  <span class="pbb__seg">Canal Dispatch</span>
+  <span class="pbb__seg pbb__seg--active">Réseau Survivant</span>
+  <span class="pbb__seg">Zone: {entry.data.zone}</span>
+  <span class="pbb__seg pbb__seg--sys">{tDisp.label}</span>
+  <span class="pbb__spacer"></span>
+  <span class="pbb__ref">{txid}</span>
+</div>
+
+<!-- ─── TRANSMISSION HEADER ──────────────────────────────────────────────── -->
+<section style="padding-block: 2rem 0;">
+  <div class="container">
+
+    <div style="margin-bottom:1rem;">
+      <a href="/dispatch/" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); text-decoration:none;">&larr; Canal Dispatch</a>
     </div>
-  </section>
 
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
+    <h1 style="font-family:var(--font-mono); font-size:clamp(1.2rem,3vw,1.8rem); font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--bone); margin-bottom:1.5rem;">
+      {entry.data.title}
+    </h1>
 
-      <!-- Signal metadata header -->
-      <div class="signal-header">
-        <div class="sig__field">
-          <span class="sig__label">Date</span>
-          <span class="sig__value">{fmtDate(entry.data.date)}</span>
+    <div class="transmission-header">
+      <div class="txh__top">
+        <span class={`txh__type txh__type--${tDisp.mod}`}>{tDisp.label}</span>
+        <div class="signal-quality" aria-label={`Signal quality: ${bars} of 4`}>
+          {[1,2,3,4].map(n => (
+            <span class={`sq__bar${n <= bars ? (entry.data.status === 'confirmed' ? ' sq__bar--on' : entry.data.status === 'unverified' ? ' sq__bar--warn' : ' sq__bar--on') : ' sq__bar--off'}`}></span>
+          ))}
         </div>
-        <div class="sig__field">
-          <span class="sig__label">Zone</span>
-          <span class="sig__value">{entry.data.zone}</span>
-        </div>
-        <div class="sig__field">
-          <span class="sig__label">Signal</span>
-          <span class="sig__value">{entry.data.signal}</span>
-        </div>
-        <div class="sig__field">
-          <span class="sig__label">Status</span>
-          <span class={`sig__value sig__value--status ${statusClass}`}>
-            {entry.data.status}
-          </span>
-        </div>
+        <span style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.1em; color:var(--text-muted);">
+          {entry.data.status === 'confirmed' ? 'Signal fort' : entry.data.status === 'unverified' ? 'Non vérifié' : 'Signal faible'}
+        </span>
+        <span class="txh__id">{txid}</span>
       </div>
 
-      <!-- Dispatch body -->
-      <article class="dispatch-entry">
-        <Content />
-      </article>
-
-      <!-- Bottom navigation -->
-      <nav class="entry-nav" aria-label="Entry navigation">
-        <a href="/dispatch/" class="term-btn term-btn--ghost">&larr; All Dispatches</a>
-        <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Zone Dossier &rsaquo;</a>
-        <a href="/knowledge/" class="term-btn term-btn--ghost">Knowledge Center &rsaquo;</a>
-      </nav>
-
+      <div class="txh__grid">
+        <div class="txh__cell">
+          <div class="txh__label">Date</div>
+          <div class="txh__value">{fmtDate(entry.data.date)}</div>
+        </div>
+        <div class="txh__cell">
+          <div class="txh__label">Zone</div>
+          <div class="txh__value">{entry.data.zone}</div>
+        </div>
+        <div class="txh__cell">
+          <div class="txh__label">Signal</div>
+          <div class="txh__value" style="font-size:0.72rem; color:var(--text-dim);">{entry.data.signal}</div>
+        </div>
+        <div class="txh__cell">
+          <div class="txh__label">Statut</div>
+          <span class={`txh__status txh__status--${entry.data.status}`}>{entry.data.status}</span>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <!-- Dispatch body -->
+    <article class="dispatch-entry">
+      <Content />
+    </article>
+
+    <!-- Bottom navigation -->
+    <nav class="entry-nav" aria-label="Navigation">
+      <a href="/dispatch/"         class="term-btn term-btn--ghost">&larr; Canal Dispatch</a>
+      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">Dossier S-P-E &rsaquo;</a>
+      <a href="/knowledge/"        class="term-btn term-btn--ghost">Archives &rsaquo;</a>
+    </nav>
+
+  </div>
+</section>
 
 </Base>

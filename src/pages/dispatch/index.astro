@@ -28,18 +28,36 @@ const typeDisplay: Record<string, { label: string; mod: string }> = {
 
 <Base
   title="Dispatch"
-  description="DeadMTL Dispatch — field reports, signal logs, and operator notes. Season 0 in setup."
+  description="DeadMTL Canal Dispatch — rapports de terrain, journaux de signal, notes opérateur. Saison 0 en cours."
 >
+
+<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
+<div class="page-bbs-bar" aria-hidden="true">
+  <span class="pbb__seg pbb__seg--active">Canal Dispatch</span>
+  <span class="pbb__seg">Signal Archiv&eacute;</span>
+  <span class="pbb__seg pbb__seg--sys">R&eacute;seau Survivant</span>
+  <span class="pbb__spacer"></span>
+  <span class="pbb__ref">MTL SUD-OUEST // HIVER 93/94</span>
+</div>
 
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
-    <div class="th__eyebrow">DISPATCH CHANNEL // MTL NODE // SEASON 0</div>
+    <div class="th__eyebrow">CANAL DISPATCH // N&OElig;UD MTL // SAISON 0</div>
     <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Dispatch</div>
     <p class="th__body" style="margin-bottom: 0;">
-      Field reports, signal captures, operator notes, and incident logs.
-      In-world transmissions are dated to winter 1993&ndash;1994.
-      Operator notes use real dates and are marked out-of-world.
+      Rapports de terrain, captures de signal, notes op&eacute;rateur, journaux d&rsquo;incident.
+      Transmissions in-world dat&eacute;es de l&rsquo;hiver 1993&ndash;1994.
+      Notes op&eacute;rateur en temps r&eacute;el, marqu&eacute;es hors-monde.
     </p>
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-top:1rem;">
+      <div class="signal-quality" aria-label="Signal actif">
+        <span class="sq__bar sq__bar--on"></span>
+        <span class="sq__bar sq__bar--on"></span>
+        <span class="sq__bar sq__bar--on"></span>
+        <span class="sq__bar sq__bar--on"></span>
+      </div>
+      <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; color:var(--teal); text-transform:uppercase;">{dispatches.length} transmissions archiv&eacute;es</span>
+    </div>
   </div>
 </section>
 

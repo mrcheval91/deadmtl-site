@@ -4,35 +4,93 @@ import Base from '../../layouts/Base.astro';
 
 <Base
   title="Saint-Paul-Emard"
-  description="Saint-Paul-Emard — the first active DeadMTL sector. Fractured enclave, canal edge, winter 1993–1994. Not safe. Not fully lost."
+  description="Saint-Paul-Emard — Secteur 01, enclave active DeadMTL. Hiver 1993–1994. Pas sécurisé. Pas perdu."
 >
 
+<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
+<div class="page-bbs-bar" aria-hidden="true">
+  <span class="pbb__seg pbb__seg--active">Dossier Sectoriel</span>
+  <span class="pbb__seg">Saint-Paul-&Eacute;mard</span>
+  <span class="pbb__seg">Secteur 01</span>
+  <span class="pbb__seg pbb__seg--sys">Actif — Zone MVP</span>
+  <span class="pbb__spacer"></span>
+  <span class="pbb__ref">MTL-SUD-OUEST // HIVER 93/94</span>
+</div>
+
+<!-- ─── BBS BLOCK ─────────────────────────────────────────────────────────── -->
+<div class="bbs-block" aria-hidden="true">
+  <div class="bbs__line bbs__line--header">DOSSIER: SAINT-PAUL-&Eacute;MARD &nbsp;&bull;&nbsp; SECTEUR 01 &nbsp;&bull;&nbsp; ENCLAVE ACTIVE &nbsp;&bull;&nbsp; LASALLE PRESSURE NORD</div>
+  <div class="bbs__line bbs__line--system">CLASSIFICATION: MVP ZONE &nbsp;&bull;&nbsp; ACC&Egrave;S: LECTURE SEULEMENT &nbsp;&bull;&nbsp; HIVER 1993&ndash;1994</div>
+  <div class="bbs__line bbs__line--warn">AVERT: PAS S&Eacute;CURIS&Eacute; &nbsp;&bull;&nbsp; PAS PERDU &nbsp;&bull;&nbsp; POINT D&rsquo;ENTR&Eacute;E &nbsp;&bull;&nbsp; LISTE BLANCHE FERM&Eacute;E</div>
+</div>
+
 <!-- ─── PAGE HERO ─────────────────────────────────────────────────────────── -->
-<section class="hero" style="padding-block: clamp(3rem, 8vw, 6rem);">
-  <div class="container hero__inner">
-    <div class="hero__location">
-      DeadMTL &mdash; Sector 01 &mdash; Winter 1993&ndash;1994
+<section class="term-hero" style="padding-block: clamp(2.5rem, 7vw, 5rem);">
+  <div class="th__inner hero-split">
+
+    <!-- Left: identity -->
+    <div>
+      <div class="th__eyebrow">SECTEUR 01 // ENCLAVE ACTIVE // HIVER 1993&ndash;1994</div>
+
+      <div class="th__headline" style="font-size: clamp(2rem, 6vw, 4rem);">
+        Saint-Paul-&Eacute;mard
+      </div>
+      <div class="th__sub" style="font-size: clamp(0.9rem, 2vw, 1.3rem);">
+        Premier secteur enclos de DeadMTL.
+      </div>
+
+      <p class="th__body">
+        Montr&eacute;al est morte par morceaux. Saint-Paul-&Eacute;mard est le premier
+        morceau encore g&eacute;rable. Il unit Ville-&Eacute;mard et
+        C&ocirc;te-Saint-Paul en une seule identit&eacute; de secteur DeadMTL.
+        Pas s&eacute;curis&eacute;. Pas perdu. C&rsquo;est le point d&rsquo;entr&eacute;e.
+      </p>
+
+      <div class="th__cta">
+        <a href="/"              class="term-btn term-btn--ghost">&larr; Accueil</a>
+        <a href="/dispatch/"     class="term-btn term-btn--teal">Canal Dispatch &rsaquo;</a>
+        <a href="/map/"          class="term-btn term-btn--ghost">Carte R&eacute;gionale &rsaquo;</a>
+        <a href="/construction/" class="term-btn term-btn--ghost">Statut Saison 0 &rsaquo;</a>
+      </div>
     </div>
 
-    <h1 class="logo-display" style="font-size: clamp(2.2rem, 7vw, 5rem);">
-      Saint-Paul-&Eacute;mard
-    </h1>
+    <!-- Right: ASCII locator -->
+    <div aria-hidden="true" style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
+      <div>
+        <div style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.5rem;">LOCALISATION SECTORIELLE</div>
+        <div class="ascii-locator">
+          <div class="al__grid">
+            <div class="al__cell">STH</div>
+            <div class="al__cell al--active">CSP</div>
+            <div class="al__cell al--hot">JOL</div>
+            <div class="al__cell al--active">CVL</div>
+            <div class="al__cell al--loc">S-P-E</div>
+            <div class="al__cell al--hot">LAS</div>
+            <div class="al__cell al--active">CAN</div>
+            <div class="al__cell al--active">VEM</div>
+            <div class="al__cell al--hot">ANG</div>
+          </div>
+          <span class="al__caption">S-P-E &bull; 45°27&rsquo;N 73°35&rsquo;O</span>
+        </div>
+      </div>
 
-    <p class="hero__headline" style="font-size: clamp(1rem, 2.5vw, 1.5rem); opacity: 0.8;">
-      The first enclosed sector of DeadMTL.
-    </p>
-
-    <p class="hero__body">
-      Montreal is dead by pieces. Saint-Paul-&Eacute;mard is the first piece still
-      manageable enough to map. It combines Ville-&Eacute;mard and
-      C&ocirc;te-Saint-Paul into a single DeadMTL sector identity. It is not safe.
-      It is not fully lost. It is the entry point.
-    </p>
-
-    <div class="hero__cta">
-      <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
-      <a href="/construction/" class="term-btn term-btn--teal">Season 0 Status &rsaquo;</a>
+      <div style="display:flex; flex-direction:column; gap:0.3rem;">
+        {[
+          { label: 'Lasalle',   pct: 78,  mod: 'crit' },
+          { label: 'Jolicoeur', pct: 52,  mod: 'hot' },
+          { label: 'P.Mercier', pct: 100, mod: 'sealed' },
+        ].map(z => (
+          <div class="zone-bar">
+            <span class="zb__label">{z.label}</span>
+            <div class="zb__track">
+              <div class={`zb__fill zb__fill--${z.mod}`} style={`width:${z.pct}%`}></div>
+            </div>
+            <span class={`zb__pct zb__pct--${z.mod}`}>{z.pct === 100 ? 'SELL' : z.pct + '%'}</span>
+          </div>
+        ))}
+      </div>
     </div>
+
   </div>
 </section>
 
