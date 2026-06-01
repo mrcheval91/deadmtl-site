@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.8.0] - 2026-06-01
+
+### Added
+- Interactive Montréal tactical map (borough SVG overlay) at `/map/`.
+- `public/maps/arrondissements-quartiers-montreal-200802.svg` — source SVG (4320×2016, 2002 borough boundaries).
+- `src/data/deadmtl-zones.ts` — zone metadata for 25 Montréal zones (14 SVG-mapped, 11 metadata-only).
+- `src/components/DeadMtlInteractiveMap.astro` — interactive map component with mode bar, viewport, info panel, legend.
+- `src/styles/_map.scss` — tactical map styles (terminal/navy aesthetic, danger tiers, zone interaction classes).
+- `public/scripts/dead-map.js` — client-side map JS (SVG fetch, zone binding, click/keyboard, pan/zoom, mode switching).
+- `scripts/inspect-map-svg.mjs` — SVG inspection utility (non-destructive, reports structure).
+- `docs/MAP_SYSTEM.md` — full documentation of map architecture, SVG layers, zone data model, future work.
+- `.gitattributes` — SVG whitespace config.
+
+### Changed
+- `src/pages/map/index.astro` — replaced decorative ASCII grid with real interactive map component.
+- `src/styles/global.scss` — added `@use 'map'` import.
+
 ## [0.3.0] - 2026-05-31
 
 ### Added

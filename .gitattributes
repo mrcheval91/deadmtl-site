@@ -1,0 +1,4 @@
+# Treat SVG files as binary for whitespace checking purposes
+# (source SVGs from Illustrator contain trailing whitespace in coordinate data)
+*.svg -diff -whitespace
+public/maps/*.svg binary

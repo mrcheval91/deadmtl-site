@@ -1,0 +1,121 @@
+---
+/**
+ * DeadMTL Interactive Tactical Map Component
+ *
+ * Loads the Montréal borough SVG at runtime via JS fetch (keeps initial HTML lean).
+ * Zone metadata injected into page as JSON for client-side processing.
+ * No backend, no tracking, no live server claims.
+ */
+
+import { DEADMTL_ZONES, PUBLIC_ZONES } from '../data/deadmtl-zones.ts';
+
+// Serialize public zones for client-side JS
+const zonesJson = JSON.stringify(PUBLIC_ZONES);
+
+const modes = [
+  { id: 'status',     label: 'Status'   },
+  { id: 'danger',     label: 'Danger'   },
+  { id: 'faction',    label: 'Faction'  },
+  { id: 'infra',      label: 'Infra'    },
+  { id: 'lore',       label: 'Lore'     },
+] as const;
+
+const legend = [
+  { cls: '--contested',  label: 'Contested' },
+  { cls: '--sealed',     label: 'Sealed' },
+  { cls: '--overrun',    label: 'Overrun' },
+  { cls: '--civilian',   label: 'Civilian' },
+  { cls: '--unknown',    label: 'Unknown' },
+  { cls: '--no-svg',     label: 'No map data' },
+];
+
+const svgZoneCount = PUBLIC_ZONES.filter(z => z.svgId !== null).length;
+const totalZoneCount = PUBLIC_ZONES.length;
+---
+
+<div class="dead-map" id="dead-map">
+
+  <!-- ─── Mode bar ──────────────────────────────────────────────────────── -->
+  <div class="dead-map__modebar" role="toolbar" aria-label="Map display mode">
+    <span class="dmm__label">Display:</span>
+    {modes.map(m => (
+      <button
+        class={`dead-map__mode-btn${m.id === 'status' ? ' active' : ''}`}
+        data-mode={m.id}
+        type="button"
+        aria-pressed={m.id === 'status'}
+      >
+        {m.label}
+      </button>
+    ))}
+
+    <span style="flex:1"></span>
+
+    <!-- Road toggle -->
+    <label style="display:flex;align-items:center;gap:0.4rem;padding:0 0.75rem;cursor:pointer;">
+      <input id="dead-map-toggle-roads" type="checkbox" style="accent-color:var(--teal);cursor:pointer;" />
+      <span style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Roads</span>
+    </label>
+  </div>
+
+  <!-- ─── Main shell ─────────────────────────────────────────────────────── -->
+  <div class="dead-map__shell">
+
+    <!-- SVG viewport -->
+    <div class="dead-map__viewport" id="dead-map-viewport" aria-label="Interactive Montréal tactical map">
+      <!-- SVG loaded here by dead-map.js -->
+
+      <!-- Zoom controls -->
+      <div class="dead-map__zoom" aria-label="Zoom controls">
+        <button id="dead-map-zoom-in"    type="button" title="Zoom in"   aria-label="Zoom in">+</button>
+        <button id="dead-map-zoom-reset" type="button" title="Reset view" aria-label="Reset view" style="font-size:0.65rem;letter-spacing:0.08em;font-weight:700;">RST</button>
+        <button id="dead-map-zoom-out"   type="button" title="Zoom out"  aria-label="Zoom out">−</button>
+      </div>
+    </div>
+
+    <!-- Info panel -->
+    <div class="dead-map__panel" role="region" aria-label="Zone information">
+      <div class="dead-map__panel-header">
+        <span class="dmp__label">Zone Intel</span>
+        <span class="dmp__id">{svgZoneCount}/{totalZoneCount} mapped</span>
+      </div>
+
+      <div class="dead-map__panel-empty" id="dead-map-panel-empty">
+        <div class="dpe__icon" aria-hidden="true">&#x25CE;</div>
+        <div class="dpe__text">
+          Select a sector<br />on the map
+        </div>
+      </div>
+
+      <div class="dead-map__panel-content" id="dead-map-panel-content" hidden>
+        <!-- Populated by dead-map.js -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── Legend ────────────────────────────────────────────────────────── -->
+  <div class="dead-map__legend" aria-label="Map legend">
+    {legend.map(item => (
+      <span class="dml__item">
+        <span class={`dml__swatch dml__swatch${item.cls}`} aria-hidden="true"></span>
+        {item.label}
+      </span>
+    ))}
+  </div>
+
+  <!-- ─── Disclaimer ────────────────────────────────────────────────────── -->
+  <div class="dead-map__disclaimer">
+    <strong>Network Map — Provisional.</strong>
+    Tactical reconstruction layer. Some sectors are classified or pending operator review.
+    Public display subject to change. <strong>Server pending. Whitelist closed.</strong>
+    Source: Arrondissements &amp; Quartiers Montréal SVG (2002).
+  </div>
+
+</div>
+
+<!-- Zone data for client-side JS -->
+<script id="dead-map-data" type="application/json" set:html={zonesJson}></script>
+
+<!-- Load map JS -->
+<script src="/scripts/dead-map.js" defer></script>
