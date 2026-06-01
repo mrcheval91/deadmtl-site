@@ -103,20 +103,42 @@ const assetTools = [
 // ─── Data: static feed notices ────────────────────────────────────────────────
 const staticFeed = [
   {
-    type: 'notice', typeLabel: 'Server Notice',
-    title: 'Season 0 — Setup Phase',
-    text: 'Server infrastructure pending. Whitelist not open. No connection details published yet.',
-    date: 'Feb 2026',
+    type: 'notice', typeLabel: 'Avis Système',
+    title: 'Saison 0 — Phase de Configuration',
+    text: 'Infrastructure serveur en attente. Liste blanche fermée. Aucun détail de connexion publié.',
+    date: 'Fév 2026',
     link: '/construction/',
   },
   {
-    type: 'operator', typeLabel: 'Operator Note',
-    title: 'Whitelist Closed — Season 0',
-    text: 'Applications will open through Discord when Season 0 launches. No ETA published.',
-    date: 'Feb 2026',
+    type: 'operator', typeLabel: 'Note Opérateur',
+    title: 'Signal Site Actif — Serveur Toujours en Attente',
+    text: 'Le terminal réseau est en ligne. Le serveur de jeu ne l\'est pas. Liste blanche fermée.',
+    date: 'Juin 2026',
     link: '/join/',
   },
 ];
+
+// ─── Data: hero ASCII map cells ───────────────────────────────────────────────
+const heroMap = [
+  // row 1
+  { abbr: 'ST-HENRI',  tag: 'LOCK', mod: 'locked'  },
+  { abbr: 'CSP-IND',   tag: 'ACTF', mod: 'active'  },
+  { abbr: 'JOLICOER',  tag: 'HOT',  mod: 'hot'     },
+  { abbr: 'LASALLE',   tag: 'CRIT', mod: 'crit'    },
+  { abbr: 'P.MERCER',  tag: 'SELL', mod: 'locked'  },
+  // row 2
+  { abbr: 'CANAL SV',  tag: 'ACTF', mod: 'active'  },
+  { abbr: 'V-EMARD',   tag: 'ACTF', mod: 'active'  },
+  { abbr: 'MONK RSD',  tag: 'ACTF', mod: 'active'  },
+  { abbr: 'ANGRIGN',   tag: 'HOT',  mod: 'hot'     },
+  { abbr: 'VERDUN',    tag: 'LOCK', mod: 'locked'  },
+] as const;
+
+const heroPressure = [
+  { label: 'LASALLE',   pct: 78, mod: 'crit',   display: '78%' },
+  { label: 'JOLICOEUR', pct: 52, mod: 'hot',    display: '52%' },
+  { label: 'P.MERCIER', pct: 100, mod: 'sealed', display: 'SCELLÉ' },
+] as const;
 ---
 
 <Base
@@ -124,26 +146,89 @@ const staticFeed = [
   description="DeadMTL — Montreal Survival Network. Project Zomboid server, lore archive, dispatch hub, and Saint-Paul-Emard enclave dossier. Season 0 in setup."
 >
 
+<!-- ─── BBS CONNECTION BLOCK ─────────────────────────────────────────────── -->
+<div class="bbs-block" aria-hidden="true">
+  <div class="bbs__line bbs__line--header">DEADMTL.BBS.MTL &nbsp;&bull;&nbsp; N&Aring;UD: SAINT-PAUL-&Eacute;MARD &nbsp;&bull;&nbsp; R&Eacute;SEAU SURVIVANT &nbsp;&bull;&nbsp; HIVER 93/94</div>
+  <div class="bbs__line bbs__line--system">CONNEXION: LOCALE &nbsp;&bull;&nbsp; SIGNAL SITE: ACTIF &nbsp;&bull;&nbsp; SERVEUR JEU: EN ATTENTE &nbsp;&bull;&nbsp; ACC&Egrave;S: LECTURE SEULEMENT</div>
+  <div class="bbs__line bbs__line--warn">ALERTE: LASALLE SOUS PRESSION MAXIMALE &nbsp;&bull;&nbsp; PONT MERCIER FERM&Eacute; &nbsp;&bull;&nbsp; JOLICOEUR INSTABLE &nbsp;&bull;&nbsp; SAISON 0 EN COURS</div>
+</div>
+
 <!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
 <section class="term-hero" aria-label="Network hero">
-  <div class="th__inner">
-    <div class="th__eyebrow">MTL NODE // SEASON 0 // SITE SIGNAL ONLINE // SERVER PENDING</div>
+  <div class="th__inner hero-split">
 
-    <div class="th__headline">THE CITY IS DEAD.</div>
-    <div class="th__sub">THE NETWORK LIVES.</div>
+    <!-- Left: Identity + CTAs -->
+    <div>
+      <div class="th__eyebrow">MTL NODE // SAISON 0 // SIGNAL SITE ACTIF // SERVEUR EN ATTENTE</div>
 
-    <p class="th__body">
-      DeadMTL is a Montreal-based Project Zomboid survival server, media bulletin,
-      map archive, knowledge center, and procedural asset forge.
-      Set after the Knox Event, winter 1993&ndash;1994.
-      The city failed by sectors. We map the sectors.
-    </p>
+      <div class="th__headline">THE CITY IS DEAD.</div>
+      <div class="th__sub">THE NETWORK LIVES.</div>
 
-    <div class="th__cta">
-      <a href="/join/"      class="term-btn term-btn--teal">Join the Server</a>
-      <a href="/dispatch/"  class="term-btn term-btn--ghost">Read the Dispatch</a>
-      <a href="/map/"       class="term-btn term-btn--ghost">Open the Map</a>
+      <p class="th__body">
+        DeadMTL est un r&eacute;seau de survie montr&eacute;alais &mdash; serveur Project Zomboid,
+        bulletin m&eacute;dia, archives de quartier, centre de connaissances,
+        et forge d&rsquo;actifs proc&eacute;duraux.
+        Hiver 1993&ndash;1994. La ville a &eacute;chou&eacute; par secteurs.
+        On cartographie les secteurs.
+      </p>
+
+      <div class="th__cta">
+        <a href="/join/"      class="term-btn term-btn--teal">Rejoindre</a>
+        <a href="/dispatch/"  class="term-btn term-btn--ghost">Dispatch</a>
+        <a href="/map/"       class="term-btn term-btn--ghost">Carte</a>
+        <a href="/knowledge/" class="term-btn term-btn--ghost">Archives</a>
+      </div>
+
+      <div class="modem-line" style="margin-top:1.75rem;" aria-hidden="true">
+        <span class="ml__dot"></span>
+        <span>BBS PIRATE MUNICIPAL</span>
+        <span class="ml__status" id="modem-status">PKT:OK</span>
+        <span>&bull;</span>
+        <span>TERMINAL CONTAMIN&Eacute;</span>
+      </div>
     </div>
+
+    <!-- Right: ASCII sector map + pressure bars -->
+    <div aria-hidden="true">
+      <div class="ascii-grid">
+        <div class="ag__header">SCAN SECTORIEL &mdash; MTL SUD-OUEST</div>
+
+        <div class="ag__row" style="grid-template-columns: repeat(5,1fr);">
+          {heroMap.slice(0,5).map(cell => (
+            <div class={`ag__cell ag__cell--${cell.mod}`}>
+              <span class="ag__name">{cell.abbr}</span>
+              <span class={`ag__tag ag__tag--${cell.mod}`}>{cell.tag}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="ag__row" style="grid-template-columns: repeat(5,1fr);">
+          {heroMap.slice(5).map(cell => (
+            <div class={`ag__cell ag__cell--${cell.mod}`}>
+              <span class="ag__name">{cell.abbr}</span>
+              <span class={`ag__tag ag__tag--${cell.mod}`}>{cell.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="zone-bar-list">
+        {heroPressure.map(z => (
+          <div class="zone-bar">
+            <span class="zb__label">{z.label}</span>
+            <div class="zb__track">
+              <div class={`zb__fill zb__fill--${z.mod}`} style={`width:${z.pct}%`}></div>
+            </div>
+            <span class={`zb__pct zb__pct--${z.mod}`}>{z.display}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:0.75rem; font-family:var(--font-mono); font-size:0.52rem; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase;">
+        SECTEUR SOUS OBSERVATION &nbsp;&bull;&nbsp; SIGNAL LOCAL SEULEMENT
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -203,9 +288,9 @@ const staticFeed = [
 <section class="home-section" aria-label="Dispatch feed">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Dispatch Channel</span>
-      <h2 class="hs__title">Latest Transmissions</h2>
-      <p class="hs__sub">Field reports and signal logs from Saint-Paul-&Eacute;mard, winter 1993&ndash;1994.</p>
+      <span class="hs__label">Canal Dispatch &bull; Signal Local</span>
+      <h2 class="hs__title">Derni&egrave;res Transmissions</h2>
+      <p class="hs__sub">Rapports de terrain et journaux de signal — Saint-Paul-&Eacute;mard, hiver 1993&ndash;1994.</p>
     </div>
 
     <div class="term-panel">
@@ -252,9 +337,9 @@ const staticFeed = [
 <section class="home-section" aria-label="Sector map">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Sector Survey</span>
-      <h2 class="hs__title">Map &mdash; Saint-Paul-&Eacute;mard &amp; Surrounds</h2>
-      <p class="hs__sub">Node status reflects last confirmed field report, winter 1993&ndash;1994. Locked nodes are outside current quarantine lines.</p>
+      <span class="hs__label">Scan Sectoriel &bull; MTL Sud-Ouest</span>
+      <h2 class="hs__title">Carte &mdash; Saint-Paul-&Eacute;mard &amp; Environs</h2>
+      <p class="hs__sub">Statut des n&oelig;uds selon dernier rapport de terrain, hiver 1993&ndash;1994. N&oelig;uds verrouill&eacute;s hors des lignes de quarantaine.</p>
     </div>
 
     <div class="net-grid-panel">
@@ -290,9 +375,9 @@ const staticFeed = [
 <section class="home-section" aria-label="Knowledge center">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Public Terminal</span>
-      <h2 class="hs__title">Knowledge Center</h2>
-      <p class="hs__sub">Survival guides, lore archive, server doctrine, and technical documentation.</p>
+      <span class="hs__label">Terminal Public &bull; Archives de Quartier</span>
+      <h2 class="hs__title">Centre de Connaissances</h2>
+      <p class="hs__sub">Guides de survie, archives de quartier, doctrine serveur, notes techniques.</p>
     </div>
 
     <div class="module-grid">
@@ -312,9 +397,9 @@ const staticFeed = [
 <section class="home-section" aria-label="Asset forge">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Procedural Tools</span>
-      <h2 class="hs__title">Asset Forge</h2>
-      <p class="hs__sub">Map tooling, procedural generators, blockouts, screenshots, and devlogs.</p>
+      <span class="hs__label">Atelier de Forge &bull; Outils Proc&eacute;duraux</span>
+      <h2 class="hs__title">Forge d&rsquo;Actifs</h2>
+      <p class="hs__sub">Outils cartographiques, g&eacute;n&eacute;rateurs proc&eacute;duraux, blockouts, captures, devlogs.</p>
     </div>
 
     <div class="module-grid">
@@ -346,7 +431,7 @@ const staticFeed = [
 
     <div class="signal-wall">
       <div class="sw__label">
-        GALLERY PENDING &nbsp;&#x25B8;&nbsp; MAP SCREENSHOTS INCOMING &nbsp;&#x25B8;&nbsp; SEASON 0 MEDIA NOT YET CAPTURED
+        GALERIE EN ATTENTE &nbsp;&#x25B8;&nbsp; CAPTURES CARTE INCOMING &nbsp;&#x25B8;&nbsp; M&Eacute;DIAS SAISON 0 NON ENCORE PRODUITS
       </div>
     </div>
   </div>
@@ -357,7 +442,7 @@ const staticFeed = [
   <div class="container" style="max-width: var(--container-narrow, 840px);">
     <div style="border-left: 2px solid var(--teal); padding-left: 1.5rem;">
       <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-dim); line-height: 1.85;">
-        &ldquo;Montreal is dead by pieces. Saint-Paul-&Eacute;mard is the first piece still manageable enough to map.&rdquo;
+        &ldquo;Montr&eacute;al est morte par morceaux. Saint-Paul-&Eacute;mard est le premier morceau encore assez g&eacute;rable pour &ecirc;tre cartographi&eacute;.&rdquo;
       </p>
     </div>
   </div>

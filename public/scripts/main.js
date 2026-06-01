@@ -1,4 +1,5 @@
 // DeadMTL Network Terminal — main.js
+// BBS pirate municipal. Terminal contaminé. Réseau survivant.
 // Progressive enhancement only. No external dependencies.
 
 (function () {
@@ -42,7 +43,7 @@
     });
   }
 
-  // ─── Terminal clock ───────────────────────────────────────────────────────
+  // ─── Terminal clock (24h military) ───────────────────────────────────────
   var clockEl = document.getElementById('site-clock');
   if (clockEl) {
     function updateClock() {
@@ -56,18 +57,21 @@
     setInterval(updateClock, 1000);
   }
 
-  // ─── Ticker rotation ─────────────────────────────────────────────────────
+  // ─── Ticker rotation — bilingual, Montreal-grounded ──────────────────────
   var tickerEl = document.getElementById('ticker-msg');
   if (tickerEl) {
     var messages = [
-      'SEASON 0 SETUP ▸ WHITELIST CLOSED ▸ MAP NODE LASALLE ACTIVE ▸ SERVER PENDING',
-      'SAINT-PAUL-EMARD ENCLAVE ▸ SECTOR 01 ▸ CANAL EDGE ROUTE ACTIVE ▸ GATE B UNSTABLE',
-      'DISPATCH CHANNEL ONLINE ▸ 3 TRANSMISSIONS ON RECORD ▸ SIGNAL MONK ▸ CANAL CACHE ▸ LASALLE PRESSURE',
-      'NO PAY-TO-WIN ▸ NO DONOR PERKS ▸ EQUAL FOOTING OR NO SERVER ▸ RULES APPLY TO ALL',
-      'MONTREAL SURVIVAL NETWORK ▸ INDEPENDENT PROJECT ▸ NOT AFFILIATED WITH THE INDIE STONE',
+      'SAISON 0 EN COURS ▸ LISTE BLANCHE FERMÉE ▸ SERVEUR EN ATTENTE ▸ SIGNAL SITE ACTIF',
+      'SAINT-PAUL-ÉMARD ▸ SECTEUR 01 ▸ CANAL ACTIF ▸ PORTE B INSTABLE ▸ LASALLE EN PRESSION',
+      'BBS MUNICIPAL PIRATE ▸ RÉSEAU SURVIVANT ▸ TERMINAL CONTAMINÉ ▸ ARCHIVES DE QUARTIER',
+      'AUCUN PAY-TO-WIN ▸ AUCUN AVANTAGE DONATEUR ▸ ACCÈS ÉGAL ▸ RÈGLES POUR TOUS',
+      'MONTRÉAL HIVER 1993-94 ▸ L’ÉVÉNEMENT KNOX ▸ LA VILLE A ÉCHOUÉ PAR SECTEURS',
+      'SIGNAL LOCAL SEULEMENT ▸ SECTEUR SOUS OBSERVATION ▸ ACCÈS: RESTREINT',
+      'PROJET INDÉPENDANT ▸ NON AFFILIÉ À THE INDIE STONE ▸ COMMUNITY PROJECT',
+      'PONT MERCIER FERMÉ ▸ JOLICOEUR INSTABLE ▸ VERDUN VERROUILLÉ ▸ SAINT-HENRI CANAL NORD',
     ];
     var idx = 0;
-    var INTERVAL = 6000;
+    var INTERVAL = 5500;
 
     function rotateTicker() {
       tickerEl.classList.add('is-hidden');
@@ -81,7 +85,22 @@
     setInterval(rotateTicker, INTERVAL);
   }
 
-  // ─── Snow effect (legacy — kept for inner pages that use .snow-layer) ────
+  // ─── Modem / packet status cycling ───────────────────────────────────────
+  var modemEl = document.getElementById('modem-status');
+  if (modemEl) {
+    var modemStates = [
+      'PKT:OK', 'RECV:OK', 'BUF:FULL', 'SYNC...', 'RETRY',
+      'PKT:OK', 'XMIT:OK', 'SIG:WEAK', 'PKT:OK',  'RECV:OK',
+    ];
+    var modemIdx = 0;
+
+    setInterval(function () {
+      modemIdx = (modemIdx + 1) % modemStates.length;
+      modemEl.textContent = modemStates[modemIdx];
+    }, 2100);
+  }
+
+  // ─── Snow effect (legacy — inner pages using .snow-layer) ────────────────
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReduced) {
     var snowLayer = document.querySelector('.snow-layer');
