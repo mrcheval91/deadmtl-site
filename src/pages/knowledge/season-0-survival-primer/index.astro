@@ -2,42 +2,18 @@
 import Base from '../../../layouts/Base.astro';
 
 const sections = [
-  {
-    id: 'what-season-0-is',
-    label: '01 / Setup Phase',
-    title: 'What Season 0 Is',
-  },
-  {
-    id: 'how-survival-should-feel',
-    label: '02 / Design Intent',
-    title: 'How DeadMTL Survival Should Feel',
-  },
-  {
-    id: 'enclave-doctrine',
-    label: '03 / First Sector',
-    title: 'First Enclave Doctrine',
-  },
-  {
-    id: 'player-principles',
-    label: '04 / Field Rules',
-    title: 'Player Principles',
-  },
-  {
-    id: 'human-behind-player',
-    label: '05 / Network Layer',
-    title: 'The Human Behind the Player',
-  },
-  {
-    id: 'current-limits',
-    label: '06 / Honest Limits',
-    title: 'Current Limits',
-  },
+  { id: 'what-season-0-is',        label: '01 / Phase de Configuration', title: 'Ce qu&rsquo;est la Saison 0' },
+  { id: 'how-survival-should-feel', label: '02 / Intention de Design',    title: 'Comment Devrait Se Sentir la Survie' },
+  { id: 'enclave-doctrine',         label: '03 / Premier Secteur',        title: 'Doctrine Premi&egrave;re Enclave' },
+  { id: 'player-principles',        label: '04 / R&egrave;gles de Terrain',     title: 'Principes du Joueur' },
+  { id: 'human-behind-player',      label: '05 / Couche R&eacute;seau',         title: 'L&rsquo;Humain Derri&egrave;re le Joueur' },
+  { id: 'current-limits',           label: '06 / Limites Honn&ecirc;tes',      title: 'Limites Actuelles' },
 ] as const;
 ---
 
 <Base
-  title="Season 0 Survival Primer"
-  description="DeadMTL Guide de Survie Saison 0 — doctrine enclave, principes joueur, limites actuelles. Terminal public."
+  title="Guide de Survie Saison 0"
+  description="DeadMTL Guide de Survie Saison 0 &mdash; doctrine enclave, principes joueur, limites actuelles. Terminal public."
 >
 
 <!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
@@ -53,14 +29,14 @@ const sections = [
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
     <div class="th__eyebrow">GUIDE DE SURVIE // CENTRE DE CONNAISSANCES // SAISON 0</div>
-    <div class="th__headline" style="font-size: clamp(1.6rem,4.5vw,3rem);">Season 0 Survival Primer</div>
+    <div class="th__headline" style="font-size: clamp(1.6rem,4.5vw,3rem);">Guide de Survie Saison 0</div>
     <p class="th__body">
-      What DeadMTL survival means, how the first enclave works, and what a player should know before connecting.
-      The server is not open yet. This article is preparation, not connection instructions.
+      Ce que signifie la survie DeadMTL, comment fonctionne la premi&egrave;re enclave, et ce qu&rsquo;un joueur devrait savoir avant de se connecter.
+      Le serveur n&rsquo;est pas encore ouvert. Cet article est une pr&eacute;paration, pas des instructions de connexion.
     </p>
     <div class="th__cta">
-      <a href="#what-season-0-is"        class="term-btn term-btn--ghost">Start Reading &rsaquo;</a>
-      <a href="/knowledge/"              class="term-btn term-btn--ghost">&larr; Knowledge Center</a>
+      <a href="#what-season-0-is" class="term-btn term-btn--ghost">Commencer la lecture &rsaquo;</a>
+      <a href="/knowledge/"       class="term-btn term-btn--ghost">&larr; Connaissances</a>
     </div>
   </div>
 </section>
@@ -70,7 +46,7 @@ const sections = [
   <div class="container">
     <div class="term-panel">
       <div class="term-header">
-        <span class="th__tag">Document Index</span>
+        <span class="th__tag">Index du Document</span>
         <span class="th__rule"></span>
         <span class="th__info">6 sections</span>
       </div>
@@ -82,8 +58,8 @@ const sections = [
             onmouseover="this.style.background='var(--graphite)'; this.style.color='var(--cream)';"
             onmouseout="this.style.background=''; this.style.color='var(--text-dim)';"
           >
-            <span style="color:var(--text-muted); flex-shrink:0;">{s.label}</span>
-            <span>{s.title}</span>
+            <span style="color:var(--text-muted); flex-shrink:0;" set:html={s.label} />
+            <span set:html={s.title} />
           </a>
         ))}
       </div>
@@ -91,16 +67,16 @@ const sections = [
   </div>
 </section>
 
-<!-- ─── 01: WHAT SEASON 0 IS ─────────────────────────────────────────────── -->
+<!-- ─── 01 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="what-season-0-is">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">01 / Setup Phase</span>
-      <h2 class="hs__title">What Season 0 Is</h2>
+      <span class="hs__label">01 / Phase de Configuration</span>
+      <h2 class="hs__title">Ce qu&rsquo;est la Saison 0</h2>
     </div>
 
     <div class="municipal-notice" style="margin-bottom:1.5rem;">
-      <span class="mn__stamp">Avis Officiel &mdash; D&eacute;adMTL R&eacute;seau</span>
+      <span class="mn__stamp">Avis Officiel &mdash; R&eacute;seau DeadMTL</span>
       <div class="mn__body" style="color:var(--amber);">
         Serveur en attente. Liste blanche ferm&eacute;e. Aucun d&eacute;tail de connexion publi&eacute;.
         Ce document est de la pr&eacute;paration, pas des instructions de connexion.
@@ -115,172 +91,172 @@ const sections = [
         <span class="th__info">Serveur en Attente</span>
       </div>
       <div style="padding:1rem 1.25rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--amber); line-height:1.65;">
-        Server is not open. Whitelist is closed. No connection details. No launch date.
+        Serveur pas ouvert. Liste blanche ferm&eacute;e. Pas de d&eacute;tails de connexion. Pas de date de lancement.
       </div>
     </div>
 
     <div class="dispatch-entry">
       <p>
-        Season 0 is the first test season of DeadMTL. It is a setup phase, not a full launch.
-        The map is being built. The server infrastructure is being prepared. The rules are being finalized.
-        The modlist has not been locked.
+        La Saison 0 est la premi&egrave;re saison test de DeadMTL. C&rsquo;est une phase de configuration, pas un lancement complet.
+        La carte est en construction. L&rsquo;infrastructure serveur est en pr&eacute;paration. Les r&egrave;gles sont en finalisation.
+        La liste de mods n&rsquo;est pas encore verrouill&eacute;e.
       </p>
       <p>
-        The first playable philosophy is containment. One sector. One enclave.
-        Saint-Paul-&Eacute;mard. The game does not start with the whole city. It starts with the
-        piece of the city that is still manageable. Everything else is pressure from outside.
+        La philosophie de jeu initiale est la contention. Un secteur. Une enclave.
+        Saint-Paul-&Eacute;mard. Le jeu ne commence pas avec toute la ville. Il commence avec le
+        morceau de ville encore assez g&eacute;rable. Tout le reste est de la pression de l&rsquo;ext&eacute;rieur.
       </p>
       <p>
-        Season 0 players are early participants in a test run. Expect configuration changes,
-        possible wipes, rule revisions, and map updates during this phase. Stability comes later.
-        Season 0 is proof-of-concept, not the finished product.
+        Les joueurs de la Saison 0 sont des participants pr&eacute;coces &agrave; un test. Pr&eacute;voir des changements de configuration,
+        des wipes possibles, des r&eacute;visions de r&egrave;gles et des mises &agrave; jour de carte durant cette phase. La stabilit&eacute; vient plus tard.
+        La Saison 0 est une preuve de concept, pas le produit fini.
       </p>
       <p>
-        When Season 0 opens, it will be announced on this site and through the dispatch channel.
-        Until that announcement appears here, the server is not accepting connections.
-        There are no valid server addresses being shared anywhere.
+        Quand la Saison 0 ouvrira, ce sera annonc&eacute; sur ce site et via le canal de transmissions.
+        Jusqu&rsquo;&agrave; cette annonce ici, le serveur n&rsquo;accepte pas de connexions.
+        Aucune adresse serveur valide n&rsquo;est partag&eacute;e nulle part.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ─── 02: HOW SURVIVAL SHOULD FEEL ────────────────────────────────────── -->
+<!-- ─── 02 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="how-survival-should-feel">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">02 / Design Intent</span>
-      <h2 class="hs__title">How DeadMTL Survival Should Feel</h2>
+      <span class="hs__label">02 / Intention de Design</span>
+      <h2 class="hs__title">Comment Devrait Se Sentir la Survie DeadMTL</h2>
     </div>
 
     <div class="dispatch-entry">
       <p>
-        DeadMTL is not a server for grinding resources in safety. The design intent is a
-        world where survival choices have real cost.
+        DeadMTL n&rsquo;est pas un serveur pour accumuler des ressources en s&eacute;curit&eacute;. L&rsquo;intention de design est un
+        monde o&ugrave; les choix de survie ont un co&ucirc;t r&eacute;el.
       </p>
 
-      <h2>Movement matters.</h2>
+      <h2>Le d&eacute;placement compte.</h2>
       <p>
-        Where you go, how fast you move, whether you run or walk, whether you cut through
-        an alley or take the longer road — these are decisions with consequences. Noise
-        draws attention. Speed sacrifices situational awareness. Every route through the
-        enclave has known and unknown risks.
+        O&ugrave; on va, &agrave; quelle vitesse on se d&eacute;place, si on court ou marche, si on coupe par
+        une ruelle ou prend la route plus longue &mdash; ce sont des d&eacute;cisions &agrave; cons&eacute;quences. Le bruit
+        attire l&rsquo;attention. La vitesse sacrifie la conscience situationnelle. Chaque route dans
+        l&rsquo;enclave a des risques connus et inconnus.
       </p>
 
-      <h2>Scarcity matters.</h2>
+      <h2>La p&eacute;nurie compte.</h2>
       <p>
-        Resources in a post-collapse Montreal neighbourhood are finite and distributed unevenly.
-        Early access to a location does not guarantee it stays useful. Other players deplete
-        supplies. Events change availability. Carrying everything you find is not a strategy.
-        Carrying what you need and leaving the rest for others — or for later — is.
+        Les ressources dans un quartier montr&eacute;alais post-effondrement sont finies et distribu&eacute;es in&eacute;galement.
+        Un acc&egrave;s pr&eacute;coce &agrave; un endroit ne garantit pas qu&rsquo;il reste utile. Les autres joueurs &eacute;puisent
+        les fournitures. Les &eacute;v&eacute;nements changent la disponibilit&eacute;. Porter tout ce qu&rsquo;on trouve n&rsquo;est pas une strat&eacute;gie.
+        Porter ce dont on a besoin et laisser le reste aux autres &mdash; ou pour plus tard &mdash; en est une.
       </p>
 
-      <h2>Information matters.</h2>
+      <h2>L&rsquo;information compte.</h2>
       <p>
-        The dispatch channel, zone dossiers, and knowledge center exist because information
-        about the enclave has value. Which areas are hot. Where the gates are. What the
-        Jolicoeur Barrier situation looks like. A player who reads the network before entering
-        a sector makes better decisions than one who does not.
+        Le canal de transmissions, les dossiers de zone et le centre de connaissances existent parce que l&rsquo;information
+        sur l&rsquo;enclave a de la valeur. Quelles zones sont chaudes. O&ugrave; sont les portes. &Agrave; quoi ressemble
+        la situation de la Barri&egrave;re Jolicoeur. Un joueur qui lit le r&eacute;seau avant d&rsquo;entrer dans
+        un secteur prend de meilleures d&eacute;cisions que celui qui ne le fait pas.
       </p>
 
-      <h2>Noise matters.</h2>
+      <h2>Le bruit compte.</h2>
       <p>
-        Project Zomboid's noise and attention mechanics are the backbone of this server's
-        survival style. Generators are a liability as much as an asset. Gunshots are
-        announcement. Loud entry techniques have persistent consequences.
+        Les m&eacute;caniques de bruit et d&rsquo;attention de Project Zomboid sont l&rsquo;&eacute;pine dorsale de ce serveur.
+        Les g&eacute;n&eacute;rateurs sont autant un risque qu&rsquo;un atout. Les coups de feu sont
+        des annonces. Les techniques d&rsquo;entr&eacute;e bruyantes ont des cons&eacute;quences persistantes.
       </p>
 
-      <h2>Weather and darkness matter.</h2>
+      <h2>Le temps et l&rsquo;obscurit&eacute; comptent.</h2>
       <p>
-        Montreal winter conditions affect movement, visibility, and resource access.
-        The enclave is set in winter 1993&ndash;1994. Cold, snow, darkness, and fog are
-        not atmosphere. They are environmental pressure.
+        Les conditions d&rsquo;hiver montr&eacute;alaises affectent le d&eacute;placement, la visibilit&eacute; et l&rsquo;acc&egrave;s aux ressources.
+        L&rsquo;enclave est situ&eacute;e en hiver 1993&ndash;1994. Le froid, la neige, l&rsquo;obscurit&eacute; et le brouillard ne sont
+        pas de l&rsquo;atmosph&egrave;re. Ce sont des pressions environnementales.
       </p>
 
-      <h2>Small group trust matters.</h2>
+      <h2>La confiance en petit groupe compte.</h2>
       <p>
-        DeadMTL is a whitelist server. The player pool is small and curated. A server
-        where everyone is a stranger creates a different social contract than a public
-        open-door server. Trust is earned by behaviour, not by default.
-        Communication, honesty about resource locations, and backing up other players
-        under pressure are the survival layer that no rule can fully enforce.
+        DeadMTL est un serveur &agrave; liste blanche. Le bassin de joueurs est petit et s&eacute;lectionn&eacute;. Un serveur
+        o&ugrave; tout le monde est un inconnu cr&eacute;e un contrat social diff&eacute;rent d&rsquo;un serveur public.
+        La confiance se gagne par le comportement, pas par d&eacute;faut.
+        La communication, l&rsquo;honn&ecirc;tet&eacute; sur les emplacements de ressources, et soutenir les autres joueurs
+        sous pression sont la couche de survie qu&rsquo;aucune r&egrave;gle ne peut pleinement imposer.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ─── 03: FIRST ENCLAVE DOCTRINE ──────────────────────────────────────── -->
+<!-- ─── 03 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="enclave-doctrine">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">03 / First Sector</span>
-      <h2 class="hs__title">First Enclave Doctrine</h2>
+      <span class="hs__label">03 / Premier Secteur</span>
+      <h2 class="hs__title">Doctrine Premi&egrave;re Enclave</h2>
     </div>
 
     <div class="dispatch-entry">
       <p>
-        Saint-Paul-&Eacute;mard is the first active sector. It is not a safe zone.
-        It is the sector that is still manageable enough to be the starting point.
-        That distinction matters.
+        Saint-Paul-&Eacute;mard est le premier secteur actif. Ce n&rsquo;est pas une zone s&eacute;curis&eacute;e.
+        C&rsquo;est le secteur encore assez g&eacute;rable pour &ecirc;tre le point de d&eacute;part.
+        Cette distinction compte.
       </p>
       <p>
-        The enclave combines Ville-&Eacute;mard and C&ocirc;te-Saint-Paul into a single
-        DeadMTL sector identity. It is enclosed by the canal to the north and the pressure
-        fronts to the south and west. The borders are not walls. They are lines where the
-        threat increases sharply.
-      </p>
-
-      <h2>Canal edge pressure.</h2>
-      <p>
-        The Canal de Lachine forms the northern boundary. Crossing it reaches Saint-Henri,
-        which is not in Season 0 scope. The canal edge is an industrial route — workshops,
-        waterline fog, uneven movement risk. It is active but not safe.
+        L&rsquo;enclave combine Ville-&Eacute;mard et C&ocirc;te-Saint-Paul en une seule identit&eacute;
+        sectorielle DeadMTL. Elle est enclos&eacute;e par le canal au nord et les fronts de pression
+        au sud et &agrave; l&rsquo;ouest. Les bords ne sont pas des murs. Ce sont des lignes o&ugrave; la
+        menace augmente brusquement.
       </p>
 
-      <h2>LaSalle pressure front.</h2>
+      <h2>Pression de la rive du canal.</h2>
       <p>
-        LaSalle is the primary threat source from the south and west. The Pont Mercier
-        barricade failure is the origin of the largest horde pressure in the southwest.
-        LaSalle is not a playable zone. It is the reason the enclave cannot expand southwest
-        without consequences.
+        Le Canal de Lachine forme la limite nord. Le traverser m&egrave;ne &agrave; Saint-Henri,
+        qui n&rsquo;est pas dans le p&eacute;rim&egrave;tre de la Saison 0. La rive du canal est une route industrielle &mdash; ateliers,
+        brouillard sur la ligne d&rsquo;eau, risque de mouvement in&eacute;gal. Elle est active mais pas s&eacute;curis&eacute;e.
       </p>
 
-      <h2>No fake total-city claim.</h2>
+      <h2>Front de pression LaSalle.</h2>
       <p>
-        DeadMTL is not claiming to map all of Montreal. Season 0 covers one sector.
-        The map section of this site lists planning labels for future expansion, but those
-        are planning labels, not promises. The enclave is the game. Everything outside it
-        is context and pressure.
+        LaSalle est la principale source de menace depuis le sud et l&rsquo;ouest. L&rsquo;&eacute;chec de la
+        barricade du Pont Mercier est l&rsquo;origine de la plus grande pression de horde du sud-ouest.
+        LaSalle n&rsquo;est pas une zone jouable. C&rsquo;est la raison pour laquelle l&rsquo;enclave ne peut pas s&rsquo;&eacute;tendre
+        vers le sud-ouest sans cons&eacute;quences.
+      </p>
+
+      <h2>Pas de fausse revendication de ville compl&egrave;te.</h2>
+      <p>
+        DeadMTL ne pr&eacute;tend pas cartographier tout Montr&eacute;al. La Saison 0 couvre un secteur.
+        La section carte de ce site liste des &eacute;tiquettes de planification pour l&rsquo;expansion future, mais ce sont
+        des &eacute;tiquettes de planification, pas des promesses. L&rsquo;enclave est le jeu. Tout ce qui est en dehors
+        est du contexte et de la pression.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ─── 04: PLAYER PRINCIPLES ────────────────────────────────────────────── -->
+<!-- ─── 04 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="player-principles">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">04 / Field Rules</span>
-      <h2 class="hs__title">Player Principles</h2>
+      <span class="hs__label">04 / R&egrave;gles de Terrain</span>
+      <h2 class="hs__title">Principes du Joueur</h2>
     </div>
 
     <div class="term-panel" style="margin-bottom:1.5rem;">
       <div class="term-header">
-        <span class="th__tag">Field Doctrine</span>
+        <span class="th__tag">Doctrine de Terrain</span>
         <span class="th__rule"></span>
       </div>
       <div style="display:flex; flex-direction:column; gap:0;">
         {[
-          ['Scout before looting', 'Know what is in a building and what is around it before committing to entry.'],
-          ['Carry less than you want', 'Weight affects movement. Movement affects survival. Prioritise what you need, not what you found.'],
-          ['Never assume roads are safe', 'A road clear yesterday may not be clear now. Movement history does not guarantee current state.'],
-          ['Mark routes', 'If you find a safe path, note it. If a path changes, update that note. The map is shared information.'],
-          ['Read dispatches', 'The dispatch channel carries real information about sector events. It is not decoration.'],
-          ['Respect server rules', 'The rules exist because the server is a shared resource. Enforcement is not the point. Behaviour is.'],
-          ['No power fantasy', 'DeadMTL is not designed for optimised speedruns or resource dominance. It is designed for survival.'],
+          ['Explorer avant de piller',           'Savoir ce qu\'il y a dans un b&acirc;timent et autour avant de s\'engager &agrave; y entrer.'],
+          ['Porter moins que ce qu\'on veut',    'Le poids affecte le d&eacute;placement. Le d&eacute;placement affecte la survie. Prioriser ce dont on a besoin.'],
+          ['Ne jamais supposer les routes s&ucirc;res', 'Une route d&eacute;gag&eacute;e hier peut ne plus l\'&ecirc;tre. L\'historique de d&eacute;placement ne garantit pas l\'&eacute;tat actuel.'],
+          ['Marquer les routes',                 'Trouver un chemin s&ucirc;r, le noter. Si un chemin change, mettre &agrave; jour la note. La carte est une information partag&eacute;e.'],
+          ['Lire les transmissions',             'Le canal de transmissions porte de vraies informations sur les &eacute;v&eacute;nements sectoriels. Ce n\'est pas de la d&eacute;coration.'],
+          ['Respecter les r&egrave;gles serveur',       'Les r&egrave;gles existent parce que le serveur est une ressource partag&eacute;e. L\'application n\'est pas le but. Le comportement l\'est.'],
+          ['Pas de fantasme de puissance',       'DeadMTL n\'est pas con&ccedil;u pour les speedruns optimis&eacute;s ou la domination de ressources. Il est con&ccedil;u pour la survie.'],
         ].map(([principle, desc]) => (
           <div style="padding:0.75rem 1.25rem; border-bottom:1px solid var(--border-subtle);">
-            <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--bone); margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.04em;">{principle}</div>
-            <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim); line-height:1.55;">{desc}</div>
+            <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--bone); margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.04em;" set:html={principle} />
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim); line-height:1.55;" set:html={desc} />
           </div>
         ))}
       </div>
@@ -288,68 +264,68 @@ const sections = [
   </div>
 </section>
 
-<!-- ─── 05: HUMAN BEHIND THE PLAYER ─────────────────────────────────────── -->
+<!-- ─── 05 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="human-behind-player">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">05 / Network Layer</span>
-      <h2 class="hs__title">The Human Behind the Player</h2>
+      <span class="hs__label">05 / Couche R&eacute;seau</span>
+      <h2 class="hs__title">L&rsquo;Humain Derri&egrave;re le Joueur</h2>
     </div>
 
     <div class="dispatch-entry">
       <p>
-        Project Zomboid is played by a character. The character survives or does not.
-        But the human behind the character exists outside the game, and that human
-        has access to the DeadMTL network.
+        Project Zomboid est jou&eacute; par un personnage. Le personnage survit ou non.
+        Mais l&rsquo;humain derri&egrave;re le personnage existe en dehors du jeu, et cet humain
+        a acc&egrave;s au r&eacute;seau DeadMTL.
       </p>
       <p>
-        The Knowledge Center, dispatch channel, map section, and rules are not in-game resources.
-        They exist for the human reading the screen. The player navigates the enclave.
-        The human reads the context.
+        Le Centre de Connaissances, le canal de transmissions, la section carte et les r&egrave;gles ne sont pas des ressources en jeu.
+        Ils existent pour l&rsquo;humain qui lit l&rsquo;&eacute;cran. Le joueur navigue dans l&rsquo;enclave.
+        L&rsquo;humain lit le contexte.
       </p>
       <p>
-        This distinction matters because some of what DeadMTL does is out-of-world.
-        Operator notes explain what is happening with the project. Server notices explain
-        what is happening with the server. Field reports and network dispatches are in-world
-        fiction. The dispatch taxonomy page explains which is which.
+        Cette distinction compte parce qu&rsquo;une partie de ce que fait DeadMTL est hors-monde.
+        Les notes op&eacute;rateur expliquent ce qui se passe avec le projet. Les avis syst&egrave;me expliquent
+        ce qui se passe avec le serveur. Les rapports de terrain et les d&eacute;p&ecirc;ches r&eacute;seau sont de la
+        fiction in-world. La page de taxonomie des transmissions explique ce qui est quoi.
       </p>
       <p>
-        A player who understands how the enclave works, what the pressure zones are,
-        what the rules say, and what kind of server this is before logging in will have
-        a better experience than one who connects blind. The network exists to support that.
+        Un joueur qui comprend comment fonctionne l&rsquo;enclave, quelles sont les zones de pression,
+        ce que disent les r&egrave;gles et quel type de serveur c&rsquo;est avant de se connecter aura
+        une meilleure exp&eacute;rience que celui qui se connecte &agrave; l&rsquo;aveugle. Le r&eacute;seau existe pour soutenir &ccedil;a.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ─── 06: CURRENT LIMITS ────────────────────────────────────────────────── -->
+<!-- ─── 06 ────────────────────────────────────────────────────────────────── -->
 <section class="home-section" id="current-limits">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">06 / Honest Limits</span>
-      <h2 class="hs__title">Current Limits</h2>
+      <span class="hs__label">06 / Limites Honn&ecirc;tes</span>
+      <h2 class="hs__title">Limites Actuelles</h2>
     </div>
 
     <div class="dispatch-entry">
       <p>
-        DeadMTL is in setup. These are the current limits, stated plainly.
+        DeadMTL est en configuration. Voici les limites actuelles, &eacute;nonc&eacute;es clairement.
       </p>
     </div>
 
     <div class="dispatch-feed" style="margin-bottom:1.5rem;">
       {[
-        ['Server',         'Pending. Not running. No connection address has been published.'],
-        ['Whitelist',      'Closed. Applications are not open. No approval process is active.'],
-        ['Map',            'Under construction. Sector names are planning labels. PZMapForge tooling is active but the map is not final.'],
-        ['Metro / Tunnel', 'Concept only. Not in Season 0 scope. The Dead Line is a future layer, not a current one.'],
-        ['Modlist',        'Not finalized. The required mod list has not been published. Do not subscribe to mods based on guessing.'],
-        ['Discord',        'No server exists yet. No invite will be shared until one is created and linked here.'],
-        ['Launch Date',    'None. There is no announced launch date. When Season 0 opens, this site will say so.'],
+        ['Serveur',          'En attente. Pas en cours d\'ex&eacute;cution. Aucune adresse de connexion publi&eacute;e.'],
+        ['Liste blanche',    'Ferm&eacute;e. Candidatures pas ouvertes. Aucun processus d\'approbation actif.'],
+        ['Carte',            'En construction. Noms de secteurs = &eacute;tiquettes de planification. Outils PZMapForge actifs mais carte pas finale.'],
+        ['M&eacute;tro / Tunnel', 'Concept seulement. Pas dans le p&eacute;rim&egrave;tre Saison 0. La Ligne Morte est une couche future, pas actuelle.'],
+        ['Liste de mods',    'Pas finalis&eacute;e. La liste de mods requise n\'est pas publi&eacute;e. Ne pas s\'abonner &agrave; des mods par supposition.'],
+        ['Discord',          'Pas encore cr&eacute;&eacute;. Pas d\'invitation partag&eacute;e jusqu\'&agrave; cr&eacute;ation et lien ici.'],
+        ['Date de lancement','Aucune. Pas de date annonc&eacute;e. Quand la Saison 0 ouvrira, ce site le dira.'],
       ].map(([label, status]) => (
         <div class="feed-item">
-          <span class="fi__type fi__type--system">{label}</span>
+          <span class="fi__type fi__type--system" set:html={label} />
           <div class="fi__body">
-            <p class="fi__text">{status}</p>
+            <p class="fi__text" set:html={status} />
           </div>
         </div>
       ))}
@@ -357,10 +333,10 @@ const sections = [
 
     <div class="dispatch-entry">
       <p>
-        Content on this site may change before launch. Sector names, rules, survival guides,
-        and modlist are all provisional until Season 0 opens. The site is built in public
-        because transparency is part of the project's design philosophy.
-        Everything here reflects the actual state of the project at the time it was written.
+        Le contenu de ce site peut changer avant le lancement. Noms de secteurs, r&egrave;gles, guides de survie
+        et liste de mods sont tous provisoires jusqu&rsquo;&agrave; l&rsquo;ouverture de la Saison 0. Le site est construit en public
+        parce que la transparence fait partie de la philosophie de design du projet.
+        Tout ici refl&egrave;te l&rsquo;&eacute;tat r&eacute;el du projet au moment o&ugrave; c&rsquo;&eacute;tait &eacute;crit.
       </p>
     </div>
   </div>
@@ -370,10 +346,10 @@ const sections = [
 <section class="home-section" style="padding-block:2.5rem;">
   <div class="container">
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-      <a href="/rules/"      class="term-btn term-btn--teal">Read Rules &rsaquo;</a>
-      <a href="/map/"        class="term-btn term-btn--ghost">Open Map &rsaquo;</a>
-      <a href="/dispatch/"   class="term-btn term-btn--ghost">Dispatches &rsaquo;</a>
-      <a href="/knowledge/"  class="term-btn term-btn--ghost">&larr; Knowledge Center</a>
+      <a href="/rules/"     class="term-btn term-btn--teal">Lire les R&egrave;gles &rsaquo;</a>
+      <a href="/map/"       class="term-btn term-btn--ghost">Ouvrir la Carte &rsaquo;</a>
+      <a href="/dispatch/"  class="term-btn term-btn--ghost">Transmissions &rsaquo;</a>
+      <a href="/knowledge/" class="term-btn term-btn--ghost">&larr; Connaissances</a>
     </div>
   </div>
 </section>

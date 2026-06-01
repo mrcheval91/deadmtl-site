@@ -55,46 +55,46 @@ const modules = [
 
 // ─── Archive status rows ──────────────────────────────────────────────────────
 const archiveStatus = [
-  ['Archive Status',   'Assembling',  'amber'],
-  ['Server Doctrine',  'Available',   'teal'],
-  ['Map Research',     'Active',      'teal'],
-  ['Survival Guides',  'Draft',       'amber'],
-  ['Technical Notes',  'Draft',       'amber'],
-  ['Public Access',    'Read-Only',   'muted'],
+  ['Statut Archive',    'En Assemblage', 'amber'],
+  ['Doctrine Serveur',  'Disponible',    'teal'],
+  ['Recherche Carte',   'Actif',         'teal'],
+  ['Guides de Survie',  'Brouillon',     'amber'],
+  ['Notes Techniques',  'Brouillon',     'amber'],
+  ['Acc&egrave;s Public',     'Lecture',       'muted'],
 ] as const;
 
 // ─── Content types ────────────────────────────────────────────────────────────
 const contentTypes = [
   {
-    slug: 'server-notice', label: 'Server Notice', mod: '--notice',
-    world: 'Out-of-world',
-    desc: 'Real operational update about the server, site, or project state.',
+    slug: 'server-notice', label: 'Avis Syst&egrave;me', mod: '--notice',
+    world: 'Hors-monde',
+    desc: 'Mise &agrave; jour op&eacute;rationnelle r&eacute;elle sur le serveur, le site, ou l&rsquo;&eacute;tat du projet.',
   },
   {
-    slug: 'operator-note', label: 'Operator Note', mod: '--operator',
-    world: 'Out-of-world',
-    desc: 'Project-level update from the operator. Site changes, build progress, decisions.',
+    slug: 'operator-note', label: 'Note Op&eacute;rateur', mod: '--operator',
+    world: 'Hors-monde',
+    desc: 'Mise &agrave; jour niveau projet de l&rsquo;op&eacute;rateur. Changements site, avancement, d&eacute;cisions.',
   },
   {
-    slug: 'network-dispatch', label: 'Network Dispatch', mod: '--dispatch',
+    slug: 'network-dispatch', label: 'D&eacute;p&ecirc;che R&eacute;seau', mod: '--dispatch',
     world: 'In-world',
-    desc: 'In-world bulletin from the DeadMTL signal network. Fiction and lore content.',
+    desc: 'Bulletin in-world du r&eacute;seau de signal DeadMTL. Contenu fiction et lore.',
   },
   {
-    slug: 'field-report', label: 'Field Report', mod: '--field',
+    slug: 'field-report', label: 'Rapport de Terrain', mod: '--field',
     world: 'In-world',
-    desc: 'Survivor-level account from the field. Enclave events, signal captures, incident logs.',
+    desc: 'T&eacute;moignage niveau survivant depuis le terrain. &Eacute;v&eacute;nements enclave, captures de signal, journaux d&rsquo;incidents.',
   },
   {
-    slug: 'research-file', label: 'Research File', mod: '--research',
-    world: 'Mixed',
-    desc: 'Map, lore, or technical archive entry. May reference both real project work and in-world framing.',
+    slug: 'research-file', label: 'Fichier Recherche', mod: '--research',
+    world: 'Mixte',
+    desc: 'Entr&eacute;e d&rsquo;archive cartographique, lore, ou technique. Peut r&eacute;f&eacute;rencer le projet r&eacute;el et le cadrage in-world.',
   },
 ] as const;
 ---
 
 <Base
-  title="Knowledge Center"
+  title="Centre de Connaissances"
   description="DeadMTL Centre de Connaissances — guides de survie, doctrine serveur, recherche cartographique. Nœud archive public."
 >
 
@@ -111,16 +111,16 @@ const contentTypes = [
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
     <div class="th__eyebrow">TERMINAL PUBLIC // N&OElig;UD LASALLE // SAISON 0</div>
-    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Knowledge Center</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Centre de Connaissances</div>
     <p class="th__body">
-      The Knowledge Center is the public archive for survival guides, server doctrine,
-      map research, field reports, and technical notes.<br />
-      The player survives in-game. The human behind the player reads the network.
+      Le Centre de Connaissances est l&rsquo;archive publique pour les guides de survie, la doctrine serveur,
+      la recherche cartographique, les rapports de terrain, et les notes techniques.<br />
+      Le joueur survit en jeu. L&rsquo;humain derri&egrave;re le joueur lit le r&eacute;seau.
     </p>
     <div class="th__cta">
-      <a href="/knowledge/season-0-survival-primer/" class="term-btn term-btn--teal">Season 0 Survival Primer &rsaquo;</a>
-      <a href="/rules/"                              class="term-btn term-btn--ghost">Server Doctrine &rsaquo;</a>
-      <a href="/map/"                                class="term-btn term-btn--ghost">Map Research &rsaquo;</a>
+      <a href="/knowledge/season-0-survival-primer/" class="term-btn term-btn--teal">Guide de Survie Saison 0 &rsaquo;</a>
+      <a href="/rules/"                              class="term-btn term-btn--ghost">Doctrine Serveur &rsaquo;</a>
+      <a href="/map/"                                class="term-btn term-btn--ghost">Recherche Cartographique &rsaquo;</a>
     </div>
   </div>
 </section>
@@ -129,8 +129,8 @@ const contentTypes = [
 <section class="home-section" style="padding-block: 2rem;">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">First Article</span>
-      <h2 class="hs__title">Now Available</h2>
+      <span class="hs__label">Premier Article</span>
+      <h2 class="hs__title">Maintenant Disponible</h2>
     </div>
     <a class="term-panel" href="/knowledge/season-0-survival-primer/" style="text-decoration:none; display:block; transition:background 0.15s;">
       <div class="term-header">
@@ -139,14 +139,14 @@ const contentTypes = [
         <span class="th__info th__tag--amber" style="color:var(--teal);">Available</span>
       </div>
       <div style="padding:1.5rem;">
-        <div style="font-family:var(--font-mono); font-size:1rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); margin-bottom:0.5rem;">Season 0 Survival Primer</div>
+        <div style="font-family:var(--font-mono); font-size:1rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); margin-bottom:0.5rem;">Guide de Survie Saison 0</div>
         <p style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-dim); line-height:1.65; margin-bottom:1rem;">
           What Season 0 is, how DeadMTL survival is designed to feel, first enclave doctrine for Saint-Paul-&Eacute;mard, player principles, and current honest limits. The server is not open. This article is preparation.
         </p>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <span class="module-status module-status--available">available</span>
+          <span class="module-status module-status--available">disponible</span>
           <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); padding:0.18em 0.5em; border:1px solid var(--border);">6 sections</span>
-          <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); padding:0.18em 0.5em; border:1px solid var(--teal-dark);">Read &rsaquo;</span>
+          <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); padding:0.18em 0.5em; border:1px solid var(--teal-dark);">Lire &rsaquo;</span>
         </div>
       </div>
     </a>
@@ -193,9 +193,9 @@ const contentTypes = [
 <section class="home-section" id="survival-guides">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Archive Modules</span>
-      <h2 class="hs__title">Available Content</h2>
-      <p class="hs__sub">All content is read-only public access. No account required.</p>
+      <span class="hs__label">Modules Archives</span>
+      <h2 class="hs__title">Contenu Disponible</h2>
+      <p class="hs__sub">Tout le contenu est en acc&egrave;s public lecture seulement. Aucun compte requis.</p>
     </div>
 
     <div class="module-grid">
@@ -215,22 +215,22 @@ const contentTypes = [
 <section class="home-section">
   <div class="container container--narrow">
     <div class="hs__head">
-      <span class="hs__label">Archive Node</span>
-      <h2 class="hs__title">LaSalle Education Node</h2>
+      <span class="hs__label">N&oelig;ud Archive</span>
+      <h2 class="hs__title">N&oelig;ud &Eacute;ducatif LaSalle</h2>
     </div>
 
     <div class="term-panel term-panel--teal">
       <div class="term-header">
-        <span class="th__tag">Node Classification</span>
+        <span class="th__tag">Classification N&oelig;ud</span>
         <span class="th__rule"></span>
-        <span class="th__info">Archive / Education</span>
+        <span class="th__info">Archive / &Eacute;ducation</span>
       </div>
       <div style="padding:1.25rem 1.5rem;">
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75; margin-bottom:0.9rem;">
-          Within the DeadMTL world-build, the LaSalle node serves as the primary education and archive anchor for the southwest sector network. It is not a specific building in the survival map yet — it is a conceptual classification for this knowledge channel.
+          Dans le world-build DeadMTL, le n&oelig;ud LaSalle sert d&rsquo;ancre principale pour les archives et l&rsquo;&eacute;ducation du r&eacute;seau sectoriel sud-ouest. Ce n&rsquo;est pas encore un b&acirc;timent sp&eacute;cifique dans la carte de survie &mdash; c&rsquo;est une classification conceptuelle pour ce canal de connaissances.
         </p>
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75;">
-          As map content develops, the LaSalle zone will be the pressure front on the west edge of Saint-Paul-Emard. The "LaSalle Node" designation in the Knowledge Center is a planning label for the archive function, not a mapped building or in-game location yet.
+          Au fur et &agrave; mesure que le contenu de la carte se d&eacute;veloppe, la zone LaSalle sera le front de pression sur le bord ouest de Saint-Paul-&Eacute;mard. La d&eacute;signation &laquo;&nbsp;N&oelig;ud LaSalle&nbsp;&raquo; dans le Centre de Connaissances est une &eacute;tiquette de planification pour la fonction d&rsquo;archive, pas encore un b&acirc;timent cart&eacute; ou un emplacement en jeu.
         </p>
       </div>
     </div>
@@ -279,9 +279,9 @@ const contentTypes = [
 <section class="home-section" style="padding-block:2.5rem;">
   <div class="container">
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-      <a href="/dispatch/" class="term-btn term-btn--teal">Read Dispatches &rsaquo;</a>
-      <a href="/map/"      class="term-btn term-btn--ghost">Open Map &rsaquo;</a>
-      <a href="/"          class="term-btn term-btn--ghost">&larr; Home</a>
+      <a href="/dispatch/" class="term-btn term-btn--teal">Lire les Transmissions &rsaquo;</a>
+      <a href="/map/"      class="term-btn term-btn--ghost">Ouvrir la Carte &rsaquo;</a>
+      <a href="/"          class="term-btn term-btn--ghost">&larr; Accueil</a>
     </div>
   </div>
 </section>

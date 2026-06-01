@@ -31,33 +31,33 @@ const mapNodes = [
 // ─── Data: knowledge modules ──────────────────────────────────────────────────
 const knowledgeModules = [
   {
-    tag: 'Survival',
-    title: 'Field Survival Guide',
-    desc: 'Enclave-level survival protocols for Saint-Paul-Emard. Resources, movement, threat levels.',
+    tag: 'Survie',
+    title: 'Guide de Survie Terrain',
+    desc: 'Protocoles de survie pour Saint-Paul-&Eacute;mard. Ressources, d&eacute;placement, niveaux de menace.',
     link: '/knowledge/',
     locked: false,
     tagMod: '',
   },
   {
-    tag: 'Research',
-    title: 'Archive — Knox Event',
-    desc: 'Documented record of how Montreal fractured. Sector-by-sector collapse timeline.',
+    tag: 'Recherche',
+    title: 'Archives &mdash; &Eacute;v&eacute;nement Knox',
+    desc: 'Dossier document&eacute; de la fracture de Montr&eacute;al. Chronologie de l&rsquo;effondrement secteur par secteur.',
     link: '/knowledge/',
     locked: false,
     tagMod: '',
   },
   {
-    tag: 'Server',
-    title: 'Server Doctrine',
-    desc: 'Rules, whitelist process, seasonal structure, no-pay-to-win principles.',
+    tag: 'Serveur',
+    title: 'Doctrine Serveur',
+    desc: 'R&egrave;gles, proc&eacute;dure liste blanche, structure saisonni&egrave;re, principes sans pay-to-win.',
     link: '/rules/',
     locked: false,
     tagMod: '--amber',
   },
   {
-    tag: 'Technical',
-    title: 'Technical Notes',
-    desc: 'Modlist, config templates, map tooling, PZMapForge documentation.',
+    tag: 'Technique',
+    title: 'Notes Techniques',
+    desc: 'Liste de mods, gabarits de config, outils cartographiques, documentation PZMapForge.',
     link: '/assets/',
     locked: false,
     tagMod: '--violet',
@@ -67,33 +67,33 @@ const knowledgeModules = [
 // ─── Data: asset forge tools ──────────────────────────────────────────────────
 const assetTools = [
   {
-    tag: 'Tool',
+    tag: 'Outil',
     title: 'PZMapForge',
-    desc: 'Deterministic map cell generator and toolchain for Project Zomboid custom map development.',
+    desc: 'G&eacute;n&eacute;rateur d&eacute;terministe de cellules et cha&icirc;ne d&rsquo;outils pour le d&eacute;veloppement de cartes custom Project Zomboid.',
     link: 'https://github.com/mrcheval91/PZMapForge',
     locked: false,
     tagMod: '--amber',
   },
   {
-    tag: 'Map',
+    tag: 'Carte',
     title: 'pz-sud-ouest-montreal',
-    desc: 'Public custom map mod. Southwest Montreal — Ville-Emard, Cote-Saint-Paul, canal edge.',
+    desc: 'Mod de carte custom public. Sud-ouest de Montr&eacute;al &mdash; Ville-&Eacute;mard, C&ocirc;te-Saint-Paul, rive du canal.',
     link: 'https://github.com/mrcheval91/pz-sud-ouest-montreal',
     locked: false,
     tagMod: '',
   },
   {
     tag: 'Devlog',
-    title: 'Map Blockouts',
-    desc: 'Cell blockout progress, reference material, and procedural generation notes.',
+    title: 'Blockouts Carte',
+    desc: 'Avancement des blockouts de cellules, mat&eacute;riel de r&eacute;f&eacute;rence, notes de g&eacute;n&eacute;ration proc&eacute;durale.',
     link: '/assets/',
     locked: true,
     tagMod: '--muted',
   },
   {
-    tag: 'Gallery',
-    title: 'Screenshot Archive',
-    desc: 'In-progress map screenshots, sector visuals, and procedural output captures.',
+    tag: 'Galerie',
+    title: 'Archives Captures',
+    desc: 'Captures en cours de la carte, visuels sectoriels, et sorties proc&eacute;durales.',
     link: '/assets/',
     locked: true,
     tagMod: '--muted',
@@ -237,7 +237,7 @@ const heroPressure = [
   <span class="ticker__id" aria-hidden="true">&#x25A0;&nbsp;SIGNAL</span>
   <div class="ticker__track">
     <span class="ticker__msg" id="ticker-msg" aria-hidden="true">
-      SEASON 0 SETUP &nbsp;&#x25B8;&nbsp; WHITELIST CLOSED &nbsp;&#x25B8;&nbsp; MAP NODE LASALLE ACTIVE &nbsp;&#x25B8;&nbsp; SERVER PENDING &nbsp;&#x25B8;&nbsp; SAINT-PAUL-EMARD ENCLAVE OPEN
+      SAISON 0 EN CONFIGURATION &nbsp;&#x25B8;&nbsp; LISTE BLANCHE FERM&Eacute;E &nbsp;&#x25B8;&nbsp; N&OElig;UD LASALLE ACTIF &nbsp;&#x25B8;&nbsp; SERVEUR EN ATTENTE &nbsp;&#x25B8;&nbsp; ENCLAVE SAINT-PAUL-&Eacute;MARD OUVERTE
     </span>
   </div>
 </div>
@@ -246,39 +246,39 @@ const heroPressure = [
 <section class="home-section" aria-label="Key information">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Access Points</span>
-      <h2 class="hs__title">Rules / Join / Status</h2>
+      <span class="hs__label">Points d&rsquo;Acc&egrave;s</span>
+      <h2 class="hs__title">R&egrave;gles / Rejoindre / Statut</h2>
     </div>
 
     <div class="practical-grid">
       <a href="/rules/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label">[ 01 ]</span>
-        <span class="pc__title">Rules</span>
+        <span class="pc__title">R&egrave;gles</span>
         <p class="pc__desc">
-          Code of conduct, no-pay-to-win policy, whitelist behavior,
-          admin authority, and Season 0 provisional guidelines.
+          Code de conduite, politique sans pay-to-win, comportement liste blanche,
+          autorit&eacute; admin, et directives provisoires Saison 0.
         </p>
-        <span class="term-btn term-btn--ghost" style="align-self:flex-start; margin-top:auto;">Read Rules &rsaquo;</span>
+        <span class="term-btn term-btn--ghost" style="align-self:flex-start; margin-top:auto;">Lire les R&egrave;gles &rsaquo;</span>
       </a>
 
       <a href="/join/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label pc__label--amber">[ 02 ]</span>
-        <span class="pc__title">Join</span>
+        <span class="pc__title">Rejoindre</span>
         <p class="pc__desc">
-          Whitelist process, Discord channel, connection details,
-          and what to expect in Season 0. Not open yet.
+          Proc&eacute;dure liste blanche, canal Discord, d&eacute;tails de connexion,
+          et &agrave; quoi s&rsquo;attendre en Saison 0. Pas encore ouvert.
         </p>
-        <span class="term-btn term-btn--amber" style="align-self:flex-start; margin-top:auto;">Join Info &rsaquo;</span>
+        <span class="term-btn term-btn--amber" style="align-self:flex-start; margin-top:auto;">Informations &rsaquo;</span>
       </a>
 
       <a href="/construction/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label pc__label--red">[ 03 ]</span>
-        <span class="pc__title">Status</span>
+        <span class="pc__title">Statut</span>
         <p class="pc__desc">
-          Season 0 setup progress, service status, no fake uptime.
-          Server not yet open. Updated when state changes.
+          Avancement configuration Saison 0, statut services, pas de faux uptime.
+          Serveur pas encore ouvert. Mis &agrave; jour &agrave; chaque changement.
         </p>
-        <span class="term-btn term-btn--red" style="align-self:flex-start; margin-top:auto;">View Status &rsaquo;</span>
+        <span class="term-btn term-btn--red" style="align-self:flex-start; margin-top:auto;">Voir le Statut &rsaquo;</span>
       </a>
     </div>
   </div>
@@ -295,9 +295,9 @@ const heroPressure = [
 
     <div class="term-panel">
       <div class="term-header">
-        <span class="th__tag">Dispatch Feed</span>
+        <span class="th__tag">Canal Transmissions</span>
         <span class="th__rule"></span>
-        <span class="th__info">{latestDispatches.length + staticFeed.length} entries</span>
+        <span class="th__info">{latestDispatches.length + staticFeed.length} entr&eacute;es</span>
       </div>
 
       <div class="dispatch-feed">
@@ -328,7 +328,7 @@ const heroPressure = [
     </div>
 
     <div style="margin-top:1rem;">
-      <a href="/dispatch/" class="term-btn term-btn--ghost">All Dispatches &rsaquo;</a>
+      <a href="/dispatch/" class="term-btn term-btn--ghost">Toutes les transmissions &rsaquo;</a>
     </div>
   </div>
 </section>
@@ -386,7 +386,7 @@ const heroPressure = [
           <div class={`mc__tag mc__tag${mod.tagMod}`}>{mod.tag}</div>
           <div class="mc__title">{mod.title}</div>
           <p class="mc__desc">{mod.desc}</p>
-          <span class="mc__link">Open</span>
+          <span class="mc__link">Ouvrir</span>
         </a>
       ))}
     </div>
@@ -414,7 +414,7 @@ const heroPressure = [
           <div class={`mc__tag mc__tag${tool.tagMod}`}>{tool.tag}</div>
           <div class="mc__title">{tool.title}</div>
           <p class="mc__desc">{tool.desc}</p>
-          <span class="mc__link">{tool.link.startsWith('http') ? 'GitHub' : 'Open'}</span>
+          <span class="mc__link">{tool.link.startsWith('http') ? 'GitHub' : 'Ouvrir'}</span>
         </a>
       ))}
     </div>
