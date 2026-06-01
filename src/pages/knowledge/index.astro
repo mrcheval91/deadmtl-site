@@ -1,11 +1,242 @@
 ---
 import Base from '../../layouts/Base.astro';
+
+// ─── Knowledge modules ────────────────────────────────────────────────────────
+const modules = [
+  {
+    type: 'Survival',
+    title: 'Survival Guides',
+    desc: 'Enclave-level protocols for Saint-Paul-Emard. Resources, movement, threat assessment, caching, and enclave boundary rules.',
+    status: 'draft',
+    statusMod: '--draft',
+    link: '#survival-guides',
+  },
+  {
+    type: 'Doctrine',
+    title: 'Server Doctrine',
+    desc: 'Rules, whitelist process, seasonal structure, and no-pay-to-win principles. The operating law for DeadMTL as a server project.',
+    status: 'available',
+    statusMod: '--available',
+    link: '/rules/',
+  },
+  {
+    type: 'Survey',
+    title: 'Map Research',
+    desc: 'Sector survey data, zone pressure analysis, build scope, and expansion planning for the southwest Montreal map.',
+    status: 'active',
+    statusMod: '--active',
+    link: '/map/',
+  },
+  {
+    type: 'Technical',
+    title: 'Technical Notes',
+    desc: 'Modlist documentation, config templates, PZMapForge toolchain, and server infrastructure references.',
+    status: 'draft',
+    statusMod: '--draft',
+    link: '/assets/',
+  },
+  {
+    type: 'Archive',
+    title: 'Field Reports',
+    desc: 'Survivor accounts, signal captures, and incident logs from active sectors. The dispatch archive is the primary field record.',
+    status: 'active',
+    statusMod: '--active',
+    link: '/dispatch/',
+  },
+  {
+    type: 'Archive',
+    title: 'Archive Files',
+    desc: 'Canonical lore, collapse timeline, and sector history. The written record of how Montreal fractured and what it became.',
+    status: 'assembling',
+    statusMod: '--assembling',
+    link: '#archive-files',
+  },
+] as const;
+
+// ─── Archive status rows ──────────────────────────────────────────────────────
+const archiveStatus = [
+  ['Archive Status',   'Assembling',  'amber'],
+  ['Server Doctrine',  'Available',   'teal'],
+  ['Map Research',     'Active',      'teal'],
+  ['Survival Guides',  'Draft',       'amber'],
+  ['Technical Notes',  'Draft',       'amber'],
+  ['Public Access',    'Read-Only',   'muted'],
+] as const;
+
+// ─── Content types ────────────────────────────────────────────────────────────
+const contentTypes = [
+  {
+    slug: 'server-notice', label: 'Server Notice', mod: '--notice',
+    world: 'Out-of-world',
+    desc: 'Real operational update about the server, site, or project state.',
+  },
+  {
+    slug: 'operator-note', label: 'Operator Note', mod: '--operator',
+    world: 'Out-of-world',
+    desc: 'Project-level update from the operator. Site changes, build progress, decisions.',
+  },
+  {
+    slug: 'network-dispatch', label: 'Network Dispatch', mod: '--dispatch',
+    world: 'In-world',
+    desc: 'In-world bulletin from the DeadMTL signal network. Fiction and lore content.',
+  },
+  {
+    slug: 'field-report', label: 'Field Report', mod: '--field',
+    world: 'In-world',
+    desc: 'Survivor-level account from the field. Enclave events, signal captures, incident logs.',
+  },
+  {
+    slug: 'research-file', label: 'Research File', mod: '--research',
+    world: 'Mixed',
+    desc: 'Map, lore, or technical archive entry. May reference both real project work and in-world framing.',
+  },
+] as const;
 ---
-<Base title="Knowledge Center" description="DeadMTL Knowledge Center — survival guides, lore archive, server doctrine, technical notes.">
-  <div class="placeholder-page">
-    <div class="ph__tag">Public Terminal</div>
-    <h1>Knowledge Center</h1>
-    <p>Survival guides, lore archive, server doctrine, and technical documentation.<br />Content being assembled. Season 0 in setup.</p>
-    <a href="/" class="term-btn term-btn--ghost">&larr; Home</a>
+
+<Base
+  title="Knowledge Center"
+  description="DeadMTL Knowledge Center — survival guides, server doctrine, map research, field reports, and technical notes. Public archive node."
+>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
+  <div class="th__inner">
+    <div class="th__eyebrow">PUBLIC TERMINAL // LASALLE NODE // SEASON 0</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Knowledge Center</div>
+    <p class="th__body">
+      The Knowledge Center is the public archive for survival guides, server doctrine,
+      map research, field reports, and technical notes.<br />
+      The player survives in-game. The human behind the player reads the network.
+    </p>
+    <div class="th__cta">
+      <a href="#survival-guides"  class="term-btn term-btn--ghost">Survival Guides &rsaquo;</a>
+      <a href="/rules/"           class="term-btn term-btn--teal">Server Doctrine &rsaquo;</a>
+      <a href="/map/"             class="term-btn term-btn--ghost">Map Research &rsaquo;</a>
+    </div>
   </div>
+</section>
+
+<!-- ─── ARCHIVE STATUS PANEL ─────────────────────────────────────────────── -->
+<section class="home-section">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Archive Node</span>
+      <h2 class="hs__title">Status Overview</h2>
+    </div>
+
+    <div class="term-panel">
+      <div class="term-header">
+        <span class="th__tag">LaSalle Node // Public Terminal</span>
+        <span class="th__rule"></span>
+        <span class="th__info">Read-Only Access</span>
+      </div>
+      <table style="width:100%; border-collapse:collapse;">
+        {archiveStatus.map(([label, value, color]) => (
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding:0.55rem 1.25rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); width:45%;">{label}</td>
+            <td style={`padding:0.55rem 1.25rem; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--${color === 'muted' ? 'text-muted' : color === 'teal' ? 'teal' : 'amber'});`}>{value}</td>
+          </tr>
+        ))}
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KNOWLEDGE MODULES ─────────────────────────────────────────────────── -->
+<section class="home-section" id="survival-guides">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Archive Modules</span>
+      <h2 class="hs__title">Available Content</h2>
+      <p class="hs__sub">All content is read-only public access. No account required.</p>
+    </div>
+
+    <div class="module-grid">
+      {modules.map(mod => (
+        <a class="module-card" href={mod.link} style="text-decoration:none;">
+          <div class="mc__tag">{mod.type}</div>
+          <div class="mc__title">{mod.title}</div>
+          <p class="mc__desc">{mod.desc}</p>
+          <span class={`module-status module-status${mod.statusMod}`}>{mod.status}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── LASALLE NODE SECTION ──────────────────────────────────────────────── -->
+<section class="home-section">
+  <div class="container container--narrow">
+    <div class="hs__head">
+      <span class="hs__label">Archive Node</span>
+      <h2 class="hs__title">LaSalle Education Node</h2>
+    </div>
+
+    <div class="term-panel term-panel--teal">
+      <div class="term-header">
+        <span class="th__tag">Node Classification</span>
+        <span class="th__rule"></span>
+        <span class="th__info">Archive / Education</span>
+      </div>
+      <div style="padding:1.25rem 1.5rem;">
+        <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75; margin-bottom:0.9rem;">
+          Within the DeadMTL world-build, the LaSalle node serves as the primary education and archive anchor for the southwest sector network. It is not a specific building in the survival map yet — it is a conceptual classification for this knowledge channel.
+        </p>
+        <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75;">
+          As map content develops, the LaSalle zone will be the pressure front on the west edge of Saint-Paul-Emard. The "LaSalle Node" designation in the Knowledge Center is a planning label for the archive function, not a mapped building or in-game location yet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTENT TYPES ─────────────────────────────────────────────────────── -->
+<section class="home-section">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Signal Classification</span>
+      <h2 class="hs__title">Dispatch Content Types</h2>
+      <p class="hs__sub">Understanding what kind of signal a transmission is. Operator notes and server notices are real project updates. Network dispatches and field reports are in-world fiction.</p>
+    </div>
+
+    <div class="taxonomy-grid">
+      {contentTypes.map(t => (
+        <div class="tax-cell">
+          <div class={`tc__type tc__type${t.mod}`}>{t.slug}</div>
+          <div class="tc__label">{t.label}</div>
+          <p class="tc__desc">{t.desc}</p>
+          <div class="tc__world">{t.world}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── ARCHIVE FILES PLACEHOLDER ─────────────────────────────────────────── -->
+<section class="home-section" id="archive-files">
+  <div class="container container--narrow">
+    <div class="hs__head">
+      <span class="hs__label">Archive</span>
+      <h2 class="hs__title">Archive Files</h2>
+    </div>
+
+    <div class="signal-wall" style="min-height:8rem;">
+      <div class="sw__label">
+        ARCHIVE FILES PENDING &#x25B8; COLLAPSE TIMELINE IN ASSEMBLY &#x25B8; SECTOR HISTORY NOT YET WRITTEN
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER CTA ────────────────────────────────────────────────────────── -->
+<section class="home-section" style="padding-block:2.5rem;">
+  <div class="container">
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+      <a href="/dispatch/" class="term-btn term-btn--teal">Read Dispatches &rsaquo;</a>
+      <a href="/map/"      class="term-btn term-btn--ghost">Open Map &rsaquo;</a>
+      <a href="/"          class="term-btn term-btn--ghost">&larr; Home</a>
+    </div>
+  </div>
+</section>
+
 </Base>

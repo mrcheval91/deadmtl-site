@@ -15,62 +15,109 @@ function fmtDate(iso: string): string {
   ];
   return `${months[m - 1]} ${d}, ${y}`;
 }
+
+// Type display metadata
+const typeDisplay: Record<string, { label: string; mod: string }> = {
+  'server-notice':    { label: 'Server Notice',    mod: 'notice' },
+  'operator-note':    { label: 'Operator Note',    mod: 'operator' },
+  'network-dispatch': { label: 'Network Dispatch', mod: 'dispatch' },
+  'field-report':     { label: 'Field Report',     mod: 'field' },
+  'research-file':    { label: 'Research File',    mod: 'system' },
+};
 ---
 
 <Base
   title="Dispatch"
-  description="DeadMTL Dispatch — field reports and signal logs from Saint-Paul-Emard, winter 1993–1994."
+  description="DeadMTL Dispatch — field reports, signal logs, and operator notes. Season 0 in setup."
 >
 
-  <section class="hero" style="padding-block: clamp(2.5rem, 6vw, 5rem);">
-    <div class="container hero__inner">
-      <div class="hero__location">Signal Channel &mdash; Active</div>
-      <h1 class="logo-display" style="font-size: clamp(1.8rem, 5vw, 3.5rem);">
-        Dispatch
-      </h1>
-      <p class="hero__body" style="margin-bottom: 0;">
-        Field reports, signal captures, and incident logs from the Saint-Paul-&Eacute;mard
-        enclave. Winter 1993&ndash;1994. Listed most recent first.
-      </p>
+<section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
+  <div class="th__inner">
+    <div class="th__eyebrow">DISPATCH CHANNEL // MTL NODE // SEASON 0</div>
+    <div class="th__headline" style="font-size: clamp(1.8rem,5vw,3.5rem);">Dispatch</div>
+    <p class="th__body" style="margin-bottom: 0;">
+      Field reports, signal captures, operator notes, and incident logs.
+      In-world transmissions are dated to winter 1993&ndash;1994.
+      Operator notes use real dates and are marked out-of-world.
+    </p>
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="container">
+
+    <!-- Taxonomy panel -->
+    <div class="hs__head">
+      <span class="hs__label">Signal Classification</span>
+      <h2 class="hs__title">Content Types</h2>
+      <p class="hs__sub">Transmissions are classified by type. Operator notes and server notices are real project updates. All other types are in-world or mixed.</p>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow eyebrow--accent">
-        {dispatches.length} transmission{dispatches.length !== 1 ? 's' : ''} on record
+    <div class="taxonomy-grid" style="margin-bottom:2.5rem;">
+      {Object.entries(typeDisplay).map(([key, val]) => (
+        <div class="tax-cell">
+          <div class={`tc__type tc__type--${val.mod}`}>{key}</div>
+          <div class="tc__label">{val.label}</div>
+          <div class="tc__world">
+            {key === 'operator-note' || key === 'server-notice'
+              ? 'Out-of-world'
+              : key === 'research-file'
+              ? 'Mixed'
+              : 'In-world'}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Dispatch list -->
+    <div class="hs__head">
+      <span class="hs__label">Archive</span>
+      <h2 class="hs__title">All Transmissions</h2>
+      <p class="hs__sub">{dispatches.length} entr{dispatches.length !== 1 ? 'ies' : 'y'} on record. Most recent first.</p>
+    </div>
+
+    <div class="term-panel">
+      <div class="term-header">
+        <span class="th__tag">Dispatch Feed</span>
+        <span class="th__rule"></span>
+        <span class="th__info">{dispatches.length} transmissions</span>
       </div>
 
-      <div class="dispatch-list">
-        {dispatches.map(entry => (
-          <a class="dispatch-card" href={`/dispatch/${entry.data.slug}/`}>
-            <div class="card__body">
-              <div class="card__meta">
-                <span class="meta__date">{fmtDate(entry.data.date)}</span>
-                <span class="meta__zone">{entry.data.zone}</span>
+      <div class="dispatch-feed">
+        {dispatches.map(entry => {
+          const tDisp = typeDisplay[entry.data.type ?? 'field-report'] ?? typeDisplay['field-report'];
+          return (
+            <a class="feed-item feed-item--link" href={`/dispatch/${entry.data.slug}/`}>
+              <span class={`fi__type fi__type--${tDisp.mod}`}>{tDisp.label}</span>
+              <div class="fi__body">
+                <div class="fi__meta" style="display:flex; gap:0.75rem; margin-bottom:0.3rem;">
+                  <span style="font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">{fmtDate(entry.data.date)}</span>
+                  <span style="font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); padding:0 0.4em; border:1px solid var(--border); letter-spacing:0.1em; text-transform:uppercase;">{entry.data.zone}</span>
+                </div>
+                <div class="fi__title">{entry.data.title}</div>
+                <p class="fi__text">{entry.data.excerpt}</p>
               </div>
-              <div class="card__title">{entry.data.title}</div>
-              <p class="card__excerpt">{entry.data.excerpt}</p>
-              <p class="card__excerpt" style="margin-top: 0.4rem; font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.06em;">
-                {entry.data.signal}
-              </p>
-            </div>
-            <span class={`card__status card__status--${entry.data.status}`}>
-              {entry.data.status}
-            </span>
-          </a>
-        ))}
+              <span class={`card__status card__status--${entry.data.status}`} style="align-self:start; flex-shrink:0;">
+                {entry.data.status}
+              </span>
+            </a>
+          );
+        })}
       </div>
+    </div>
 
+    <div style="margin-top:1.25rem;">
       <div class="status-banner">
         <span class="banner__label">Archive Status</span>
         <span class="banner__text">
-          All transmissions originate from the Saint-Paul-&Eacute;mard sector.
-          Other district signals are not yet on record.
-          <a href="/saint-paul-emard/" style="color: var(--brass-light); margin-left: 0.5rem;">Zone Dossier &rarr;</a>
+          Field reports originate from the Saint-Paul-&Eacute;mard sector.
+          Operator notes are real project updates.
+          <a href="/saint-paul-emard/" style="color:var(--teal); margin-left:0.5rem;">Zone Dossier &rarr;</a>
+          <a href="/knowledge/" style="color:var(--teal); margin-left:0.75rem;">Knowledge Center &rarr;</a>
         </span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 </Base>
