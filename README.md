@@ -1,87 +1,376 @@
 # deadmtl-site
 
-Static site for DeadMTL — Montreal survival world, server hub, lore archive,
-and media platform set after the Knox Event, winter 1993–1994.
+Static Astro site for DeadMTL — a Montréal survival network, server hub,
+dispatch archive, map terminal, and media platform for a Project Zomboid world
+set in winter 1993.
 
-Built with Astro, SCSS (Cathedral of Decay design system), and plain JS.
+DeadMTL is an independent community project. It is not affiliated with
+The Indie Stone.
+
+## Current public status
+
+- Static website: live.
+- Game server: pending.
+- Whitelist: closed.
+- Discord: pending.
+- Season 0: setup.
+- Map: in progress.
+- Site signal: online.
+
+The site must never imply that the game server is online unless it actually is.
+Use "Site Signal: Online" for the website and "Game Server: Pending" for the
+server until that changes.
 
 ## Stack
 
-- [Astro](https://astro.build) v5 — static site generator
-- SCSS — compiled by Astro's built-in Vite pipeline (no separate build step)
-- Vanilla JS — mobile nav, snow particle effect, progressive enhancement only
-- No React, no Svelte, no CMS, no external data
+- Astro v5 static site generator.
+- SCSS compiled through Astro/Vite.
+- Vanilla JavaScript for progressive enhancement.
+- Astro Content Collections for dispatch entries.
+- GitHub Pages deployment.
+- No React.
+- No Svelte.
+- No CMS.
+- No backend.
+- No analytics.
+- No runtime database.
+- No runtime image upload.
 
-## Local Development
+## Local development
 
-    npm install
-    npm run dev        # dev server with HMR at http://localhost:4321
-    npm run build      # build to dist/
-    npm run preview    # preview production build
+```powershell
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
-## Project Structure
+Common flow:
 
-    src/
-      layouts/
-        Base.astro              Base HTML layout with nav and footer
-      pages/
-        index.astro             Home page
-        construction.astro      Server status / construction page
-        404.astro               Custom 404
-        saint-paul-emard/       First active zone dossier (Slice 02)
-        dispatch/               Dispatch placeholder
-        archive/                Archive placeholder
-        map/                    Map placeholder
-      styles/
-        global.scss             SCSS entry point
-        _tokens.scss            Design tokens (CSS custom properties + SCSS variables)
-        _reset.scss             CSS reset
-        _layout.scss            Container, grid, section layout
-        _components.scss        All reusable components + zone, dispatch patterns
-      content/
-        config.ts               Astro Content Collection definitions
-        dispatch/               Dispatch markdown entries
-          signal-monk.md
-          canal-cache.md
-          lasalle-pressure-night.md
-    public/
-      favicon.svg               Text-based favicon
-      scripts/
-        main.js                 Served as static asset (mobile nav, snow effect)
+```powershell
+cd E:\Omni\Zomboid\deadmtl-site
+
+npm run build
+npm run preview
+```
+
+Then open the local preview URL printed by Astro, usually:
+
+```text
+http://localhost:4321/
+```
+
+## Deployment
+
+The site is static. Production deploy is handled by GitHub Pages on push to
+`main`.
+
+```powershell
+git status --short
+git add <files>
+git commit -m "<message>"
+git pull --rebase origin main
+git push origin main
+```
+
+After pushing, watch the GitHub Pages workflow if needed:
+
+```powershell
+gh run list --repo mrcheval91/deadmtl-site --limit 3
+gh run watch --repo mrcheval91/deadmtl-site
+```
+
+Production domain:
+
+```text
+deadmtl.com
+```
+
+## Project structure
+
+```text
+src/
+  components/
+    DeadMtlInteractiveMap.astro     Interactive tactical map component
+
+  content/
+    config.ts                       Astro content collection definitions
+    dispatch/                       Dispatch markdown entries
+
+  data/
+    deadmtl-zones.ts                Zone metadata for the tactical map
+    site-settings.ts                Optional site/homepage settings if enabled
+
+  layouts/
+    Base.astro                      Base HTML layout, nav, footer, head slots
+
+  pages/
+    index.astro                     Homepage
+    construction.astro              Season 0 status / construction page
+    404.astro                       Custom 404
+    archive/                        Archive page
+    assets/                         Asset/tooling page
+    community/                      Community page
+    dispatch/                       Dispatch index and dispatch entries
+    join/                           Join / whitelist info
+    knowledge/                      Knowledge Center
+    map/                            Interactive tactical map
+    rules/                          Server rules
+    saint-paul-emard/               First active zone dossier
+
+  styles/
+    global.scss                     SCSS entry point
+    _tokens.scss                    Design tokens
+    _reset.scss                     CSS reset
+    _layout.scss                    Layout primitives
+    _components.scss                General reusable components
+    _terminal.scss                  Terminal UI, homepage, cards, panels
+    _map.scss                       Tactical map styles
+
+public/
+  favicon.svg
+  images/
+    home/
+      deadmtl-hero.webp             Homepage hero WebP
+      deadmtl-hero-sm.webp          Mobile homepage hero WebP
+      deadmtl-hero.jpg              Homepage hero JPEG fallback
+  maps/
+    arrondissements-quartiers-montreal-200802.svg
+  scripts/
+    main.js                         Nav/ticker progressive enhancement
+    dead-map.js                     Client-side tactical map logic
+
+assets/
+  Local source assets. Not every file here is shipped directly.
+
+docs/
+  HOMEPAGE_IMAGE.md                 Hero image source and derivative notes
+  HOMEPAGE_HERO_SETTINGS.md         Hero settings notes, if added
+  LOCALIZATION.md                   Language/localization doctrine
+  MAP_SYSTEM.md                     Tactical map architecture and limits
+
+scripts/
+  inspect-map-svg.mjs               Non-destructive SVG inspection utility
+  make-hero.py                      Hero derivative generator
+  make-hero-v2.py                   Updated hero derivative generator
+```
+
+Some files above may exist only after their related slice has been applied.
+Do not add duplicate README files at the repo root. Keep root documentation in
+`README.md` and move supporting notes into `docs/`.
 
 ## Routes
 
 | Route | Purpose |
-|-------|---------|
-| `/` | Home (with latest dispatch section) |
-| `/saint-paul-emard/` | Zone dossier — first active sector |
-| `/dispatch/` | Dispatch index — all transmissions |
-| `/dispatch/signal-monk/` | Entry: Signal Monk |
-| `/dispatch/canal-cache/` | Entry: The Canal Cache |
-| `/dispatch/lasalle-pressure-night/` | Entry: The LaSalle Pressure Night |
-| `/construction/` | Season 0 status |
-| `/archive/` | Placeholder |
-| `/map/` | Placeholder |
+|---|---|
+| `/` | Homepage with hero image, status grid, access cards, map teaser, latest dispatches |
+| `/rules/` | Server rules and code of conduct |
+| `/join/` | Whitelist/join information; applications are not open yet |
+| `/construction/` | Season 0 status and honest project limits |
+| `/dispatch/` | Dispatch index |
+| `/dispatch/[slug]/` | Individual dispatch entries |
+| `/saint-paul-emard/` | First active zone dossier |
+| `/map/` | Interactive Montréal tactical map |
+| `/knowledge/` | Knowledge Center |
+| `/assets/` | Tools, assets, PZMapForge links, devlog placeholders |
+| `/community/` | Community/Discord placeholder; no fake invite |
+| `/archive/` | Archive page |
 | `/404` | Custom 404 |
 
-## Content Collections
+## Homepage hero
 
-Dispatch entries live in `src/content/dispatch/` as Markdown files.
-Schema fields: `title`, `slug`, `date` (ISO), `zone`, `signal`, `status`, `excerpt`.
-Add new entries by creating a new `.md` file with required frontmatter.
+The homepage hero uses local static image derivatives under:
 
-## Design System
+```text
+public/images/home/
+```
 
-Theme: Cathedral of Decay.
-Palette: midnight stone, slate violet-gray, candle bone, oxblood red, antique brass.
-Typography: Georgia serif for display, system-ui for body, Courier New for mono.
-All visuals are CSS-generated: no external images, no copyrighted PZ assets.
+Current active derivatives:
 
-## Doctrine
+```text
+deadmtl-hero.webp
+deadmtl-hero-sm.webp
+deadmtl-hero.jpg
+```
 
-- No Project Zomboid logos or copyrighted assets.
+The source image is kept in `assets/` and should not be destroyed when making
+web derivatives.
+
+Hero requirements:
+
+- Root site language is English.
+- French/localized versions come later as separate locale routes or i18n.
+- The image should remain a Montréal/Stade Olympique survival signal, not a
+  generic dark texture.
+- The status grid must stay honest:
+  - Season 0: Setup
+  - Game Server: Pending
+  - Whitelist: Closed
+  - Map: In Progress
+  - Discord: Pending
+  - Site Signal: Online
+
+To change the hero image in the current static workflow:
+
+1. Add or choose a source image under `assets/`.
+2. Generate optimized web derivatives under `public/images/home/`.
+3. Update the homepage image paths or the site settings file if enabled.
+4. Run `npm run build`.
+5. Commit and push.
+
+A Facebook-style live upload UI would require a backend, CMS, or GitHub-writing
+admin layer. Do not add that until deliberately scoped.
+
+## Interactive map
+
+The `/map/` page contains a client-side-only tactical map built from a local
+Montréal borough SVG.
+
+Current map architecture:
+
+- `public/maps/arrondissements-quartiers-montreal-200802.svg`
+- `src/data/deadmtl-zones.ts`
+- `src/components/DeadMtlInteractiveMap.astro`
+- `src/styles/_map.scss`
+- `public/scripts/dead-map.js`
+- `scripts/inspect-map-svg.mjs`
+- `docs/MAP_SYSTEM.md`
+
+The map is static and browser-side only. There is no backend, tracking, or
+analytics.
+
+Known limitation: the current SVG uses older borough boundaries and does not
+expose every desired neighbourhood or borough as a distinct clickable polygon.
+A better post-2002 SVG or custom DeadMTL-specific vector map is future work.
+
+## Content collections
+
+Dispatch entries live in:
+
+```text
+src/content/dispatch/
+```
+
+Expected frontmatter fields include:
+
+```text
+title
+slug
+date
+zone
+signal
+status
+excerpt
+type
+```
+
+Add a new dispatch by creating a Markdown file in `src/content/dispatch/` with
+the required frontmatter.
+
+## Design direction
+
+DeadMTL should feel like:
+
+- 1993 Montréal emergency broadcast
+- pirate municipal BBS
+- contaminated city terminal
+- tactical survival archive
+- cheap degraded media, scanlines, cyan/red signal language
+
+Visual doctrine:
+
+- Cyan / teal: signal, network, identity.
+- Red: threat, contamination, emergency.
+- Amber: pending, warning, operational status.
+- Bone / white: readable public text.
+- Black: void, terminal base.
+
+Do not turn the whole site into full pixel art. Use pixelization, halftone,
+dither, and scanline effects as image/media treatment, while keeping UI text
+sharp and readable.
+
+## Language doctrine
+
+Root/source site language is English.
+
+Allowed in the English root:
+
+- DeadMTL
+- Project Zomboid
+- The Indie Stone
+- Montréal
+- Saint-Paul-Émard
+- LaSalle
+- Verdun
+- Jolicoeur
+- Pont Mercier
+- BBS / PKT / CRIT / LOCK / ACTF-style terminal codes
+
+French localization can be added later as `/fr/` or a proper i18n layer. Do not
+mix French UI and English UI on the root site.
+
+## Asset doctrine
+
+- Do not use Project Zomboid logos or copyrighted game assets.
+- Do not hotlink external images.
+- Use local, intentional, project-owned static assets.
+- Keep source assets in `assets/`.
+- Put optimized shipped images in `public/images/`.
+- Document significant image sources and derivatives in `docs/`.
+
+## Server and community doctrine
+
 - No fake server launch claims.
-- No fake gameplay claims.
+- No fake player counts.
+- No fake Discord invite.
+- No fake uptime.
 - No pay-to-win language.
-- All content is original text and placeholder.
-- DeadMTL is an independent community project, not affiliated with The Indie Stone.
+- No donor gameplay perks.
+- No gameplay advantage sales.
+- The server is pending until a real server address is intentionally published.
+- The whitelist is closed until the join process is intentionally opened.
+
+## Validation checklist
+
+Before committing:
+
+```powershell
+npm run build
+git status --short
+```
+
+For homepage or visual work, also check:
+
+- Root language remains English.
+- No visible escaped HTML entities.
+- No broken hero image paths.
+- No false "game server online" wording.
+- Hero/status remains readable on desktop and mobile.
+- The map page still loads if map-related files were touched.
+
+## Cleanup rule
+
+The repository root should stay clean.
+
+Keep:
+
+```text
+README.md
+CHANGELOG.md
+package.json
+astro.config.mjs
+src/
+public/
+assets/
+docs/
+scripts/
+```
+
+Do not keep generated package notes at root, such as:
+
+```text
+README.txt
+INTEGRATION_NOTES.md
+```
+
+Move supporting notes into `docs/` with a clear filename.
