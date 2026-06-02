@@ -1649,11 +1649,12 @@
   width: 100%;
   height: clamp(400px, 65vh, 780px);
   object-fit: cover;
-  // Shifted from 25% to 42% — brings the collapsed roof-beam ruins into frame
-  // while keeping the tower silhouette visible at the top
+  // blue-neon-readable source — ruins visible, red sky intact
+  // 52% anchor shows lower roof beams; slight pull toward centre
   object-position: center 52%;
-  // Let the cyan scene breathe — reduced dimming, slight contrast lift
-  filter: brightness(0.72) saturate(1.08) contrast(1.02);
+  // Gentle dimming — image already has good contrast; reduce saturation to
+  // let cyan dominate while keeping the red sky as threat accent, not dominant
+  filter: brightness(0.74) saturate(1.02) contrast(1.05);
   transition: filter 0.3s ease;
 }
 
