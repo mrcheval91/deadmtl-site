@@ -68,73 +68,11 @@ const staticFeed = [
     media="(min-width: 901px)"
   />
 
-<!-- ─── DEAD HERO — SPLIT LAYOUT: IDENTITY LEFT / IMAGE PLATE RIGHT ──────── -->
-<section class="dead-hero dead-hero--split" aria-label="DeadMTL network hero">
+<!-- ─── DEAD HERO — FULL-WIDTH BACKGROUND IMAGE ────────────────────────── -->
+<section class="dead-hero dead-hero--full" aria-label="DeadMTL network hero">
 
-  <!-- ── Left column: identity, status, CTAs ─────────────────────────────── -->
-  <div class="dead-hero__text">
-
-    <div class="dead-hero__eyebrow">
-      DEADMTL.BBS.MTL &nbsp;&#x25B8;&nbsp; SURVIVAL NETWORK &nbsp;&#x25B8;&nbsp; WINTER 93/94
-    </div>
-
-    <h1 class="dead-hero__title">DEADMTL</h1>
-
-    <p class="dead-hero__tagline">The city is dead. The network lives.</p>
-
-    <p class="dead-hero__body">
-      A Montréal survival network for Project Zomboid.
-      Winter 1993. Sector maps, field dispatches, server rules,
-      and Season 0 preparation for the Saint-Paul-Émard enclave.
-    </p>
-
-    <!-- Server status — honest, no fake claims -->
-    <div class="dead-status-grid" role="status" aria-label="Server status">
-      <div class="dsg__item">
-        <span class="dsg__label">Season 0</span>
-        <span class="dsg__value dsg__value--amber">SETUP</span>
-      </div>
-      <div class="dsg__item">
-        <span class="dsg__label">Game Server</span>
-        <span class="dsg__value dsg__value--red">PENDING</span>
-      </div>
-      <div class="dsg__item">
-        <span class="dsg__label">Whitelist</span>
-        <span class="dsg__value dsg__value--red">CLOSED</span>
-      </div>
-      <div class="dsg__item">
-        <span class="dsg__label">Map</span>
-        <span class="dsg__value dsg__value--teal">IN PROGRESS</span>
-      </div>
-      <div class="dsg__item">
-        <span class="dsg__label">Discord</span>
-        <span class="dsg__value dsg__value--amber">PENDING</span>
-      </div>
-      <div class="dsg__item">
-        <span class="dsg__label">Site Signal</span>
-        <span class="dsg__value dsg__value--teal">ONLINE</span>
-      </div>
-    </div>
-
-    <div class="dead-hero__cta">
-      <a href="/construction/" class="term-btn term-btn--red">Season 0 Status</a>
-      <a href="/rules/"        class="term-btn term-btn--ghost">Read the Rules</a>
-      <a href="/map/"          class="term-btn term-btn--teal">Open the Map</a>
-      <a href="/dispatch/"     class="term-btn term-btn--ghost">Dispatch</a>
-    </div>
-
-  </div>
-
-  <!-- ── Right column: framed image plate — no text overlay ──────────────── -->
-  <div class="dead-hero__plate">
-
-    <!-- Corner frame brackets on the plate -->
-    <span class="dead-hero__corner dead-hero__corner--tl" aria-hidden="true"></span>
-    <span class="dead-hero__corner dead-hero__corner--tr" aria-hidden="true"></span>
-    <span class="dead-hero__corner dead-hero__corner--bl" aria-hidden="true"></span>
-    <span class="dead-hero__corner dead-hero__corner--br" aria-hidden="true"></span>
-
-    <!-- The image — stands on its own, no heavy gradient over it -->
+  <!-- Full-bleed background image -->
+  <div class="dead-hero__bg" aria-hidden="true">
     <picture>
       <source
         srcset="/images/home/deadmtl-hero-sm.webp"
@@ -147,8 +85,8 @@ const staticFeed = [
       />
       <img
         src="/images/home/deadmtl-hero.jpg"
-        alt="Stade Olympique de Montréal — collapsed stadium and roof-beam ruins, winter 1993"
-        class="dead-hero__image"
+        alt=""
+        class="dead-hero__bg-image"
         width="1920"
         height="1128"
         loading="eager"
@@ -157,13 +95,76 @@ const staticFeed = [
       />
     </picture>
 
-    <!-- Small caption — bottom corner, unobtrusive -->
-    <div class="dead-hero__caption" aria-hidden="true">
-      STADE OLYMPIQUE<br />
-      MONTRÉAL &mdash; SECTOR SCAN<br />
-      WINTER 1993
-    </div>
+    <!-- Left-side scrim only: keeps text readable without burying the stadium ruins -->
+    <div class="dead-hero__bg-overlay" aria-hidden="true"></div>
+  </div>
 
+  <!-- Terminal corner frame -->
+  <span class="dead-hero__corner dead-hero__corner--tl" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--tr" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--bl" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--br" aria-hidden="true"></span>
+
+  <!-- Foreground content -->
+  <div class="dead-hero__inner container">
+    <div class="dead-hero__content">
+
+      <div class="dead-hero__eyebrow">
+        DEADMTL.BBS.MTL &nbsp;&#x25B8;&nbsp; SURVIVAL NETWORK &nbsp;&#x25B8;&nbsp; WINTER 93/94
+      </div>
+
+      <h1 class="dead-hero__title">DEADMTL</h1>
+
+      <p class="dead-hero__tagline">The city is dead. The network lives.</p>
+
+      <p class="dead-hero__body">
+        A Montréal survival network for Project Zomboid.
+        Winter 1993. Sector maps, field dispatches, server rules,
+        and Season 0 preparation for the Saint-Paul-Émard enclave.
+      </p>
+
+      <!-- Server status — honest, no fake claims -->
+      <div class="dead-status-grid" role="status" aria-label="Server status">
+        <div class="dsg__item">
+          <span class="dsg__label">Season 0</span>
+          <span class="dsg__value dsg__value--amber">SETUP</span>
+        </div>
+        <div class="dsg__item">
+          <span class="dsg__label">Game Server</span>
+          <span class="dsg__value dsg__value--red">PENDING</span>
+        </div>
+        <div class="dsg__item">
+          <span class="dsg__label">Whitelist</span>
+          <span class="dsg__value dsg__value--red">CLOSED</span>
+        </div>
+        <div class="dsg__item">
+          <span class="dsg__label">Map</span>
+          <span class="dsg__value dsg__value--teal">IN PROGRESS</span>
+        </div>
+        <div class="dsg__item">
+          <span class="dsg__label">Discord</span>
+          <span class="dsg__value dsg__value--amber">PENDING</span>
+        </div>
+        <div class="dsg__item">
+          <span class="dsg__label">Site Signal</span>
+          <span class="dsg__value dsg__value--teal">ONLINE</span>
+        </div>
+      </div>
+
+      <div class="dead-hero__cta">
+        <a href="/construction/" class="term-btn term-btn--red">Season 0 Status</a>
+        <a href="/rules/"        class="term-btn term-btn--ghost">Read the Rules</a>
+        <a href="/map/"          class="term-btn term-btn--teal">Open the Map</a>
+        <a href="/dispatch/"     class="term-btn term-btn--ghost">Dispatch</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dead-hero__caption" aria-hidden="true">
+    STADE OLYMPIQUE<br />
+    MONTRÉAL &mdash; SECTOR SCAN<br />
+    WINTER 1993
   </div>
 
 </section>
