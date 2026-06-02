@@ -13,44 +13,6 @@ function fmtDate(iso: string): string {
   return `${months[m - 1]} ${String(d).padStart(2,'0')} ${y}`;
 }
 
-const heroMap = [
-  { abbr: 'ST-HENRI',  tag: 'LOCK', mod: 'locked'  },
-  { abbr: 'CSP-IND',   tag: 'ACTF', mod: 'active'  },
-  { abbr: 'JOLICOER',  tag: 'HOT',  mod: 'hot'     },
-  { abbr: 'LASALLE',   tag: 'CRIT', mod: 'crit'    },
-  { abbr: 'P.MERCER',  tag: 'SELL', mod: 'locked'  },
-  { abbr: 'CANAL SV',  tag: 'ACTF', mod: 'active'  },
-  { abbr: 'V-EMARD',   tag: 'ACTF', mod: 'active'  },
-  { abbr: 'MONK RSD',  tag: 'ACTF', mod: 'active'  },
-  { abbr: 'ANGRIGN',   tag: 'HOT',  mod: 'hot'     },
-  { abbr: 'VERDUN',    tag: 'LOCK', mod: 'locked'  },
-] as const;
-
-const heroPressure = [
-  { label: 'LASALLE',   pct: 78,  mod: 'crit',   display: '78%'    },
-  { label: 'JOLICOEUR', pct: 52,  mod: 'hot',    display: '52%'    },
-  { label: 'P.MERCIER', pct: 100, mod: 'sealed', display: 'SEALED' },
-] as const;
-
-const knowledgeModules = [
-  { tag: 'Survival', title: 'Field Survival Guide',      desc: 'Enclave-level survival protocols for Saint-Paul-Émard. Resources, movement, threat levels.',          link: '/knowledge/',  locked: false, tagMod: '' },
-  { tag: 'Research', title: 'Archive — Knox Event',      desc: 'Documented record of how Montréal fractured. Sector-by-sector collapse timeline.',                    link: '/knowledge/',  locked: false, tagMod: '' },
-  { tag: 'Server',   title: 'Server Doctrine',           desc: 'Rules, whitelist process, seasonal structure, no-pay-to-win principles.',                             link: '/rules/',      locked: false, tagMod: '--amber' },
-  { tag: 'Technical',title: 'Technical Notes',           desc: 'Modlist, config templates, map tooling, PZMapForge documentation.',                                   link: '/assets/',     locked: false, tagMod: '--violet' },
-] as const;
-
-const assetTools = [
-  { tag: 'Tool',    title: 'PZMapForge',               desc: 'Deterministic map cell generator and toolchain for Project Zomboid custom map development.',            link: 'https://github.com/mrcheval91/PZMapForge',              locked: false, tagMod: '--amber' },
-  { tag: 'Map',     title: 'pz-sud-ouest-montreal',    desc: 'Public custom map mod. Southwest Montréal — Ville-Émard, Côte-Saint-Paul, canal edge.',                link: 'https://github.com/mrcheval91/pz-sud-ouest-montreal',    locked: false, tagMod: '' },
-  { tag: 'Devlog',  title: 'Map Blockouts',             desc: 'Cell blockout progress, reference material, and procedural generation notes.',                         link: '/assets/',     locked: true,  tagMod: '--muted' },
-  { tag: 'Gallery', title: 'Screenshot Archive',        desc: 'In-progress map screenshots, sector visuals, and procedural output captures.',                        link: '/assets/',     locked: true,  tagMod: '--muted' },
-] as const;
-
-const staticFeed = [
-  { type: 'notice',   typeLabel: 'Server Notice',  title: 'Season 0 — Setup Phase',       text: 'Server infrastructure pending. Whitelist not open. No connection details published yet.',     date: 'Feb 2026', link: '/construction/' },
-  { type: 'operator', typeLabel: 'Operator Note',  title: 'Site Signal Online — Server Pending', text: 'The DeadMTL network terminal is online. The game server is not. Whitelist remains closed.', date: 'Jun 2026', link: '/join/' },
-] as const;
-
 const mapNodes = [
   { name: 'Saint-Henri',       zone: 'Canal North',   status: 'locked',  dot: 'locked' },
   { name: 'CSP Industrial',    zone: 'S-P-E East',    status: 'active',  dot: 'active' },
@@ -63,88 +25,121 @@ const mapNodes = [
   { name: 'Angrignon Buffer',  zone: 'Fringe',        status: 'hot',     dot: 'hot'    },
   { name: 'Verdun Edge',       zone: 'South Lock',    status: 'locked',  dot: 'locked' },
 ] as const;
+
+const knowledgeModules = [
+  { tag: 'Survival', title: 'Field Survival Guide',  desc: 'Enclave-level survival protocols for Saint-Paul-Émard. Resources, movement, threat levels.',    link: '/knowledge/',  tagMod: '' },
+  { tag: 'Research', title: 'Archive — Knox Event',  desc: 'Documented record of how Montréal fractured. Sector-by-sector collapse timeline.',              link: '/knowledge/',  tagMod: '' },
+  { tag: 'Server',   title: 'Server Doctrine',       desc: 'Rules, whitelist process, seasonal structure, no-pay-to-win principles.',                       link: '/rules/',      tagMod: '--amber' },
+  { tag: 'Technical',title: 'Technical Notes',       desc: 'Modlist, config templates, map tooling, PZMapForge documentation.',                             link: '/assets/',     tagMod: '--violet' },
+] as const;
+
+const assetTools = [
+  { tag: 'Tool',   title: 'PZMapForge',             desc: 'Deterministic map cell generator and toolchain for Project Zomboid custom map development.',     link: 'https://github.com/mrcheval91/PZMapForge',           locked: false, tagMod: '--amber' },
+  { tag: 'Map',    title: 'pz-sud-ouest-montreal',  desc: 'Public custom map mod. Southwest Montréal — Ville-Émard, Côte-Saint-Paul, canal edge.',           link: 'https://github.com/mrcheval91/pz-sud-ouest-montreal', locked: false, tagMod: '' },
+  { tag: 'Devlog', title: 'Map Blockouts',           desc: 'Cell blockout progress, reference material, and procedural generation notes.',                   link: '/assets/',     locked: true, tagMod: '--muted' },
+  { tag: 'Gallery',title: 'Screenshot Archive',     desc: 'In-progress map screenshots, sector visuals, and procedural output captures.',                   link: '/assets/',     locked: true, tagMod: '--muted' },
+] as const;
+
+const staticFeed = [
+  { type: 'notice',   typeLabel: 'Server Notice',  title: 'Season 0 — Setup Phase',             text: 'Server infrastructure pending. Whitelist not open. No connection details published yet.',               date: 'Feb 2026', link: '/construction/' },
+  { type: 'operator', typeLabel: 'Operator Note',  title: 'Site Signal Online — Server Pending', text: 'The DeadMTL network terminal is online. The game server is not. Whitelist remains closed.',             date: 'Jun 2026', link: '/join/' },
+] as const;
 ---
 
 <Base
   title="Home"
-  description="DeadMTL — Montréal survival network. Server, lore archive, dispatch hub, and Saint-Paul-Émard enclave dossier. Season 0 in setup."
+  description="DeadMTL — Montréal survival network for Project Zomboid. Winter 1993. Sector maps, dispatch, server rules, and Season 0 preparation. Server pending."
 >
 
-<!-- ─── BBS CONNECTION BLOCK ─────────────────────────────────────────────── -->
-<div class="bbs-block" aria-hidden="true">
-  <div class="bbs__line bbs__line--header">DEADMTL.BBS.MTL &nbsp;&bull;&nbsp; NODE: SAINT-PAUL-ÉMARD &nbsp;&bull;&nbsp; SURVIVAL NETWORK &nbsp;&bull;&nbsp; WINTER 93/94</div>
-  <div class="bbs__line bbs__line--system">CONNECTION: LOCAL &nbsp;&bull;&nbsp; SITE SIGNAL: ACTIVE &nbsp;&bull;&nbsp; GAME SERVER: PENDING &nbsp;&bull;&nbsp; ACCESS: READ-ONLY</div>
-  <div class="bbs__line bbs__line--warn">WARNING: LASALLE AT MAXIMUM PRESSURE &nbsp;&bull;&nbsp; PONT MERCIER SEALED &nbsp;&bull;&nbsp; JOLICOEUR UNSTABLE &nbsp;&bull;&nbsp; SEASON 0 IN PROGRESS</div>
-</div>
+<!-- ─── DEAD HERO — STADIUM OLYMPIQUE, WINTER 1993 ───────────────────────── -->
+<section class="dead-hero" aria-label="DeadMTL network hero">
 
-<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
-<section class="term-hero" aria-label="Network hero">
-  <div class="th__inner hero-split">
+  <!-- Four corner frame brackets -->
+  <span class="dead-hero__corner dead-hero__corner--tl" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--tr" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--bl" aria-hidden="true"></span>
+  <span class="dead-hero__corner dead-hero__corner--br" aria-hidden="true"></span>
 
-    <div>
-      <div class="th__eyebrow">MTL NODE // SEASON 0 // SITE SIGNAL ONLINE // SERVER PENDING</div>
-      <div class="th__headline">THE CITY IS DEAD.</div>
-      <div class="th__sub">THE NETWORK LIVES.</div>
-      <p class="th__body">
-        DeadMTL is a Montréal-based Project Zomboid survival server, media bulletin,
-        map archive, knowledge center, and procedural asset forge.
-        Winter 1993&ndash;1994. The city failed by sectors.
-        We map the sectors.
-      </p>
-      <div class="th__cta">
-        <a href="/join/"      class="term-btn term-btn--teal">Join the Server</a>
-        <a href="/dispatch/"  class="term-btn term-btn--ghost">Dispatch</a>
-        <a href="/map/"       class="term-btn term-btn--ghost">Map</a>
-        <a href="/knowledge/" class="term-btn term-btn--ghost">Knowledge</a>
+  <!-- Hero image — Stade Olympique destroyed, cyan neon, winter -->
+  <picture>
+    <source
+      srcset="/images/home/deadmtl-hero.webp"
+      type="image/webp"
+    />
+    <img
+      src="/images/home/deadmtl-hero.jpg"
+      alt="Stade Olympique de Montréal — collapsed, winter 1993, cyan terminal scan"
+      class="dead-hero__image"
+      width="1920"
+      height="1128"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+
+  <!-- Text content overlaid on image -->
+  <div class="dead-hero__content">
+
+    <div class="dead-hero__eyebrow">
+      DEADMTL.BBS.MTL &nbsp;&#x25B8;&nbsp; SURVIVAL NETWORK &nbsp;&#x25B8;&nbsp; MTL NODE &nbsp;&#x25B8;&nbsp; WINTER 93/94
+    </div>
+
+    <h1 class="dead-hero__title">DEADMTL</h1>
+
+    <p class="dead-hero__tagline">The city is dead. The network lives.</p>
+
+    <p class="dead-hero__body">
+      A Montréal survival network for Project Zomboid.
+      Winter 1993. Sector maps, field dispatches, server rules,
+      and Season 0 preparation for the Saint-Paul-Émard enclave.
+    </p>
+
+    <!-- Server status grid — honest, no fake claims -->
+    <div class="dead-status-grid" role="status" aria-label="Server status">
+      <div class="dsg__item">
+        <span class="dsg__label">Season 0</span>
+        <span class="dsg__value dsg__value--amber">SETUP</span>
       </div>
-      <div class="modem-line" style="margin-top:1.75rem;" aria-hidden="true">
-        <span class="ml__dot"></span>
-        <span>PIRATE MUNICIPAL BBS</span>
-        <span class="ml__status" id="modem-status">PKT:OK</span>
-        <span>&bull;</span>
-        <span>CONTAMINATED TERMINAL</span>
+      <div class="dsg__item">
+        <span class="dsg__label">Game Server</span>
+        <span class="dsg__value dsg__value--red">PENDING</span>
+      </div>
+      <div class="dsg__item">
+        <span class="dsg__label">Whitelist</span>
+        <span class="dsg__value dsg__value--red">CLOSED</span>
+      </div>
+      <div class="dsg__item">
+        <span class="dsg__label">Map</span>
+        <span class="dsg__value dsg__value--teal">IN PROGRESS</span>
+      </div>
+      <div class="dsg__item">
+        <span class="dsg__label">Discord</span>
+        <span class="dsg__value dsg__value--amber">PENDING</span>
+      </div>
+      <div class="dsg__item">
+        <span class="dsg__label">Site Signal</span>
+        <span class="dsg__value dsg__value--teal">ONLINE</span>
       </div>
     </div>
 
-    <div aria-hidden="true">
-      <div class="ascii-grid">
-        <div class="ag__header">SECTOR SCAN — MTL SOUTH-WEST</div>
-        <div class="ag__row" style="grid-template-columns: repeat(5,1fr);">
-          {heroMap.slice(0,5).map(cell => (
-            <div class={`ag__cell ag__cell--${cell.mod}`}>
-              <span class="ag__name">{cell.abbr}</span>
-              <span class={`ag__tag ag__tag--${cell.mod}`}>{cell.tag}</span>
-            </div>
-          ))}
-        </div>
-        <div class="ag__row" style="grid-template-columns: repeat(5,1fr);">
-          {heroMap.slice(5).map(cell => (
-            <div class={`ag__cell ag__cell--${cell.mod}`}>
-              <span class="ag__name">{cell.abbr}</span>
-              <span class={`ag__tag ag__tag--${cell.mod}`}>{cell.tag}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="zone-bar-list">
-        {heroPressure.map(z => (
-          <div class="zone-bar">
-            <span class="zb__label">{z.label}</span>
-            <div class="zb__track">
-              <div class={`zb__fill zb__fill--${z.mod}`} style={`width:${z.pct}%`}></div>
-            </div>
-            <span class={`zb__pct zb__pct--${z.mod}`}>{z.display}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style="margin-top:0.75rem; font-family:var(--font-mono); font-size:0.52rem; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase;">
-        SECTOR UNDER OBSERVATION &nbsp;&bull;&nbsp; LOCAL SIGNAL ONLY
-      </div>
+    <!-- CTAs -->
+    <div class="dead-hero__cta">
+      <a href="/construction/" class="term-btn term-btn--red">Season 0 Status</a>
+      <a href="/rules/"        class="term-btn term-btn--ghost">Read the Rules</a>
+      <a href="/map/"          class="term-btn term-btn--teal">Open the Map</a>
+      <a href="/dispatch/"     class="term-btn term-btn--ghost">Dispatch</a>
     </div>
 
   </div>
+
+  <!-- Attribution caption -->
+  <div class="dead-hero__caption" aria-hidden="true">
+    STADE OLYMPIQUE<br />
+    MONTRÉAL &mdash; SECTOR SCAN<br />
+    WINTER 1993
+  </div>
+
 </section>
 
 <!-- ─── TICKER ───────────────────────────────────────────────────────────── -->
@@ -157,7 +152,7 @@ const mapNodes = [
   </div>
 </div>
 
-<!-- ─── PRACTICAL CARDS ───────────────────────────────────────────────────── -->
+<!-- ─── ACCESS PANEL — RULES / JOIN / STATUS ─────────────────────────────── -->
 <section class="home-section" aria-label="Key information">
   <div class="container">
     <div class="hs__head">
@@ -184,6 +179,43 @@ const mapNodes = [
         <p class="pc__desc">Season 0 setup progress, service status, no fake uptime. Server not yet open. Updated when state changes.</p>
         <span class="term-btn term-btn--red" style="align-self:flex-start; margin-top:auto;">View Status &rsaquo;</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NETWORK MAP — INTERACTIVE TACTICAL OVERLAY ───────────────────────── -->
+<section class="home-section" aria-label="Sector map">
+  <div class="container">
+    <div class="hs__head">
+      <span class="hs__label">Sector Survey &bull; Interactive Map</span>
+      <h2 class="hs__title">Network Map &mdash; Montréal Tactical Overlay</h2>
+      <p class="hs__sub">
+        The /map/ route now has a live interactive borough overlay using the real Montréal SVG.
+        Click sectors to inspect zone status. Node scan below reflects current Season 0 scope.
+      </p>
+    </div>
+
+    <div class="net-grid-panel">
+      <div class="term-header">
+        <span class="th__tag">MTL Node // Sector Grid</span>
+        <span class="th__rule"></span>
+        <span class="th__info">S-P-E Active</span>
+      </div>
+
+      <div class="ngp__grid" role="list" aria-label="Sector nodes">
+        {mapNodes.map(node => (
+          <div class={`net-node net-node--${node.status}`} role="listitem" aria-label={`${node.name}: ${node.status}`}>
+            <span class={`node__dot node__dot--${node.dot}`} aria-hidden="true"></span>
+            <span class="node__name">{node.name}</span>
+            <span class={`node__status node__status--${node.status}`}>{node.zone}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+      <a href="/map/" class="term-btn term-btn--teal">Open Interactive Map &rsaquo;</a>
+      <a href="/saint-paul-emard/" class="term-btn term-btn--ghost">S-P-E Dossier &rsaquo;</a>
     </div>
   </div>
 </section>
@@ -235,45 +267,11 @@ const mapNodes = [
   </div>
 </section>
 
-<!-- ─── MAP / GRID PANEL ──────────────────────────────────────────────────── -->
-<section class="home-section" aria-label="Sector map">
-  <div class="container">
-    <div class="hs__head">
-      <span class="hs__label">Sector Survey</span>
-      <h2 class="hs__title">Map &mdash; Saint-Paul-Émard &amp; Surrounds</h2>
-      <p class="hs__sub">Node status reflects last confirmed field report, winter 1993&ndash;1994. Locked nodes are outside current quarantine lines.</p>
-    </div>
-
-    <div class="net-grid-panel">
-      <div class="term-header">
-        <span class="th__tag">MTL Node // Sector Grid</span>
-        <span class="th__rule"></span>
-        <span class="th__info">S-P-E Active</span>
-      </div>
-
-      <div class="ngp__grid" role="list" aria-label="Sector nodes">
-        {mapNodes.map(node => (
-          <div class={`net-node net-node--${node.status}`} role="listitem" aria-label={`${node.name}: ${node.status}`}>
-            <span class={`node__dot node__dot--${node.dot}`} aria-hidden="true"></span>
-            <span class="node__name">{node.name}</span>
-            <span class={`node__status node__status--${node.status}`}>{node.zone}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
-      <a href="/map/" class="term-btn term-btn--ghost">Map &amp; Regions &rsaquo;</a>
-      <a href="/saint-paul-emard/" class="term-btn term-btn--teal">S-P-E Dossier &rsaquo;</a>
-    </div>
-  </div>
-</section>
-
 <!-- ─── KNOWLEDGE CENTER ──────────────────────────────────────────────────── -->
 <section class="home-section" aria-label="Knowledge center">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Public Terminal</span>
+      <span class="hs__label">Public Terminal &bull; Archive Node</span>
       <h2 class="hs__title">Knowledge Center</h2>
       <p class="hs__sub">Survival guides, lore archive, server doctrine, and technical documentation.</p>
     </div>
@@ -295,7 +293,7 @@ const mapNodes = [
 <section class="home-section" aria-label="Asset forge">
   <div class="container">
     <div class="hs__head">
-      <span class="hs__label">Procedural Tools</span>
+      <span class="hs__label">Procedural Tools &bull; Open Source</span>
       <h2 class="hs__title">Asset Forge</h2>
       <p class="hs__sub">Map tooling, procedural generators, blockouts, screenshots, and devlogs.</p>
     </div>
@@ -319,28 +317,15 @@ const mapNodes = [
   </div>
 </section>
 
-<!-- ─── SIGNAL WALL ───────────────────────────────────────────────────────── -->
-<section class="home-section" aria-label="Signal wall placeholder">
-  <div class="container">
-    <div class="hs__head">
-      <span class="hs__label">Signal Wall</span>
-      <h2 class="hs__title">Gallery &mdash; Season 0</h2>
-    </div>
-
-    <div class="signal-wall">
-      <div class="sw__label">
-        GALLERY PENDING &nbsp;&#x25B8;&nbsp; MAP SCREENSHOTS INCOMING &nbsp;&#x25B8;&nbsp; SEASON 0 MEDIA NOT YET CAPTURED
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CLOSING LINE ─────────────────────────────────────────────────────── -->
+<!-- ─── CLOSING SIGNAL QUOTE ──────────────────────────────────────────────── -->
 <section class="home-section" style="padding-block: 3rem;">
   <div class="container" style="max-width: 840px;">
     <div style="border-left: 2px solid var(--teal); padding-left: 1.5rem;">
-      <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-dim); line-height: 1.85;">
+      <p style="font-family: var(--font-mono); font-size: 0.92rem; color: var(--text-dim); line-height: 1.85;">
         &ldquo;Montréal is dead by pieces. Saint-Paul-Émard is the first piece still manageable enough to map.&rdquo;
+      </p>
+      <p style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.75rem;">
+        Field dispatch &mdash; Canal Edge, winter 1993
       </p>
     </div>
   </div>

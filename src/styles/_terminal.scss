@@ -1599,3 +1599,221 @@
     z-index: 0;
   }
 }
+
+// ─── DEAD HERO — IMAGE-BACKED HOMEPAGE HERO ──────────────────────────────────
+//
+// Uses the stadium_neon.webp asset (Stade Olympique, destroyed, cyan neon).
+// Frame treatment: thin teal corner brackets, scanline overlay, dark gradient.
+// Image remains the star. Text floats above on a dark gradient.
+
+.dead-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--void);
+  border-bottom: 2px solid var(--teal-dark);
+}
+
+// The four corner brackets — done via spans so all 4 exist independently
+.dead-hero__corner {
+  position: absolute;
+  z-index: 30;
+  width: 1.75rem;
+  height: 1.75rem;
+  pointer-events: none;
+
+  &--tl { top: 1rem;    left: 1rem;    border-top: 2px solid var(--teal); border-left:  2px solid var(--teal); }
+  &--tr { top: 1rem;    right: 1rem;   border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); }
+  &--bl { bottom: 1rem; left: 1rem;    border-bottom: 2px solid var(--teal); border-left:  2px solid var(--teal); }
+  &--br { bottom: 1rem; right: 1rem;   border-bottom: 2px solid var(--teal); border-right: 2px solid var(--teal); }
+
+  // Glow on all four
+  box-shadow: 0 0 8px rgba(32, 214, 199, 0.4);
+}
+
+// Thin top scan line as accent
+.dead-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--teal) 30%, var(--teal) 70%, transparent 100%);
+  box-shadow: 0 0 12px rgba(32, 214, 199, 0.6);
+  z-index: 25;
+}
+
+.dead-hero__image {
+  display: block;
+  width: 100%;
+  height: clamp(400px, 65vh, 780px);
+  object-fit: cover;
+  object-position: center 25%;
+  // Dim image to let text read — image is already dark, just reduce further
+  filter: brightness(0.55) saturate(1.1);
+  transition: filter 0.3s ease;
+}
+
+.dead-hero__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem $gap 2.75rem;
+
+  // Strong dark gradient from bottom — transparent at top to preserve image
+  background:
+    linear-gradient(
+      to top,
+      rgba(5, 6, 7, 0.97) 0%,
+      rgba(5, 6, 7, 0.88) 30%,
+      rgba(5, 6, 7, 0.50) 58%,
+      rgba(5, 6, 7, 0.10) 80%,
+      transparent 100%
+    );
+
+  // Subtle scanline on content layer
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0, 0, 0, 0.06) 2px, rgba(0, 0, 0, 0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  @media (max-width: $bp-md) {
+    padding: 2rem 1rem 2rem;
+  }
+}
+
+.dead-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.dead-hero__title {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(32, 214, 199, 0.2), 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.dead-hero__tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-shadow: var(--glow-teal);
+  margin-bottom: 1.1rem;
+}
+
+.dead-hero__body {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 58ch;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: $bp-md) { font-size: 0.82rem; }
+}
+
+// Status grid — horizontal strip of key/value pairs
+.dead-status-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--border);
+  background: rgba(5, 6, 7, 0.7);
+
+  @media (max-width: $bp-md) { flex-wrap: wrap; }
+}
+
+.dsg__item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.45rem 1rem;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+  flex: 1;
+
+  &:last-child { border-right: none; }
+
+  @media (max-width: $bp-md) {
+    flex-basis: 50%;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    &:nth-child(even) { border-right: none; }
+  }
+}
+
+.dsg__label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-bottom: 0.1rem;
+}
+
+.dsg__value {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &--teal  { color: var(--teal); }
+  &--amber { color: var(--amber-light); }
+  &--red   { color: var(--red); }
+  &--muted { color: var(--text-muted); }
+}
+
+.dead-hero__cta {
+  display: flex;
+  gap: $gap-sm;
+  flex-wrap: wrap;
+}
+
+// Status label overlaid on image (bottom-right corner caption)
+.dead-hero__caption {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  z-index: 20;
+  text-align: right;
+  line-height: 1.6;
+  opacity: 0.7;
+
+  @media (max-width: $bp-md) { display: none; }
+}

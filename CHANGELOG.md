@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.9.0] - 2026-06-01
+
+### Added
+- Homepage hero image: `assets/stadium_neon.png` (Stade Olympique, destroyed, cyan neon).
+- Web derivatives: `public/images/home/deadmtl-hero.webp` (1920×1128, 417KB), `deadmtl-hero.jpg` (541KB fallback), `deadmtl-hero-sm.webp` (900×529, 97KB mobile).
+- `.dead-hero` CSS class family in `_terminal.scss` — teal corner brackets, dark gradient overlay, scanlines, caption.
+- `.dead-status-grid` / `.dsg__item` / `.dsg__value` — visible server status grid in hero.
+- `docs/HOMEPAGE_IMAGE.md` — source asset documentation.
+- `scripts/make-hero.py` — image derivative generator (Python/Pillow, non-destructive).
+
+### Changed
+- `src/pages/index.astro` — complete homepage hero rewrite using real image.
+  - Full-image hero with station status grid (Season 0: SETUP, Game Server: PENDING, Whitelist: CLOSED, Site Signal: ONLINE).
+  - Map section updated to note interactive borough overlay now live at /map/.
+  - CTAs: Season 0 Status, Read the Rules, Open the Map, Dispatch.
+  - Closing quote attributed to "Field dispatch — Canal Edge, winter 1993".
+
 ## [0.8.0] - 2026-06-01
 
 ### Added
