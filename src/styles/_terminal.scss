@@ -1820,3 +1820,114 @@
 
   @media (max-width: $bp-md) { display: none; }
 }
+
+// ─── DEAD HERO SPLIT MODIFIER ─────────────────────────────────────────────────
+// Replaces the old full-background approach.
+// Text column left, framed image plate right.
+// Image has no text overlay — it stands on its own.
+
+.dead-hero--split {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  align-items: stretch;
+  overflow: visible;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Text column ───────────────────────────────────────────────────────────────
+
+.dead-hero__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem $gap 2.75rem;
+  background: var(--void);
+  border-right: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+
+  // Faint scanline texture on text panel
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0, 0, 0, 0.025) 2px, rgba(0, 0, 0, 0.025) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  @media (max-width: $bp-lg) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem $gap 2rem;
+  }
+
+  @media (max-width: $bp-md) { padding: 2rem 1rem; }
+}
+
+// ── Image plate ───────────────────────────────────────────────────────────────
+
+.dead-hero__plate {
+  position: relative;
+  overflow: hidden;
+  // Let plate drive its own height on desktop; text column determines row height
+  min-height: 420px;
+
+  // Thin top accent only — no bottom gradient obscuring ruins
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg, var(--teal-dark) 0%, var(--teal) 40%, var(--teal) 60%, var(--teal-dark) 100%
+    );
+    box-shadow: 0 0 10px rgba(32, 214, 199, 0.5);
+    z-index: 15;
+  }
+
+  // Minimal scanline on image — decorative only
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0, 0, 0, 0.035) 2px, rgba(0, 0, 0, 0.035) 4px
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+}
+
+// In split mode the image fills the plate with no text on top — can be lighter
+.dead-hero--split .dead-hero__image {
+  height: 100%;
+  min-height: 420px;
+  max-height: none;
+  // No gradient/text overlay — show the image properly
+  filter: brightness(0.88) saturate(1.05) contrast(1.06);
+}
+
+// Corners move to the plate in split mode
+.dead-hero__plate .dead-hero__corner {
+  // Corners already work: they're absolute-positioned relative to .dead-hero__plate
+  // which is position:relative (via overflow:hidden)
+}
+
+// Caption inside the plate
+.dead-hero__plate .dead-hero__caption {
+  display: block; // override mobile hide from old rule
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.9rem;
+  z-index: 20;
+}

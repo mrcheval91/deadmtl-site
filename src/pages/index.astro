@@ -68,45 +68,14 @@ const staticFeed = [
     media="(min-width: 901px)"
   />
 
-<!-- ─── DEAD HERO — STADIUM OLYMPIQUE, WINTER 1993 ───────────────────────── -->
-<section class="dead-hero" aria-label="DeadMTL network hero">
+<!-- ─── DEAD HERO — SPLIT LAYOUT: IDENTITY LEFT / IMAGE PLATE RIGHT ──────── -->
+<section class="dead-hero dead-hero--split" aria-label="DeadMTL network hero">
 
-  <!-- Four corner frame brackets -->
-  <span class="dead-hero__corner dead-hero__corner--tl" aria-hidden="true"></span>
-  <span class="dead-hero__corner dead-hero__corner--tr" aria-hidden="true"></span>
-  <span class="dead-hero__corner dead-hero__corner--bl" aria-hidden="true"></span>
-  <span class="dead-hero__corner dead-hero__corner--br" aria-hidden="true"></span>
-
-  <!-- Hero image — Stade Olympique destroyed, cyan neon, winter -->
-  <picture>
-    <!-- Mobile: 900px WebP (saves ~320KB on small screens) -->
-    <source
-      srcset="/images/home/deadmtl-hero-sm.webp"
-      type="image/webp"
-      media="(max-width: 900px)"
-    />
-    <!-- Desktop: full 1920px WebP -->
-    <source
-      srcset="/images/home/deadmtl-hero.webp"
-      type="image/webp"
-    />
-    <img
-      src="/images/home/deadmtl-hero.jpg"
-      alt="Stade Olympique de Montréal — collapsed, winter 1993, cyan terminal scan"
-      class="dead-hero__image"
-      width="1920"
-      height="1128"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
-  </picture>
-
-  <!-- Text content overlaid on image -->
-  <div class="dead-hero__content">
+  <!-- ── Left column: identity, status, CTAs ─────────────────────────────── -->
+  <div class="dead-hero__text">
 
     <div class="dead-hero__eyebrow">
-      DEADMTL.BBS.MTL &nbsp;&#x25B8;&nbsp; SURVIVAL NETWORK &nbsp;&#x25B8;&nbsp; MTL NODE &nbsp;&#x25B8;&nbsp; WINTER 93/94
+      DEADMTL.BBS.MTL &nbsp;&#x25B8;&nbsp; SURVIVAL NETWORK &nbsp;&#x25B8;&nbsp; WINTER 93/94
     </div>
 
     <h1 class="dead-hero__title">DEADMTL</h1>
@@ -119,7 +88,7 @@ const staticFeed = [
       and Season 0 preparation for the Saint-Paul-Émard enclave.
     </p>
 
-    <!-- Server status grid — honest, no fake claims -->
+    <!-- Server status — honest, no fake claims -->
     <div class="dead-status-grid" role="status" aria-label="Server status">
       <div class="dsg__item">
         <span class="dsg__label">Season 0</span>
@@ -147,7 +116,6 @@ const staticFeed = [
       </div>
     </div>
 
-    <!-- CTAs -->
     <div class="dead-hero__cta">
       <a href="/construction/" class="term-btn term-btn--red">Season 0 Status</a>
       <a href="/rules/"        class="term-btn term-btn--ghost">Read the Rules</a>
@@ -157,11 +125,45 @@ const staticFeed = [
 
   </div>
 
-  <!-- Attribution caption -->
-  <div class="dead-hero__caption" aria-hidden="true">
-    STADE OLYMPIQUE<br />
-    MONTRÉAL &mdash; SECTOR SCAN<br />
-    WINTER 1993
+  <!-- ── Right column: framed image plate — no text overlay ──────────────── -->
+  <div class="dead-hero__plate">
+
+    <!-- Corner frame brackets on the plate -->
+    <span class="dead-hero__corner dead-hero__corner--tl" aria-hidden="true"></span>
+    <span class="dead-hero__corner dead-hero__corner--tr" aria-hidden="true"></span>
+    <span class="dead-hero__corner dead-hero__corner--bl" aria-hidden="true"></span>
+    <span class="dead-hero__corner dead-hero__corner--br" aria-hidden="true"></span>
+
+    <!-- The image — stands on its own, no heavy gradient over it -->
+    <picture>
+      <source
+        srcset="/images/home/deadmtl-hero-sm.webp"
+        type="image/webp"
+        media="(max-width: 900px)"
+      />
+      <source
+        srcset="/images/home/deadmtl-hero.webp"
+        type="image/webp"
+      />
+      <img
+        src="/images/home/deadmtl-hero.jpg"
+        alt="Stade Olympique de Montréal — collapsed stadium and roof-beam ruins, winter 1993"
+        class="dead-hero__image"
+        width="1920"
+        height="1128"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+
+    <!-- Small caption — bottom corner, unobtrusive -->
+    <div class="dead-hero__caption" aria-hidden="true">
+      STADE OLYMPIQUE<br />
+      MONTRÉAL &mdash; SECTOR SCAN<br />
+      WINTER 1993
+    </div>
+
   </div>
 
 </section>
