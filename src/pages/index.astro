@@ -50,6 +50,23 @@ const staticFeed = [
   title="Home"
   description="DeadMTL — Montréal survival network for Project Zomboid. Winter 1993. Sector maps, dispatch, server rules, and Season 0 preparation. Server pending."
 >
+  <!-- Preload hero images — homepage only, injected into <head> via named slot -->
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    type="image/webp"
+    href="/images/home/deadmtl-hero-sm.webp"
+    media="(max-width: 900px)"
+  />
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    type="image/webp"
+    href="/images/home/deadmtl-hero.webp"
+    media="(min-width: 901px)"
+  />
 
 <!-- ─── DEAD HERO — STADIUM OLYMPIQUE, WINTER 1993 ───────────────────────── -->
 <section class="dead-hero" aria-label="DeadMTL network hero">
@@ -62,6 +79,13 @@ const staticFeed = [
 
   <!-- Hero image — Stade Olympique destroyed, cyan neon, winter -->
   <picture>
+    <!-- Mobile: 900px WebP (saves ~320KB on small screens) -->
+    <source
+      srcset="/images/home/deadmtl-hero-sm.webp"
+      type="image/webp"
+      media="(max-width: 900px)"
+    />
+    <!-- Desktop: full 1920px WebP -->
     <source
       srcset="/images/home/deadmtl-hero.webp"
       type="image/webp"
