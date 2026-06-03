@@ -6,7 +6,7 @@ zone: "Network"
 signal: "Operator Note — Content Update"
 status: "confirmed"
 type: "operator-note"
-excerpt: "The first Knowledge Center article is now available: the Season 0 Survival Primer. Server remains pending. Whitelist remains closed."
+excerpt: "The first Knowledge Center article is now available: the Season 0 Survival Primer. Server remains pending. Open access planned."
 ---
 
 The Knowledge Center's first article is live: the Season 0 Survival Primer.
@@ -19,7 +19,7 @@ The Season 0 Survival Primer is available at `/knowledge/season-0-survival-prime
 It is preparation material for when the server opens. It is not connection instructions.
 
 **What remains unchanged:**
-The game server is not running. There is no connection address. The whitelist is closed. Applications are not open. No launch date has been set.
+The game server is not running. There is no connection address. Open access is planned. No launch date has been set.
 
 **Map content:**
 The map section and Knowledge Center are under active development. Sector names and knowledge modules reflect planning state, not final delivered content.

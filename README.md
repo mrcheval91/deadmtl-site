@@ -112,7 +112,7 @@ src/
     assets/                         Asset/tooling page
     community/                      Community page
     dispatch/                       Dispatch index and dispatch entries
-    join/                           Join / whitelist info
+    join/                           Join / open access info
     knowledge/                      Knowledge Center
     map/                            Interactive tactical map
     rules/                          Server rules
@@ -165,7 +165,7 @@ Do not add duplicate README files at the repo root. Keep root documentation in
 |---|---|
 | `/` | Homepage with hero image, status grid, access cards, map teaser, latest dispatches |
 | `/rules/` | Server rules and code of conduct |
-| `/join/` | Whitelist/join information; applications are not open yet |
+| `/join/` | Open access info; server not yet live |
 | `/construction/` | Season 0 status and honest project limits |
 | `/dispatch/` | Dispatch index |
 | `/dispatch/[slug]/` | Individual dispatch entries |
@@ -328,7 +328,7 @@ mix French UI and English UI on the root site.
 - No donor gameplay perks.
 - No gameplay advantage sales.
 - The server is pending until a real server address is intentionally published.
-- The whitelist is closed until the join process is intentionally opened.
+- Open access is planned. The server is not live. Do not imply players can join now.
 
 ## Validation checklist
 

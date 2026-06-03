@@ -29,7 +29,7 @@ const mapNodes = [
 const knowledgeModules = [
   { tag: 'Survival', title: 'Field Survival Guide',  desc: 'Enclave-level survival protocols for Saint-Paul-Émard. Resources, movement, threat levels.',    link: '/knowledge/',  tagMod: '' },
   { tag: 'Research', title: 'Archive — Knox Event',  desc: 'Documented record of how Montréal fractured. Sector-by-sector collapse timeline.',              link: '/knowledge/',  tagMod: '' },
-  { tag: 'Server',   title: 'Server Doctrine',       desc: 'Rules, whitelist process, seasonal structure, no-pay-to-win principles.',                       link: '/rules/',      tagMod: '--amber' },
+  { tag: 'Server',   title: 'Server Doctrine',       desc: 'Rules, open-access standards, seasonal structure, no-pay-to-win principles.',                  link: '/rules/',      tagMod: '--amber' },
   { tag: 'Technical',title: 'Technical Notes',       desc: 'Modlist, config templates, map tooling, PZMapForge documentation.',                             link: '/assets/',     tagMod: '--violet' },
 ] as const;
 
@@ -41,8 +41,8 @@ const assetTools = [
 ] as const;
 
 const staticFeed = [
-  { type: 'notice',   typeLabel: 'Server Notice',  title: 'Season 0 — Setup Phase',             text: 'Server infrastructure pending. Whitelist not open. No connection details published yet.',               date: 'Feb 2026', link: '/construction/' },
-  { type: 'operator', typeLabel: 'Operator Note',  title: 'Site Signal Online — Server Pending', text: 'The DeadMTL network terminal is online. The game server is not. Whitelist remains closed.',             date: 'Jun 2026', link: '/join/' },
+  { type: 'notice',   typeLabel: 'Server Notice',  title: 'Season 0 — Setup Phase',             text: 'Server infrastructure pending. Open access planned. No connection details published yet.',              date: 'Feb 2026', link: '/construction/' },
+  { type: 'operator', typeLabel: 'Operator Note',  title: 'Site Signal Online — Server Pending', text: 'The DeadMTL network terminal is online. The game server is not yet live. Open access planned.',         date: 'Jun 2026', link: '/join/' },
 ] as const;
 ---
 
@@ -134,8 +134,8 @@ const staticFeed = [
           <span class="dsg__value dsg__value--red">PENDING</span>
         </div>
         <div class="dsg__item">
-          <span class="dsg__label">Whitelist</span>
-          <span class="dsg__value dsg__value--red">CLOSED</span>
+          <span class="dsg__label">Access</span>
+          <span class="dsg__value dsg__value--amber">OPEN PLANNED</span>
         </div>
         <div class="dsg__item">
           <span class="dsg__label">Map</span>
@@ -174,7 +174,7 @@ const staticFeed = [
   <span class="ticker__id" aria-hidden="true">&#x25A0;&nbsp;SIGNAL</span>
   <div class="ticker__track">
     <span class="ticker__msg" id="ticker-msg" aria-hidden="true">
-      SEASON 0 SETUP &nbsp;&#x25B8;&nbsp; WHITELIST CLOSED &nbsp;&#x25B8;&nbsp; MAP NODE LASALLE ACTIVE &nbsp;&#x25B8;&nbsp; SERVER PENDING &nbsp;&#x25B8;&nbsp; SAINT-PAUL-ÉMARD ENCLAVE OPEN
+      SEASON 0 SETUP &nbsp;&#x25B8;&nbsp; OPEN ACCESS PLANNED &nbsp;&#x25B8;&nbsp; MAP NODE LASALLE ACTIVE &nbsp;&#x25B8;&nbsp; SERVER PENDING &nbsp;&#x25B8;&nbsp; SAINT-PAUL-ÉMARD ENCLAVE OPEN
     </span>
   </div>
 </div>
@@ -191,14 +191,14 @@ const staticFeed = [
       <a href="/rules/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label">[ 01 ]</span>
         <span class="pc__title">Rules</span>
-        <p class="pc__desc">Code of conduct, no-pay-to-win policy, whitelist behavior, admin authority, and Season 0 provisional guidelines.</p>
+        <p class="pc__desc">Code of conduct, no-pay-to-win policy, community standards, admin authority, and Season 0 provisional guidelines.</p>
         <span class="term-btn term-btn--ghost" style="align-self:flex-start; margin-top:auto;">Read Rules &rsaquo;</span>
       </a>
       <a href="/join/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label pc__label--amber">[ 02 ]</span>
         <span class="pc__title">Join</span>
-        <p class="pc__desc">Whitelist process, Discord channel, connection details, and what to expect in Season 0. Not open yet.</p>
-        <span class="term-btn term-btn--amber" style="align-self:flex-start; margin-top:auto;">Join Info &rsaquo;</span>
+        <p class="pc__desc">Open access planned. Discord and server address will be posted here. Server not yet live.</p>
+        <span class="term-btn term-btn--amber" style="align-self:flex-start; margin-top:auto;">Join When Online &rsaquo;</span>
       </a>
       <a href="/construction/" class="practical-card" style="text-decoration:none;">
         <span class="pc__label pc__label--red">[ 03 ]</span>
