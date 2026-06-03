@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.10.0] - 2026-06-02
+
+### Changed
+- `src/pages/construction.astro` — status pill: "Whitelist: CLOSED" replaced with "Access: OPEN PLANNED" (amber).
+- `src/pages/index.astro` — status grid pill, ticker rotation, two static feed entries, Join card description and
+  button label, knowledge module description, and rules card description updated to open-access framing.
+  No whitelist or private-approval language on homepage.
+- `src/pages/join/index.astro` — full copy rewrite. Open-access model described directly.
+  Whitelist application steps and private-approval process removed. "Bans apply from first connection" retained.
+- `src/pages/rules/index.astro` — hero body text, provisional panel, and panel 04 updated to open-access posture.
+- `src/pages/knowledge/index.astro` — module description: "whitelist process" replaced with "open-access standards".
+- `src/pages/knowledge/season-0-survival-primer/index.astro` — "whitelist server" replaced with "open server".
+- `src/pages/community/index.astro` — meta description updated to reflect open-access framing.
+- `src/content/dispatch/knowledge-center-survival-primer.md` — excerpt and body updated.
+- `src/content/dispatch/season-0-network-terminal.md` — two body passages updated.
+- `README.md` — route table, join route description, and invariants section updated.
+
+### Policy
+- Access model: open access planned. No whitelist, no application process, no private approval gate.
+  Status wording across all public pages: "Access: OPEN PLANNED".
+  Game server remains PENDING. No live server claim introduced.
+
 ## [0.9.0] - 2026-06-01
 
 ### Added
