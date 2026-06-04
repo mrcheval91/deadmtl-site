@@ -1,12 +1,12 @@
----
+﻿---
 import Base from '../../layouts/Base.astro';
 
-// ─── Knowledge modules ────────────────────────────────────────────────────────
+// â”€â”€â”€ Knowledge modules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const modules = [
   {
     type: 'Survival',
     title: 'Survival Guides',
-    desc: 'Enclave-level protocols for Saint-Paul-Émard. Resources, movement, threat assessment, caching, and boundary rules.',
+    desc: 'Enclave-level protocols for Saint-Paul-Ã‰mard. Resources, movement, threat assessment, caching, and boundary rules.',
     status: 'available',
     statusMod: '--available',
     link: '/knowledge/season-0-survival-primer/',
@@ -22,7 +22,7 @@ const modules = [
   {
     type: 'Survey',
     title: 'Map Research',
-    desc: 'Sector survey data, zone pressure analysis, build scope, and expansion planning for the southwest Montréal map.',
+    desc: 'Sector survey data, zone pressure analysis, build scope, and expansion planning for the southwest MontrÃ©al map.',
     status: 'active',
     statusMod: '--active',
     link: '/map/',
@@ -46,14 +46,14 @@ const modules = [
   {
     type: 'Archive',
     title: 'Archive Files',
-    desc: 'Canonical lore, collapse timeline, and sector history. The written record of how Montréal fractured.',
+    desc: 'Canonical lore, collapse timeline, and sector history. The written record of how MontrÃ©al fractured.',
     status: 'assembling',
     statusMod: '--assembling',
     link: '#archive-files',
   },
 ] as const;
 
-// ─── Archive status rows ──────────────────────────────────────────────────────
+// â”€â”€â”€ Archive status rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const archiveStatus = [
   ['Archive Status',   'Assembling',  'amber'],
   ['Server Doctrine',  'Available',   'teal'],
@@ -63,7 +63,7 @@ const archiveStatus = [
   ['Public Access',    'Read-Only',   'muted'],
 ] as const;
 
-// ─── Content types ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Content types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const contentTypes = [
   {
     slug: 'server-notice',    label: 'Server Notice',    mod: '--notice',
@@ -95,10 +95,10 @@ const contentTypes = [
 
 <Base
   title="Knowledge"
-  description="DeadMTL Knowledge Center — survival guides, server doctrine, map research, field reports. Public archive node."
+  description="DeadMTL Knowledge Center â€” survival guides, server doctrine, map research, field reports. Public archive node."
 >
 
-<!-- ─── PAGE BBS BAR ──────────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ PAGE BBS BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <div class="page-bbs-bar" aria-hidden="true">
   <span class="pbb__seg pbb__seg--active">Archive Node</span>
   <span class="pbb__seg">Public Terminal</span>
@@ -107,7 +107,7 @@ const contentTypes = [
   <span class="pbb__ref">LASALLE NODE // NEIGHBOURHOOD ARCHIVES</span>
 </div>
 
-<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="term-hero" style="padding-block: clamp(2.5rem,6vw,5rem);">
   <div class="th__inner">
     <div class="th__eyebrow">PUBLIC TERMINAL // LASALLE NODE // SEASON 0</div>
@@ -125,7 +125,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── FEATURED ARTICLE ──────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ FEATURED ARTICLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section" style="padding-block: 2rem;">
   <div class="container">
     <div class="hs__head">
@@ -141,7 +141,7 @@ const contentTypes = [
       <div style="padding:1.5rem;">
         <div style="font-family:var(--font-mono); font-size:1rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); margin-bottom:0.5rem;">Season 0 Survival Primer</div>
         <p style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-dim); line-height:1.65; margin-bottom:1rem;">
-          What Season 0 is, how DeadMTL survival is designed to feel, first enclave doctrine for Saint-Paul-Émard, player principles, and current honest limits. The server is not open. This article is preparation.
+          What Season 0 is, how DeadMTL survival is designed to feel, first enclave doctrine for Saint-Paul-Ã‰mard, player principles, and current honest limits. The server is not open. This article is preparation.
         </p>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
           <span class="module-status module-status--available">available</span>
@@ -153,7 +153,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── ARCHIVE STATUS PANEL ─────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ ARCHIVE STATUS PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section crt-section">
   <div class="container">
     <div class="hs__head">
@@ -162,7 +162,7 @@ const contentTypes = [
     </div>
 
     <div class="municipal-notice" style="margin-bottom:1.5rem;">
-      <span class="mn__stamp">Municipal Notice &mdash; Montréal Network</span>
+      <span class="mn__stamp">Municipal Notice &mdash; MontrÃ©al Network</span>
       <p class="mn__body">
         Public terminal active. Read-only access. No modification authorized
         without operator network approval.
@@ -189,7 +189,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── KNOWLEDGE MODULES ─────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ KNOWLEDGE MODULES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section" id="survival-guides">
   <div class="container">
     <div class="hs__head">
@@ -211,7 +211,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── LASALLE NODE SECTION ──────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ LASALLE NODE SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section">
   <div class="container container--narrow">
     <div class="hs__head">
@@ -227,17 +227,17 @@ const contentTypes = [
       </div>
       <div style="padding:1.25rem 1.5rem;">
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75; margin-bottom:0.9rem;">
-          Within the DeadMTL world-build, the LaSalle node serves as the primary education and archive anchor for the southwest sector network. It is not a specific building in the survival map yet — it is a conceptual classification for this knowledge channel.
+          Within the DeadMTL world-build, the LaSalle node serves as the primary education and archive anchor for the southwest sector network. It is not a specific building in the survival map yet â€” it is a conceptual classification for this knowledge channel.
         </p>
         <p style="font-family:var(--font-mono); font-size:0.82rem; color:var(--text-dim); line-height:1.75;">
-          As map content develops, the LaSalle zone will be the pressure front on the west edge of Saint-Paul-Émard. The "LaSalle Node" designation in the Knowledge Center is a planning label for the archive function, not a mapped building or in-game location yet.
+          As map content develops, the LaSalle zone will be the pressure front on the west edge of Saint-Paul-Ã‰mard. The "LaSalle Node" designation in the Knowledge Center is a planning label for the archive function, not a mapped building or in-game location yet.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── CONTENT TYPES ─────────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ CONTENT TYPES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section">
   <div class="container">
     <div class="hs__head">
@@ -259,7 +259,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── ARCHIVE FILES PLACEHOLDER ─────────────────────────────────────────── -->
+<!-- â”€â”€â”€ ARCHIVE FILES PLACEHOLDER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section" id="archive-files">
   <div class="container container--narrow">
     <div class="hs__head">
@@ -275,7 +275,7 @@ const contentTypes = [
   </div>
 </section>
 
-<!-- ─── FOOTER CTA ────────────────────────────────────────────────────────── -->
+<!-- â”€â”€â”€ FOOTER CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <section class="home-section" style="padding-block:2.5rem;">
   <div class="container">
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
@@ -287,3 +287,4 @@ const contentTypes = [
 </section>
 
 </Base>
+
